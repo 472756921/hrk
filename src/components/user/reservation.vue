@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <h3 class="center">预约就诊</h3>
     <br/>
     <div class="block">

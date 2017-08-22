@@ -1,21 +1,22 @@
 <template>
   <div class="userSay">
     <img src="http://iph.href.lu/50x50" class="usertalkinfo">
-    <div class="talkinfo usertalkinfo">123123123123123123123123123123123123123123123123123123s</div>
+    <div class="talkinfo usertalkinfo">{{content}}</div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   export default {
-    name: 'userSay',
+    props: ['content'],
+    name: 'UserSay',
   };
 </script>
 
 <style scoped>
   .usertalkinfo{
     float: right;
-    background: #8492A6;
     color: #fff;
+    background-color: #8492A6;
   }
   .usertalkinfo:before{
     float: right;
@@ -33,10 +34,9 @@
     margin-bottom: .6rem;
   }
   .talkinfo{
-    width: 65%;
+    max-width: 65%;
     margin: 0 1rem;
     word-break: break-all;
-    background-color: #D3DCE6;
     padding: .6rem;
     border-radius: .4rem;
     font-size: .8rem;

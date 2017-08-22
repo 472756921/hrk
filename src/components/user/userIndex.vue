@@ -12,6 +12,6 @@
 
 <style scoped>
   .content{
-    padding: .8rem;
+    /*padding: .8rem;*/
   }
 </style>

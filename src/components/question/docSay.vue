@@ -1,19 +1,20 @@
 <template>
   <div class="docSay">
     <img src="http://iph.href.lu/50x50" class="doctalkinfo">
-    <div class="talkinfo doctalkinfo">123123123123123123123123123123123123123123123123123123s</div>
+    <div class="talkinfo doctalkinfo">{{content}}</div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   export default {
     name: 'docSay',
+    props: ['content'],
   };
 </script>
 
 <style scoped>
   .talkinfo{
-    width: 65%;
+    max-width: 65%;
     margin: 0 1rem;
     word-break: break-all;
     background-color: #D3DCE6;
@@ -23,6 +24,7 @@
   }
   .doctalkinfo{
     float: left;
+    color: #000;
   }
   .doctalkinfo:before{
     position: absolute;

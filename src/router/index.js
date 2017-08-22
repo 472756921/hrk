@@ -8,7 +8,10 @@ import Reservation from '@/components/user/reservation'
 import ASK from '@/components/user/ask'
 import DocInfo from '@/components/doc/docInfo'
 import Question from '@/components/question/question'
-import dataTest from '@/components/dataTest'
+import UserQuestionList from '@/components/question/userQuestionList'
+import UserInfo from '@/components/user/userInfo'
+import ReservationStatus from '@/components/user/reservationStatus'
+import Contact from '@/components/user/contact'
 
 Vue.use(Router)
 
@@ -19,11 +22,6 @@ export default new Router({
       path: '/',
       name: 'Hello',
       component: Hello,
-    },
-    {
-      path: '/dataTest',
-      name: 'dataTest',
-      component: dataTest,
     },
     {
       path: '/public/reg',
@@ -59,6 +57,26 @@ export default new Router({
           path: 'docInfo',
           name: 'docInfo',
           component: DocInfo,
+        },
+        {
+          path: 'userQuestionList',
+          name: 'userQuestionList',
+          component: UserQuestionList,
+        },
+        {
+          path: 'userInfo',
+          name: 'userInfo',
+          component: UserInfo,
+        },
+        {
+          path: 'reservationStatus',
+          name: 'reservationStatus',
+          component: ReservationStatus,
+        },
+        {
+          path: 'contact',
+          name: 'contact',
+          component: Contact,
         },
       ],
     }

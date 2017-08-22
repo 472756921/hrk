@@ -5,31 +5,53 @@
       <div>主治医生</div>
     </div>
     <div class="talk">
-
+      <span  v-for="(o, index) in egData">
+        <UserSay v-if="o.re === 1" :content="o.content"></UserSay>
+        <DocSay v-if="o.re === 0" :content="o.content"></DocSay>
+      </span>
+      <span id="nn"></span>
     </div>
     <div class="ask">
-      <textarea rows="4" maxlength="200"></textarea>
+      <textarea rows="4" maxlength="200" v-model="sendMessage"></textarea>
       <button class="send"  @click="send">发送</button>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import userSay from './userSay.vue';
-  import docSay from './docSay.vue';
+  import UserSay from './userSay';
+  import DocSay from './docSay';
 
   export default {
     name: 'question',
-
+    components: { UserSay, DocSay},
     data() {
       return {
         sendMessage: '',
+        egData: [
+          {content: '你好问一下', re: 1},
+          {content: '很好很好在那里', re: 0},
+          {content: '很好很好在那里', re: 0},
+          {content: '很好很好在那里', re: 0},
+          {content: '很好很好在那里', re: 0},
+          {content: '很好很好在那里', re: 0},
+          {content: '很好很好在那里', re: 0},
+          {content: '很好很好在那里', re: 0},
+          {content: '很好很好在那里', re: 0},
+        ],
       };
     },
     methods: {
       send() {
-        if (sendMessage === '') {
+        if (this.sendMessage === '') {
           return;
+        } else {
+          const message = { content: this.sendMessage, re: 1};
+          this.egData = [...this.egData, message];
+          this.sendMessage = '';
+          let anchor = document.getElementById('nn').offsetTop;
+          anchor += 200;
+          document.body.scrollTop = anchor;
         }
       },
     },
@@ -41,18 +63,21 @@
     background-color: #1D8CE0;
     color: #fff;
     padding: .6rem 0;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     margin: 0;
     height: 2.6rem;
+    z-index: 1;
   }
   .talk{
     margin-top: 4rem;
     width: 100%;
     overflow: auto;
     margin-bottom: 4.5rem;
+    padding-bottom: 2.5rem;
+    background: #F9FAFC;
   }
   .talkinfo{
     width: 65%;

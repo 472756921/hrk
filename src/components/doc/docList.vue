@@ -24,7 +24,12 @@
       return {
         currentDate: new Date()
       };
-    }
+    },
+    methods: {
+      yy() {
+
+      }
+    },
   };
 </script>
 

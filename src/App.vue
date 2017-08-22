@@ -52,4 +52,14 @@ export default {
   .Blue{
     color: #20A0FF;
   }
+  .line {
+    border-top: 2px solid #13CE66;
+  }
+  .line2{
+    border-top: 1px solid #E5E9F2;
+    margin: 1rem 0;
+  }
+  .content{
+    padding: .4rem;
+  }
 </style>
