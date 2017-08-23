@@ -13,6 +13,7 @@ import UserInfo from '@/components/user/userInfo'
 import ReservationStatus from '@/components/user/reservationStatus'
 import Contact from '@/components/user/contact'
 import NewContact from '@/components/user/newContact'
+import Physiological from '@/components/user/physiological'
 
 Vue.use(Router)
 
@@ -83,6 +84,11 @@ export default new Router({
           path: 'newContact',
           name: 'newContact',
           component: NewContact,
+        },
+        {
+          path: 'physiological',
+          name: 'physiological',
+          component: Physiological,
         },
       ],
     }
