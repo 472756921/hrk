@@ -12,6 +12,7 @@ import UserQuestionList from '@/components/question/userQuestionList'
 import UserInfo from '@/components/user/userInfo'
 import ReservationStatus from '@/components/user/reservationStatus'
 import Contact from '@/components/user/contact'
+import NewContact from '@/components/user/newContact'
 
 Vue.use(Router)
 
@@ -77,6 +78,11 @@ export default new Router({
           path: 'contact',
           name: 'contact',
           component: Contact,
+        },
+        {
+          path: 'newContact',
+          name: 'newContact',
+          component: NewContact,
         },
       ],
     }

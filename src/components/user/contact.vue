@@ -1,21 +1,27 @@
 <template>
   <div class="contentes">
     <div class="new">
-      <h3>关联联系人<a href="">添加</a></h3>
+      <h3>关联联系人<a href="newContact">添加</a></h3>
     </div>
     <div class="contacts" @click="edit">
       <div>姓名：刘德华</div>
       <div>年龄：23</div>
       <div>性别：23</div>
       <div>地址：成都</div>
-      <div class="del"><i class="iconfont icon-el-icon-delete-copy" style="font-size: 1.4rem"></i></div>
+      <div class="option">
+        <div class="input" @click="input"><i class="iconfont icon-input" style="font-size: 1.4rem"></i></div>
+        <div class="del" @click="del"><i class="iconfont icon-el-icon-delete-copy" style="font-size: 1.4rem"></i></div>
+      </div>
     </div>
     <div class="contacts">
       <div>姓名：刘德华</div>
       <div>年龄：23</div>
       <div>性别：23</div>
       <div>地址：成都</div>
-      <div class="del"><i class="iconfont icon-el-icon-delete-copy" style="font-size: 1.4rem"></i></div>
+      <div class="option">
+        <div class="input"><i class="iconfont icon-input" style="font-size: 1.4rem"></i></div>
+        <div class="del"><i class="iconfont icon-el-icon-delete-copy" style="font-size: 1.4rem"></i></div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +36,7 @@
       let mrV = '';
       let mr = '';
       items.map((item,i) => {
+        const po = window.getComputedStyle(item.children[4]).marginRight.substring(0, window.getComputedStyle(item.children[4]).marginRight.length-2);
         item.addEventListener('touchstart', (e) => {
           if (e.targetTouches.length == 1) {
             let touch = e.targetTouches[0];
@@ -63,8 +70,8 @@
             }
           }
           if (mrV >= -10) {
-            if (mrV2 < -40) {
-              item.children[4].style.marginRight = '-80px';
+            if (mrV2 < po/3*2) {
+              item.children[4].style.marginRight = po +'px';
             } else {
               item.children[4].style.marginRight = 0;
             }
@@ -73,9 +80,20 @@
       })
     },
     methods: {
-      edit(){
-        alert(1);
-      }
+      edit(event){
+        this.$router.push({ name: 'newContact', params: { name: 'benson', sex: '男', brith: '2002-12-21', address: '伦敦' }})
+      },
+      del(event) {
+        event.stopPropagation();
+        const r = confirm("确认删除关联人？")
+        if (r==true) {
+        } else {
+        }
+      },
+      input(event) {
+        event.stopPropagation();
+        alert(1)
+      },
     },
   };
 </script>
@@ -93,15 +111,23 @@
     overflow: hidden;
     margin-bottom: .4rem;
   }
-  .del{
+  .option{
     position: absolute;
-    background: #FF4949;
     right: 0;
     top: 0;
-    padding: 2.5rem 1.5rem;
     color: #fff;
     font-size: 1rem;
-    margin-right: -5rem;
+    margin-right: -9rem;
+  }
+  .del{
+    padding: 2.5rem 1.5rem;
+    background: #FF4949;
+    float: left;
+  }
+  .input{
+    float: left;
+    padding: 2.5rem 1.5rem;
+    background: #F7BA2A;
   }
   .new{
     padding: 0 .6rem;
