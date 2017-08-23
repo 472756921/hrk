@@ -1,11 +1,21 @@
 <template>
   <div class="contentes">
+    <div class="new">
+      <h3>关联联系人<a href="">添加</a></h3>
+    </div>
+    <div class="contacts" @click="edit">
+      <div>姓名：刘德华</div>
+      <div>年龄：23</div>
+      <div>性别：23</div>
+      <div>地址：成都</div>
+      <div class="del"><i class="iconfont icon-el-icon-delete-copy" style="font-size: 1.4rem"></i></div>
+    </div>
     <div class="contacts">
       <div>姓名：刘德华</div>
       <div>年龄：23</div>
       <div>性别：23</div>
       <div>地址：成都</div>
-      <div class="del">删除</div>
+      <div class="del"><i class="iconfont icon-el-icon-delete-copy" style="font-size: 1.4rem"></i></div>
     </div>
   </div>
 </template>
@@ -16,39 +26,56 @@
     mounted() {
       let items = document.getElementsByClassName('contacts');
       items =  Array.prototype.slice.call(items);
+      let x = '';
+      let mrV = '';
+      let mr = '';
       items.map((item,i) => {
         item.addEventListener('touchstart', (e) => {
           if (e.targetTouches.length == 1) {
-            e.preventDefault(); // 阻止浏览器默认事件，重要
             let touch = e.targetTouches[0];
-            let x = touch.pageX ;
-            let mr = window.getComputedStyle(item.children[4]).marginRight;
-            let mrV = mr.substring(0, mr.length-2);
-            if (mrV < -10) {
-              item.addEventListener('touchmove', function abc(e2) {
-                e2.preventDefault();
-                if (e2.targetTouches.length == 1) {
-                  let mov = e2.targetTouches[0].pageX - x;
-                  if (mov < Math.abs(mrV)) {
-                    item.children[4].style.marginRight = parseInt(mrV) + parseInt(mov) + 'px';
-                  }
-                }
-              }, false)
-              item.addEventListener('touchend', function abcd(e3) {
-                e3.preventDefault();
-                let mr2 = window.getComputedStyle(item.children[4]).marginRight;
-                let mrV2 = mr2.substring(0, mr2.length-2);
-                if (mrV2 > -20) {
-                  item.children[4].style.marginRight = 0;
-                } else {
-                  item.children[4].style.marginRight = mrV;
-                }
-              }, false)
+            x = touch.pageX ;
+            mr = window.getComputedStyle(item.children[4]).marginRight;
+            mrV = mr.substring(0, mr.length-2);
+          }
+        }, false)
+        item.addEventListener('touchmove', function abc(e2) {
+          if (e2.targetTouches.length == 1) {
+            let mov = e2.targetTouches[0].pageX - x;
+            if (mrV < 0) {
+              if (Math.abs(mov) < Math.abs(mrV) && mov < 0) {
+                item.children[4].style.marginRight = parseInt(mrV) - parseInt(mov) + 'px';
+              }
+            } else {
+              if (mov > 0) {
+                item.children[4].style.marginRight = parseInt(mrV) - parseInt(mov) + 'px';
+              }
             }
           }
         }, false)
-
+        item.addEventListener('touchend', function abcd(e3) {
+          const mr2 = window.getComputedStyle(item.children[4]).marginRight;
+          const mrV2 = mr2.substring(0, mr2.length-2);
+          if (mrV < -10) {
+            if (mrV2 > mrV/2) {
+              item.children[4].style.marginRight = 0;
+            } else {
+              item.children[4].style.marginRight = mr;
+            }
+          }
+          if (mrV >= -10) {
+            if (mrV2 < -40) {
+              item.children[4].style.marginRight = '-80px';
+            } else {
+              item.children[4].style.marginRight = 0;
+            }
+          }
+        }, false)
       })
+    },
+    methods: {
+      edit(){
+        alert(1);
+      }
     },
   };
 </script>
@@ -64,15 +91,25 @@
     font-size: .8rem;
     position: relative;
     overflow: hidden;
+    margin-bottom: .4rem;
   }
   .del{
     position: absolute;
-    background: red;
+    background: #FF4949;
     right: 0;
     top: 0;
     padding: 2.5rem 1.5rem;
     color: #fff;
     font-size: 1rem;
     margin-right: -5rem;
+  }
+  .new{
+    padding: 0 .6rem;
+  }
+  .new a{
+    text-decoration: none;
+    color: #1D8CE0;
+    float: right;
+    font-size: .6rem;
   }
 </style>
