@@ -3,24 +3,14 @@
     <div class="new">
       <h3>关联联系人<a href="newContact">添加</a></h3>
     </div>
-    <div class="contacts" @click="edit">
-      <div>姓名：刘德华</div>
-      <div>年龄：23</div>
-      <div>性别：23</div>
-      <div>地址：成都</div>
+    <div class="contacts" @click="edit" v-for="(it, index) in data">
+      <div>姓名：{{it.name}}</div>
+      <div>月龄：{{it.age}}</div>
+      <div>性别：{{it.sex}}</div>
+      <div>地址：{{it.address}}</div>
       <div class="option">
         <div class="input" @click="input"><i class="iconfont icon-input" style="font-size: 1.4rem"></i></div>
-        <div class="del" @click="del"><i class="iconfont icon-el-icon-delete-copy" style="font-size: 1.4rem"></i></div>
-      </div>
-    </div>
-    <div class="contacts">
-      <div>姓名：刘德华</div>
-      <div>年龄：23</div>
-      <div>性别：23</div>
-      <div>地址：成都</div>
-      <div class="option">
-        <div class="input"><i class="iconfont icon-input" style="font-size: 1.4rem"></i></div>
-        <div class="del"><i class="iconfont icon-el-icon-delete-copy" style="font-size: 1.4rem"></i></div>
+        <div class="del" @click="del(it, index)"><i class="iconfont icon-el-icon-delete-copy" style="font-size: 1.4rem"></i></div>
       </div>
     </div>
   </div>
@@ -49,7 +39,7 @@
           if (e2.targetTouches.length == 1) {
             let mov = e2.targetTouches[0].pageX - x;
             if (mrV < 0) {
-              if (Math.abs(mov) < Math.abs(mrV) && mov < 0) {
+              if (Math.abs(mov) <= Math.abs(mrV) && mov < 0) {
                 item.children[4].style.marginRight = parseInt(mrV) - parseInt(mov) + 'px';
               }
             } else {
@@ -79,15 +69,26 @@
         }, false)
       })
     },
+    data() {
+      return {
+        data: [
+          { name: '刘德华', sex: '男', age: 3, address: '成都', id: 1},
+          { name: '周杰伦', sex: '男', age: 2, address: '绵阳', id: 2},
+          { name: '高圆圆', sex: '女', age: 7, address: '北京', id: 3},
+        ],
+      };
+    },
     methods: {
       edit(event){
         this.$router.push({ name: 'newContact', params: { name: 'benson', sex: '男', brith: '2002-12-21', address: '伦敦' }})
       },
-      del(event) {
-        event.stopPropagation();
+      del(id, i) {
+        window.event.stopPropagation();
         const r = confirm("确认删除关联人？")
-        if (r==true) {
-        } else {
+        if (r == true) {
+          const po = window.getComputedStyle(document.getElementsByClassName('contacts')[i].children[4]).width;
+          this.data.splice(i, 1);
+          document.getElementsByClassName('contacts')[i].children[4].style.marginRight = '-' + po;
         }
       },
       input(event) {
