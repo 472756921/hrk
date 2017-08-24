@@ -7,7 +7,7 @@
       <div>预约地点：{{item.address}}</div>
       <div>注射记录：</div>
       <div>
-        <span class="indate" v-for="(di, dindex) in item.indat">{{di}}</span>
+        <div class="indate" v-for="(di, dindex) in item.indat">{{di.date}} <span v-if="di.status == 1">已注射</span><span v-if="di.status == 0" class="danger">未注射</span></div>
       </div>
       <div class="create">创建时间：{{item.createDate}}</div>
       <i class="iconfont icon-jinhangzhong2 icons"></i>
@@ -21,7 +21,7 @@
     data() {
       return {
         data: [
-          { id: 1, name: '王源', age: 7, totle: 3, address: '成都', indat: ['2015-12-12', '2016-02-12', '2016-04-12'], createDate: '2015-12-01'},
+          { id: 1, name: '王源', age: 7, totle: 3, address: '成都', indat: [{date: '2015-12-12', status: 1 }, {date: '2015-12-12', status: 1 }, {date: '2015-12-12', status: 0 }], createDate: '2015-12-01'},
         ],
       };
     },

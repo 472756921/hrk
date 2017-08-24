@@ -61,9 +61,9 @@
 <style scoped>
   .userInfoHead{
     text-align: center;
-    background: #324057;
     padding: 4rem 1rem;
     color: #fff;
+    background: url("../../assets/userInfo.jpg");
   }
   .round{
     border: 1px solid #000;

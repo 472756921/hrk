@@ -14,6 +14,14 @@
     <br/>
     <div>收费标准：<span class="danger">每次￥220.00</span></div>
     <br/>
+    <div>
+      <div class="demonstration">选择病情关联人:</div>
+      <el-radio-group v-model="patient" size="small">
+        <el-radio-button label="王凯"></el-radio-button>
+        <el-radio-button label="王祖蓝"></el-radio-button>
+        <el-radio-button label="王源"></el-radio-button>
+      </el-radio-group>
+    </div>
     <br/>
     <br/>
     <br/>
@@ -24,8 +32,17 @@
 <script type="text/ecmascript-6">
   export default {
     name: 'docInfo',
+    data() {
+      return {
+        patient: '',
+      };
+    },
     methods: {
       pay() {
+        if (this.patient === '') {
+          this.$message.warning('请选择病情关联人');
+          return;
+        }
         this.$router.push({ name: 'question' })
       }
     }

@@ -15,8 +15,6 @@
               </el-col>
             </el-row>
         </div>
-
-
       </el-tab-pane>
       <el-tab-pane label="预约名医就诊" name="second">敬请期待</el-tab-pane>
     </el-tabs>

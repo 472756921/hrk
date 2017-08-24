@@ -17,6 +17,9 @@ import Physiological from '@/components/user/physiological'
 import Pneumonia from '@/components/user/pneumonia'
 import PneumoniaStatus from '@/components/user/pneumoniaStatus'
 
+import AdminIndex from '@/components/admin/adminIndex'
+import AdminLogin from '@/components/admin/adminLogin'
+
 Vue.use(Router)
 
 export default new Router({
@@ -36,6 +39,23 @@ export default new Router({
       path: '/public/ag',
       name: 'ag',
       component: AG,
+    },
+    {
+      path: '/login',
+      name: 'adminLogin',
+      component: AdminLogin,
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: AdminIndex,
+      children: [
+        {
+          path: 'allData',
+          name: 'allData',
+          component: AdminLogin,
+        },
+      ],
     },
     {
       path: '/user',
