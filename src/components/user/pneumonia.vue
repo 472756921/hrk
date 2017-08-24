@@ -22,6 +22,10 @@
     <br/>
     <br/>
     <el-button type="primary" class="center_block" @click="yy" >预约</el-button>
+    <br/>
+    <div class="center">
+      <a href="pneumoniaStatus" class="link">历史记录</a>
+    </div>
   </div>
 </template>
 
@@ -50,5 +54,9 @@
   .demonstration{
     color: #1D8CE0;
     margin-bottom: .3rem;
+  }
+  .link{
+    color: #1D8CE0;
+    text-decoration: none;
   }
 </style>

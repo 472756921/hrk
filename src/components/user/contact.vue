@@ -93,7 +93,7 @@
       },
       input(event) {
         event.stopPropagation();
-        alert(1)
+        this.$router.push({ name: 'physiological' })
       },
     },
   };

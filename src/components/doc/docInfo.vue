@@ -17,13 +17,18 @@
     <br/>
     <br/>
     <br/>
-    <el-button type="primary" class="center_block">立即付款咨询</el-button>
+    <el-button type="primary" class="center_block" @click="pay">立即付款咨询</el-button>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   export default {
     name: 'docInfo',
+    methods: {
+      pay() {
+        this.$router.push({ name: 'question' })
+      }
+    }
   };
 </script>
 

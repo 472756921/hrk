@@ -1,17 +1,11 @@
 <template>
   <div>
-    <div class="listContent">
-      <img src="http://iph.href.lu/50x50" style="float:left;">
+    <div class="listContent" v-for="(item, i) in data" @click="go(item.status)">
+      <img :src=item.img style="float:left;">
       <div class="textContent">
-        <div>与周杰伦医生的会话</div>
-        <div class="Blue">正在进行</div>
-      </div>
-    </div>
-    <div class="listContent">
-      <img src="http://iph.href.lu/50x50" style="float:left;">
-      <div class="textContent">
-        <div>与周杰伦医生的会话</div>
-        <div class="Warning">已结束</div>
+        <div>与{{item.name}}生的会话</div>
+        <div class="Blue" v-if="item.status == 1">正在进行</div>
+        <div class="Warning" v-if="item.status == 0">已完成</div>
       </div>
     </div>
   </div>
@@ -20,6 +14,23 @@
 <script type="text/ecmascript-6">
   export default {
     name: 'userQuestionList',
+    data() {
+      return {
+        data: [
+          {img: 'http://iph.href.lu/50x50', name: '周杰伦', status: 1, id: 1},
+          {img: 'http://iph.href.lu/50x50', name: '刘德华', status: 0, id: 2},
+          {img: 'http://iph.href.lu/50x50', name: '张学友', status: 0, id: 3},
+
+        ],
+      };
+    },
+    methods: {
+      go(status) {
+        if(status === 1) {
+          this.$router.push({ name: 'question' })
+        }
+      },
+    },
   };
 </script>
 

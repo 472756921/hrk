@@ -27,7 +27,7 @@
     },
     methods: {
       yy() {
-
+        this.$router.push({ name: 'docInfo' })
       }
     },
   };
