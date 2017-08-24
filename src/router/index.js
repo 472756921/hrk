@@ -14,6 +14,8 @@ import ReservationStatus from '@/components/user/reservationStatus'
 import Contact from '@/components/user/contact'
 import NewContact from '@/components/user/newContact'
 import Physiological from '@/components/user/physiological'
+import Pneumonia from '@/components/user/pneumonia'
+import PneumoniaStatus from '@/components/user/pneumoniaStatus'
 
 Vue.use(Router)
 
@@ -89,6 +91,16 @@ export default new Router({
           path: 'physiological',
           name: 'physiological',
           component: Physiological,
+        },
+        {
+          path: 'pneumonia',
+          name: 'pneumonia',
+          component: Pneumonia,
+        },
+        {
+          path: 'pneumoniaStatus',
+          name: 'pneumoniaStatus',
+          component: PneumoniaStatus,
         },
       ],
     }

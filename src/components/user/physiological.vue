@@ -1,14 +1,13 @@
 <template>
   <div class="content">
     <h3>生理指标<i class="iconfont icon-add" style="float:right;color: #1D8CE0;" @click="dialogVisible = true"></i></h3>
-    <el-row class="card" v-for="(o, index) in data">
+    <el-row class="card" v-for="(o, index) in data" key="index">
       <el-col :span="12"><div>日期：{{o.date}}</div></el-col>
       <el-col :span="12"><div>月龄：{{o.age}}</div></el-col>
       <el-col :span="12"> <div>体重：{{o.weight}} KG</div></el-col>
       <el-col :span="12"><div>体温：{{o.temperature}} ℃</div></el-col>
       <el-col :span="12"><div>奶量：{{o.volume}} ML</div></el-col>
     </el-row>
-
     <el-dialog
       title="录入今日指标"
       :visible.sync="dialogVisible"
