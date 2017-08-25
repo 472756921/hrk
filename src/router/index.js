@@ -19,6 +19,8 @@ import PneumoniaStatus from '@/components/user/pneumoniaStatus'
 
 import AdminIndex from '@/components/admin/adminIndex'
 import AdminLogin from '@/components/admin/adminLogin'
+import DocIndex from '@/components/doc/docIndex'
+import Chart from '@/components/doc/chart'
 
 Vue.use(Router)
 
@@ -54,6 +56,16 @@ export default new Router({
           path: 'allData',
           name: 'allData',
           component: AdminLogin,
+        },
+        {
+          path: 'docIndex',
+          name: 'docIndex',
+          component: DocIndex,
+        },
+        {
+          path: 'chart',
+          name: 'chart',
+          component: Chart,
         },
       ],
     },
