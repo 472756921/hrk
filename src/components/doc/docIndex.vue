@@ -30,6 +30,7 @@
       methods: {
         back(index, rows) {
           const id = rows[index].id;
+          this.$router.push({ name: 'chart' })
         },
         colse(index, rows) {
           const r = confirm("确认关闭问题？")

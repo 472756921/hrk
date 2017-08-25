@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="back"><i class="iconfont icon-back"></i> 返回</div>
+    <div class="back" @click="back"><i class="iconfont icon-back"></i> 返回</div>
     <br/>
     <el-row :gutter="10">
       <el-col :span="16">
@@ -81,6 +81,9 @@
       };
     },
     methods: {
+      back() {
+        this.$router.go(-1);
+      },
       send() {
         if (this.sendMessage === '') {
           return;
