@@ -8,6 +8,7 @@
         v-model="date"
         type="date"
         size="small"
+        @change="dateChange"
         placeholder="选择日期"
         :picker-options="pickerOptions0">
       </el-date-picker>
@@ -75,6 +76,9 @@
       };
     },
     methods: {
+      dateChange(date) {
+        this.date = date;
+      },
       yy() {
         if (this.date === '') {
           this.$message.warning('请选择预约时间');

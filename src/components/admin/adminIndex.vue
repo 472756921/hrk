@@ -12,8 +12,18 @@
                 <el-menu-item index="1-2">选项2</el-menu-item>
               </el-submenu>
               <el-menu-item index="2"><i class="el-icon-menu"></i>用户管理</el-menu-item>
-              <el-menu-item index="3"><i class="el-icon-setting"></i>就诊管理</el-menu-item>
-              <el-menu-item index="10"><i class="el-icon-setting"></i>问诊列表</el-menu-item>
+              <el-submenu index="3">
+                <template slot="title"><i class="el-icon-message"></i>就诊管理</template>
+                <el-menu-item index="3-1"><a href="treatment">预约就诊</a></el-menu-item>
+                <el-menu-item index="3-2"><a href="treatmentS">已确定就诊</a></el-menu-item>
+                <el-menu-item index="3-3"><a href="treatmentF">就诊退款</a></el-menu-item>
+              </el-submenu>
+              <el-submenu index="4">
+                <template slot="title"><i class="el-icon-message"></i>问诊管理</template>
+                <el-menu-item index="4-1"><a href="treatment">退款处理</a></el-menu-item>
+                <el-menu-item index="4-2"><a href="treatmentS">投诉处理</a></el-menu-item>
+              </el-submenu>
+              <el-menu-item index="10"><i class="el-icon-setting"></i>问诊列表(DOC)</el-menu-item>
             </el-menu>
           </el-col>
         </el-row>

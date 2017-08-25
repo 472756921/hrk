@@ -22,6 +22,7 @@
       v-model="brith"
       type="date"
       placeholder="选择日期"
+      @change="dateChange"
       :picker-options="pickerOptions0">
     </el-date-picker>
     <br/>
@@ -32,7 +33,7 @@
 
 <script type="text/ecmascript-6">
     export default {
-        name: 'newContact',
+      name: 'newContact',
       data() {
         return {
           type: 'add',
@@ -58,6 +59,9 @@
         }
       },
       methods: {
+        dateChange(date) {
+          this.brith = date;
+        },
         save() {
           if (this.type === 'edit') {
 

@@ -22,6 +22,10 @@ import AdminLogin from '@/components/admin/adminLogin'
 import DocIndex from '@/components/doc/docIndex'
 import Chart from '@/components/doc/chart'
 
+import Treatment from '@/components/admin/reservation/treatment'
+import TreatmentS from '@/components/admin/reservation/treatmentS'
+import TreatmentF from '@/components/admin/reservation/treatmentF'
+
 Vue.use(Router)
 
 export default new Router({
@@ -66,6 +70,21 @@ export default new Router({
           path: 'chart',
           name: 'chart',
           component: Chart,
+        },
+        {
+          path: 'treatment',
+          name: 'treatment',
+          component: Treatment,
+        },
+        {
+          path: 'treatmentS',
+          name: 'treatmentS',
+          component: TreatmentS,
+        },
+        {
+          path: 'treatmentF',
+          name: 'treatmentF',
+          component: TreatmentF,
         },
       ],
     },
