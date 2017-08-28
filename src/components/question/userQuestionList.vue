@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="Warning">如果医生长时间没有回复您，可以申请退款或投诉</p>
+    <p class="Warning">如果医生长时间没有回复您，可以申请退款拨打客服电话投诉</p>
     <div class="listContent" v-for="(item, i) in data" @click="go(item.status)">
       <img :src=item.img style="float:left;">
       <div class="textContent">
@@ -8,7 +8,6 @@
         <div class="Blue" v-if="item.status == 1">正在进行
           <br/>
           <span class="op" @click="tksq(item.contactID, i)"> 退款 </span>
-          <span class="op" @click="ts(item.contactID, i)"> 投诉 </span>
         </div>
         <div class="Success" v-if="item.status == 0">已完成</div>
         <div class="Warning" v-if="item.status == 3">退款中</div>
@@ -44,13 +43,6 @@
         if (r === true) {
           this.$message.error('对不起，该会话不满足退款条件');
           this.data[index].status = 3;
-        }
-      },
-      ts(id, index) {
-        window.event.stopPropagation();
-        const r = confirm("确认投诉该医生？")
-        if (r === true) {
-          this.$message.success('您的诉求已发出，请等待反馈');
         }
       },
     },

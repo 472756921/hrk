@@ -20,8 +20,15 @@
               </el-submenu>
               <el-submenu index="4">
                 <template slot="title"><i class="el-icon-message"></i>问诊管理</template>
-                <el-menu-item index="4-1"><a href="treatment">退款处理</a></el-menu-item>
-                <el-menu-item index="4-2"><a href="treatmentS">投诉处理</a></el-menu-item>
+                <el-menu-item index="4-1"><a href="askS">退款处理</a></el-menu-item>
+                <el-menu-item index="4-2"><a href="askF">退款记录</a></el-menu-item>
+              </el-submenu>
+              <el-submenu index="5">
+                <template slot="title"><i class="el-icon-message"></i>肺炎疫苗</template>
+                <el-menu-item index="5-1"><a href="treatment">第一针</a></el-menu-item>
+                <el-menu-item index="5-2"><a href="treatment">第二针</a></el-menu-item>
+                <el-menu-item index="5-3"><a href="treatment">第三针</a></el-menu-item>
+                <el-menu-item index="5-4"><a href="treatment">完成记录</a></el-menu-item>
               </el-submenu>
               <el-menu-item index="10"><i class="el-icon-setting"></i>问诊列表(DOC)</el-menu-item>
             </el-menu>

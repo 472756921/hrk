@@ -25,6 +25,9 @@ import Chart from '@/components/doc/chart'
 import Treatment from '@/components/admin/reservation/treatment'
 import TreatmentS from '@/components/admin/reservation/treatmentS'
 import TreatmentF from '@/components/admin/reservation/treatmentF'
+import AskF from '@/components/admin/ask/askF'
+import AskS from '@/components/admin/ask/askS'
+import Injection from '@/components/admin/pneumonia/injection'
 
 Vue.use(Router)
 
@@ -85,6 +88,21 @@ export default new Router({
           path: 'treatmentF',
           name: 'treatmentF',
           component: TreatmentF,
+        },
+        {
+          path: 'askF',
+          name: 'askF',
+          component: AskF,
+        },
+        {
+          path: 'askS',
+          name: 'askS',
+          component: AskS,
+        },
+        {
+          path: 'injection',
+          name: 'injection',
+          component: Injection,
         },
       ],
     },
