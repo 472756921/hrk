@@ -7,30 +7,36 @@
           <el-col :span="24">
             <el-menu default-active="2" class="el-menu-vertical-demo">
               <el-submenu index="1">
-                <template slot="title"><i class="el-icon-message"></i>统计数据</template>
+                <template slot="title"><i class="iconfont icon-icon-test"></i> 统计数据</template>
                 <el-menu-item index="1-1">j</el-menu-item>
                 <el-menu-item index="1-2">选项2</el-menu-item>
               </el-submenu>
-              <el-menu-item index="2"><i class="el-icon-menu"></i>用户管理</el-menu-item>
+              <el-menu-item index="2"><i class="iconfont icon-user"></i> 用户管理</el-menu-item>
               <el-submenu index="3">
-                <template slot="title"><i class="el-icon-message"></i>就诊管理</template>
-                <el-menu-item index="3-1"><a href="treatment">预约就诊</a></el-menu-item>
-                <el-menu-item index="3-2"><a href="treatmentS">已确定就诊</a></el-menu-item>
-                <el-menu-item index="3-3"><a href="treatmentF">就诊退款</a></el-menu-item>
+                <template slot="title"><i class="iconfont icon-reservation"></i> 就诊管理</template>
+                <el-menu-item index="3-1"><router-link :to="{ name: 'treatment' }">预约就诊</router-link></el-menu-item>
+                <el-menu-item index="3-2"><router-link :to="{ name: 'treatmentS' }">已确定就诊</router-link></el-menu-item>
+                <el-menu-item index="3-3"><router-link :to="{ name: 'treatmentF' }">就诊退款</router-link></el-menu-item>
               </el-submenu>
               <el-submenu index="4">
-                <template slot="title"><i class="el-icon-message"></i>问诊管理</template>
-                <el-menu-item index="4-1"><a href="askS">退款处理</a></el-menu-item>
-                <el-menu-item index="4-2"><a href="askF">退款记录</a></el-menu-item>
+                <template slot="title"><i class="iconfont icon-iconfontyisheng"></i> 问诊管理</template>
+                <el-menu-item index="4-1"><router-link :to="{ name: 'askS' }">退款处理</router-link></el-menu-item>
+                <el-menu-item index="4-2"><router-link :to="{ name: 'askF' }">退款记录</router-link></el-menu-item>
               </el-submenu>
               <el-submenu index="5">
-                <template slot="title"><i class="el-icon-message"></i>肺炎疫苗</template>
-                <el-menu-item index="5-1"><a href="treatment">第一针</a></el-menu-item>
-                <el-menu-item index="5-2"><a href="treatment">第二针</a></el-menu-item>
-                <el-menu-item index="5-3"><a href="treatment">第三针</a></el-menu-item>
-                <el-menu-item index="5-4"><a href="treatment">完成记录</a></el-menu-item>
+                <template slot="title"><i class="iconfont icon-yimiao"></i> 肺炎疫苗</template>
+                <el-menu-item index="5-1"><router-link :to="{ name: 'injection' }">第一针</router-link></el-menu-item>
+                <el-menu-item index="5-2"><router-link :to="{ name: 'injectionB' }">第二针</router-link></el-menu-item>
+                <el-menu-item index="5-3"><router-link :to="{ name: 'injectionC' }">第三针</router-link></el-menu-item>
+                <el-menu-item index="5-4"><router-link :to="{ name: 'injectionO' }">完成记录</router-link></el-menu-item>
               </el-submenu>
-              <el-menu-item index="10"><i class="el-icon-setting"></i>问诊列表(DOC)</el-menu-item>
+              <el-menu-item index="6"><i class="iconfont icon-dingdan-copy"></i> 订单号查询</el-menu-item>
+              <el-submenu index="7">
+                <template slot="title"><i class="iconfont icon-guanliyuan"></i> 管理员管理</template>
+                <el-menu-item index="7-1"><router-link :to="{ name: 'injection' }">管理员列表</router-link></el-menu-item>
+                <el-menu-item index="7-1"><router-link :to="{ name: 'injection' }">新增管理员</router-link></el-menu-item>
+              </el-submenu>
+              <el-menu-item index="10"><i class="iconfont icon-wenzhenzhong"></i> 问诊列表(DOC)</el-menu-item>
             </el-menu>
           </el-col>
         </el-row>
@@ -72,5 +78,9 @@
     color: #ffffff;
     padding: 20px 10px;
     font-size: 20px;
+  }
+  a{
+    color: #777;
+    text-decoration: none;
   }
 </style>

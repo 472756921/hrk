@@ -28,11 +28,16 @@ import TreatmentF from '@/components/admin/reservation/treatmentF'
 import AskF from '@/components/admin/ask/askF'
 import AskS from '@/components/admin/ask/askS'
 import Injection from '@/components/admin/pneumonia/injection'
+import InjectionC from '@/components/admin/pneumonia/injectionC'
+import InjectionB from '@/components/admin/pneumonia/injectionB'
+import InjectionO from '@/components/admin/pneumonia/injectionO'
+import AdminUserList from '@/components/admin/adminUser/adminUserList'
+import AddAdmin from '@/components/admin/adminUser/addAdmin'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  //mode: 'history',
   routes: [
     {
       path: '/',
@@ -103,6 +108,31 @@ export default new Router({
           path: 'injection',
           name: 'injection',
           component: Injection,
+        },
+        {
+          path: 'injectionB',
+          name: 'injectionB',
+          component: InjectionB,
+        },
+        {
+          path: 'injectionC',
+          name: 'injectionC',
+          component: InjectionC,
+        },
+        {
+          path: 'injectionO',
+          name: 'injectionO',
+          component: InjectionO,
+        },
+        {
+          path: 'adminUserList',
+          name: 'adminUserList',
+          component: AdminUserList,
+        },
+        {
+          path: 'addAdmin',
+          name: 'addAdmin',
+          component: AddAdmin,
         },
       ],
     },

@@ -14,7 +14,6 @@
             <el-button v-if="scope.row.injectionDate==''" @click.native.prevent="changeDate(scope.$index, tableData)" type="text" size="small">安排日期</el-button>
             <el-button v-if="scope.row.injectionDate!=''" @click.native.prevent="sure(scope.$index, tableData)" type="text" size="small">完成注射</el-button>
             <el-button v-if="scope.row.injectionDate!=''" @click.native.prevent="changeDate(scope.$index, tableData)" type="text" size="small">修改日期</el-button>
-            <el-button @click.native.prevent="colse(scope.$index, tableData)" type="text" size="small" style="color: red;">退款</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -42,7 +41,7 @@
 
 <script type="text/ecmascript-6">
   export default {
-    name: 'injection',
+    name: 'injectionB',
     methods: {
       dateChange(date) {
         this.changeDateValue = date;
