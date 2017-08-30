@@ -8,8 +8,8 @@
             <el-menu default-active="2" class="el-menu-vertical-demo">
               <el-submenu index="1">
                 <template slot="title"><i class="iconfont icon-icon-test"></i> 统计数据</template>
-                <el-menu-item index="1-1">j</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
+                <el-menu-item index="1-1">暂无</el-menu-item>
+                <el-menu-item index="1-2">暂无</el-menu-item>
               </el-submenu>
               <el-menu-item index="2"><i class="iconfont icon-user"></i> 用户管理</el-menu-item>
               <el-submenu index="3">
@@ -33,10 +33,10 @@
               <el-menu-item index="6"><i class="iconfont icon-dingdan-copy"></i> 订单号查询</el-menu-item>
               <el-submenu index="7">
                 <template slot="title"><i class="iconfont icon-guanliyuan"></i> 管理员管理</template>
-                <el-menu-item index="7-1"><router-link :to="{ name: 'injection' }">管理员列表</router-link></el-menu-item>
-                <el-menu-item index="7-1"><router-link :to="{ name: 'injection' }">新增管理员</router-link></el-menu-item>
+                <el-menu-item index="7-1"><router-link :to="{ name: 'adminUserList' }">管理员列表</router-link></el-menu-item>
+                <el-menu-item index="7-1"><router-link :to="{ name: 'addAdmin' }">新增管理员</router-link></el-menu-item>
               </el-submenu>
-              <el-menu-item index="10"><i class="iconfont icon-wenzhenzhong"></i> 问诊列表(DOC)</el-menu-item>
+              <el-menu-item index="10"><i class="iconfont icon-wenzhenzhong"></i> <router-link :to="{ name: 'docIndex' }">问诊列表(DOC)</router-link></el-menu-item>
             </el-menu>
           </el-col>
         </el-row>

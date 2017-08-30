@@ -33,6 +33,7 @@ import InjectionB from '@/components/admin/pneumonia/injectionB'
 import InjectionO from '@/components/admin/pneumonia/injectionO'
 import AdminUserList from '@/components/admin/adminUser/adminUserList'
 import AddAdmin from '@/components/admin/adminUser/addAdmin'
+import List from '@/components/admin/user/list'
 
 Vue.use(Router)
 
@@ -133,6 +134,11 @@ export default new Router({
           path: 'addAdmin',
           name: 'addAdmin',
           component: AddAdmin,
+        },
+        {
+          path: 'list',
+          name: 'list',
+          component: List,
         },
       ],
     },
