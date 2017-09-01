@@ -17,3 +17,9 @@ export const getUserinfo = function () {
   const API = host + URL;
   return API;
 };
+//用户信息修改
+export const updateCustomerMessage = function () {
+  const URL = 'updateCustomerMessage';
+  const API = host + URL;
+  return API;
+};

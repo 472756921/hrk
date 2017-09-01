@@ -52,7 +52,7 @@
 
 
     <el-dialog title="提示" :visible.sync="dialogVisible" size="large">
-      <el-input  v-model="userInfo.phone" size="small">
+      <el-input  v-model="val" size="small">
         <template slot="prepend">{{text}}</template>
       </el-input>
       <span slot="footer" class="dialog-footer">
@@ -66,7 +66,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { getUserinfo } from '../interface';
+  import { getUserinfo, updateCustomerMessage } from '../interface';
 
   export default {
     name: 'userInfo',
@@ -77,6 +77,7 @@
         text: '',
         phone: '',
         address: '',
+        val: '',
       };
     },
     created() {
@@ -86,18 +87,42 @@
       change() {
         let data;
         if(this.text === '电话号码') {
-          data = {phone: this.phone};
+          data = {phone: this.val};
         }
         if(this.text === '联系地址') {
-          data = {address: this.address};
+          data = {address: this.val};
         }
+        if(this.val === '') {
+          return;
+        }
+        this.$ajax({
+          method: 'POST',
+          data: data,
+          url: updateCustomerMessage(),
+          dataType: 'JSON',
+          contentType: 'application/json;charset=UTF-8',
+        }).then((res) => {
+          if (res.data === 1) {
+            this.$message.success('修改成功');
+          }
+          if(this.text === '电话号码') {
+            this.userInfo.phone = this.val;
+          }
+          if(this.text === '联系地址') {
+            this.userInfo.address = this.val;
+          }
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
         this.dialogVisible = false
       },
       show(val) {
         if (val === 'phone') {
           this.text = '电话号码';
+          this.val = this.userInfo.phone;
         } else {
           this.text = '联系地址';
+          this.val = this.userInfo.address;
         }
         this.dialogVisible = true;
       },
@@ -108,7 +133,7 @@
         }).then((res) => {
           this.userInfo = res.data;
         }).catch((error) => {
-          console.log(error);
+          this.$message.error(error.message);
         });
       },
     },
