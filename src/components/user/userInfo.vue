@@ -4,7 +4,7 @@
       <el-row>
         <el-col :span="6">
           <div class="grid-content">
-            <div>300.00</div>
+            <div>{{userInfo.beans}}</div>
             <div>余额</div>
             <button class="czBtn">充值</button>
           </div>
@@ -18,8 +18,8 @@
         </el-col>
         <el-col :span="6">
           <div class="grid-content">
-            <div>Yao Ming</div>
-            <div>22岁 <i class="iconfont icon-nan sex"></i></div>
+            <div>{{userInfo.real_name}}</div>
+            <div>22岁 <i class="iconfont icon-nan sex" v-if="userInfo.gender == 0"></i><i class="iconfont icon-nv sex" v-if="userInfo.gender == 1"></i></div>
           </div>
         </el-col>
       </el-row>
@@ -30,17 +30,17 @@
     <br/>
     <div class="text">
       <span>身份证号码</span>
-      <span class="itemText">510703********9304</span>
+      <span class="itemText">{{userInfo.id_number}}</span>
     </div>
     <div class="line2"></div>
     <div class="text">
       <span>联系电话</span>
-      <span class="itemText">187***3774</span>
+      <span class="itemText">{{userInfo.phone}}</span>
     </div>
     <div class="line2"></div>
     <div class="text">
       <span>联系地址</span>
-      <span class="itemText">成都市高新区</span>
+      <span class="itemText">{{userInfo.address}}</span>
     </div>
     <div class="line2"></div>
     <div class="text">
@@ -53,8 +53,30 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { getUserinfo } from '../interface';
+
   export default {
     name: 'userInfo',
+    data() {
+      return {
+        userInfo: '',
+      };
+    },
+    created() {
+      this.getUserInfo();
+    },
+    methods: {
+      getUserInfo() {
+        this.$ajax({
+          method: 'GET',
+          url: getUserinfo(),
+        }).then((res) => {
+          this.userInfo = res.data;
+        }).catch((error) => {
+          console.log(error);
+        });
+      },
+    },
   };
 </script>
 

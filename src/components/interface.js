@@ -11,3 +11,9 @@ export const userReg = function () {
   const API = host + URL;
   return API;
 };
+//用户注册
+export const getUserinfo = function () {
+  const URL = 'getCustomerInformation';
+  const API = host + URL;
+  return API;
+};

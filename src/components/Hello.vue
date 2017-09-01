@@ -7,7 +7,7 @@
       <li><a>名医工作站</a></li>
     </ul>
     <ul>
-      <li><a href="user/userInfo">会员信息</a></li>
+      <li><a href="#/user/userInfo">会员信息</a></li>
       <li><a href="user/pneumonia">小儿肺炎疫苗</a></li>
       <li><a href="user/reservationStatus">查看预约状态</a></li>
       <li><a href="user/contact">管理关联联系人</a></li>
