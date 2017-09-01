@@ -4,3 +4,10 @@
 
 
 const host = 'http://9jck.com:8099/';
+
+//用户注册
+export const userReg = function () {
+  const URL = 'registerCustomer';
+  const API = host + URL;
+  return API;
+};

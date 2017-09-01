@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <ul>
-      <li><a href="public/reg">注册会员</a></li>
+      <li><a href="#/public/reg">注册会员</a></li>
       <li><a href="user/reservation">预约就诊</a></li>
       <li><a href="user/ask">寻医问诊</a></li>
       <li><a>名医工作站</a></li>
