@@ -33,12 +33,12 @@
       <span class="itemText">{{userInfo.id_number}}</span>
     </div>
     <div class="line2"></div>
-    <div class="text">
+    <div class="text" @click="show('phone')">
       <span>联系电话</span>
       <span class="itemText">{{userInfo.phone}}</span>
     </div>
     <div class="line2"></div>
-    <div class="text">
+    <div class="text"  @click="show('address')">
       <span>联系地址</span>
       <span class="itemText">{{userInfo.address}}</span>
     </div>
@@ -49,6 +49,19 @@
         <i class="iconfont icon-htbarrowright02"></i>
       </span>
     </div>
+
+
+    <el-dialog title="提示" :visible.sync="dialogVisible" size="large">
+      <el-input  v-model="userInfo.phone" size="small">
+        <template slot="prepend">{{text}}</template>
+      </el-input>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="change">确 定</el-button>
+      </span>
+    </el-dialog>
+
+
   </div>
 </template>
 
@@ -60,12 +73,34 @@
     data() {
       return {
         userInfo: '',
+        dialogVisible: false,
+        text: '',
+        phone: '',
+        address: '',
       };
     },
     created() {
       this.getUserInfo();
     },
     methods: {
+      change() {
+        let data;
+        if(this.text === '电话号码') {
+          data = {phone: this.phone};
+        }
+        if(this.text === '联系地址') {
+          data = {address: this.address};
+        }
+        this.dialogVisible = false
+      },
+      show(val) {
+        if (val === 'phone') {
+          this.text = '电话号码';
+        } else {
+          this.text = '联系地址';
+        }
+        this.dialogVisible = true;
+      },
       getUserInfo() {
         this.$ajax({
           method: 'GET',
