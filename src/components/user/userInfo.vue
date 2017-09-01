@@ -11,7 +11,7 @@
         </el-col>
         <el-col :span="12">
           <div class="">
-            <div class="round">
+            <div class="round" @click="head">
               <img src="http://iph.href.lu/98x98">
             </div>
           </div>
@@ -84,6 +84,9 @@
       this.getUserInfo();
     },
     methods: {
+      head() {
+        this.$router.push({ name: 'userHeadUplode', params: { src: 'benson' }})
+      },
       change() {
         let data;
         if(this.text === '电话号码') {
