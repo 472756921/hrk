@@ -16,6 +16,7 @@ import NewContact from '@/components/user/newContact'
 import Physiological from '@/components/user/physiological'
 import Pneumonia from '@/components/user/pneumonia'
 import PneumoniaStatus from '@/components/user/pneumoniaStatus'
+import UserHeadUplode from '@/components/user/userHeadUplode'
 
 import AdminIndex from '@/components/admin/adminIndex'
 import AdminLogin from '@/components/admin/adminLogin'
@@ -206,6 +207,11 @@ export default new Router({
           path: 'pneumoniaStatus',
           name: 'pneumoniaStatus',
           component: PneumoniaStatus,
+        },
+        {
+          path: 'userHeadUplode',
+          name: 'userHeadUplode',
+          component: UserHeadUplode,
         },
       ],
     }
