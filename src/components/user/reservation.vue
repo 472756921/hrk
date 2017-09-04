@@ -17,10 +17,7 @@
     <div>
       <div class="demonstration">选择地点</div>
       <el-radio-group v-model="position" size="small">
-        <el-radio-button label="北京"></el-radio-button>
-        <el-radio-button label="上海"></el-radio-button>
-        <el-radio-button label="广州"></el-radio-button>
-        <el-radio-button label="深圳"></el-radio-button>
+        <el-radio-button v-for="(it, i) in positionList" :label='it' :key='i' >{{it}}</el-radio-button>
       </el-radio-group>
     </div>
     <br/>
@@ -66,7 +63,7 @@
     data() {
       return {
         position: '上海',
-        positionList: '',
+        positionList: ['北京', '上海', '深圳'],
         hospital: '华西医院',
         department: '儿科',
         patient: '',
