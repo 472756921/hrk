@@ -18,6 +18,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { getDocList } from '../interface';
+
   export default {
     name: 'docList',
     data() {
@@ -25,7 +27,20 @@
         currentDate: new Date()
       };
     },
+    created() {
+      this.getDocList();
+    },
     methods: {
+      getDocList() {
+        this.$ajax({
+          method: 'GET',
+          url: getDocList(),
+        }).then((res) => {
+          console.log(res.data);
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
+      },
       yy() {
         this.$router.push({ name: 'docInfo' })
       }

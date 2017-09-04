@@ -29,3 +29,9 @@ export const getCity = function () {
   const API = host + URL;
   return API;
 };
+//获取城市列表
+export const getDocList = function () {
+  const URL = 'getDoctors';
+  const API = host + URL;
+  return API;
+};
