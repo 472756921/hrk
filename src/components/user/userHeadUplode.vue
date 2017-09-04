@@ -22,8 +22,11 @@
     <br/>
     <br/>
     <br/>
-
-    <el-button type="primary">确认上传</el-button>
+    <div class="over" v-if="loading">
+      <i class="el-icon-loading iconL"></i>
+      <div class="loText">正在上传</div>
+    </div>
+    <el-button type="primary">确认</el-button>
   </div>
 </template>
 
@@ -32,7 +35,8 @@
       name: 'userHeadUplode',
       data() {
         return {
-          imageUrl: ''
+          imageUrl: '',
+          loading: false,
         };
       },
       created() {
@@ -41,8 +45,10 @@
       methods: {
         handleAvatarSuccess(res, file) {
           this.imageUrl = URL.createObjectURL(file.raw);
+          this.loading = false;
         },
         beforeAvatarUpload(file) {
+          this.loading = true;
           const isJPG = file.type === 'image/jpeg';
           const isLt2M = file.size / 1024 / 1024 < 2;
 
@@ -59,6 +65,24 @@
 </script>
 
 <style scoped>
+  .iconL{
+    font-size: 3rem;
+    margin-top: 50%;
+  }
+  .loText{
+    margin-top: .8rem;
+    font-size: 1rem;
+  }
+  .over{
+    color: #1D8CE0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #eee;
+    opacity: .8;
+    top: 0;
+    left: 0;
+  }
   .bor{
     border: 1px solid #eee;
   }

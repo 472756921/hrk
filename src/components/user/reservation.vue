@@ -59,11 +59,14 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { getCity } from '../interface';
+
   export default {
     name: 'reservation',
     data() {
       return {
         position: '上海',
+        positionList: '',
         hospital: '华西医院',
         department: '儿科',
         patient: '',
@@ -75,7 +78,22 @@
         },
       };
     },
+    created() {
+      this.getCity();
+    },
     methods: {
+      getCity() {
+        this.$ajax({
+          method: 'GET',
+          url: getCity(),
+        }).then((res) => {
+          console.log(res);
+          this.positionList = res.data.citys;
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
+      },
+
       dateChange(date) {
         this.date = date;
       },

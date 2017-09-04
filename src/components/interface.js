@@ -23,3 +23,9 @@ export const updateCustomerMessage = function () {
   const API = host + URL;
   return API;
 };
+//获取城市列表
+export const getCity = function () {
+  const URL = 'getCitys';
+  const API = host + URL;
+  return API;
+};

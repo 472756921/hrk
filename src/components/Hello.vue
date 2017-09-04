@@ -2,15 +2,15 @@
   <div class="hello">
     <ul>
       <li><a href="#/public/reg">注册会员</a></li>
-      <li><a href="user/reservation">预约就诊</a></li>
-      <li><a href="user/ask">寻医问诊</a></li>
+      <li><a href="#/user/reservation">预约就诊</a></li>
+      <li><a href="#/user/ask">寻医问诊</a></li>
       <li><a>名医工作站</a></li>
     </ul>
     <ul>
       <li><a href="#/user/userInfo">会员信息</a></li>
-      <li><a href="user/pneumonia">小儿肺炎疫苗</a></li>
-      <li><a href="user/reservationStatus">查看预约状态</a></li>
-      <li><a href="user/contact">管理关联联系人</a></li>
+      <li><a href="#/user/pneumonia">小儿肺炎疫苗</a></li>
+      <li><a href="#/user/reservationStatus">查看预约状态</a></li>
+      <li><a href="#/user/contact">管理关联联系人</a></li>
     </ul>
     <ul>
       <li><a>公司介绍</a></li>

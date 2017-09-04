@@ -19,7 +19,7 @@
         <el-col :span="6">
           <div class="grid-content">
             <div>{{userInfo.real_name}}</div>
-            <div>22岁 <i class="iconfont icon-nan sex" v-if="userInfo.gender == 0"></i><i class="iconfont icon-nv sex" v-if="userInfo.gender == 1"></i></div>
+            <div>22岁 <i class="iconfont icon-nan sex" v-if="userInfo.gender == 1"></i><i class="iconfont icon-nv sex" v-if="userInfo.gender == 0"></i></div>
           </div>
         </el-col>
       </el-row>
