@@ -14,7 +14,7 @@
               <el-menu-item index="2"><i class="iconfont icon-user"></i> 用户管理</el-menu-item>
               <el-submenu index="3">
                 <template slot="title"><i class="iconfont icon-reservation"></i> 就诊管理</template>
-                <el-menu-item index="3-1"><router-link :to="{ name: 'treatment' }">列表项管理</router-link></el-menu-item>
+                <el-menu-item index="3-1"><router-link :to="{ name: 'itemClass' }">列表项管理</router-link></el-menu-item>
                 <el-menu-item index="3-1"><router-link :to="{ name: 'treatment' }">预约就诊</router-link></el-menu-item>
                 <el-menu-item index="3-2"><router-link :to="{ name: 'treatmentS' }">已确定就诊</router-link></el-menu-item>
                 <el-menu-item index="3-3"><router-link :to="{ name: 'treatmentF' }">就诊退款</router-link></el-menu-item>

@@ -35,6 +35,7 @@ import InjectionO from '@/components/admin/pneumonia/injectionO'
 import AdminUserList from '@/components/admin/adminUser/adminUserList'
 import AddAdmin from '@/components/admin/adminUser/addAdmin'
 import List from '@/components/admin/user/list'
+import ItemClass from '@/components/admin/reservation/itemClass'
 
 Vue.use(Router)
 
@@ -140,6 +141,11 @@ export default new Router({
           path: 'list',
           name: 'list',
           component: List,
+        },
+        {
+          path: 'itemClass',
+          name: 'itemClass',
+          component: ItemClass,
         },
       ],
     },
