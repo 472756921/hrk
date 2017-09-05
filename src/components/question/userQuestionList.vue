@@ -2,14 +2,15 @@
   <div>
     <p class="Warning">如果医生长时间没有回复您，可以申请退款拨打客服电话投诉</p>
     <div class="listContent" v-for="(item, i) in data" @click="go(item.status)">
-      <img :src=item.img style="float:left;">
+      <div class="redpointer"></div>
+      <img :src=item.icon style="float:left;">
       <div class="textContent">
-        <div>与{{item.name}}生的会话<small>（关联人:{{item.contact}}）</small></div>
+        <div>与 {{item.real_name}} 的会话<small>（关联人:{{item.contact}}）</small></div>
         <div class="Blue" v-if="item.status == 1">正在进行
           <br/>
           <span class="op" @click="tksq(item.contactID, i)"> 退款 </span>
         </div>
-        <div class="Success" v-if="item.status == 0">已完成</div>
+        <div class="Success" v-if="item.status == 2">已完成</div>
         <div class="Warning" v-if="item.status == 3">退款中</div>
         <div class="danger" v-if="item.status == 4">已退款</div>
       </div>
@@ -18,17 +19,13 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { getConsultingListByCustomer } from '../interface';
+
   export default {
     name: 'userQuestionList',
     data() {
       return {
-        data: [
-          {img: 'http://iph.href.lu/50x50', name: '周杰伦', status: 1, id: 1, contact: '王源', contactID: 12},
-          {img: 'http://iph.href.lu/50x50', name: '刘德华', status: 0, id: 2, contact: '王宝强', contactID: 12},
-          {img: 'http://iph.href.lu/50x50', name: '张学友', status: 0, id: 3, contact: '王指纹', contactID: 12},
-          {img: 'http://iph.href.lu/50x50', name: '张学友', status: 4, id: 3, contact: '王指纹', contactID: 12},
-
-        ],
+        data: '',
       };
     },
     methods: {
@@ -45,6 +42,20 @@
           this.data[index].status = 3;
         }
       },
+      getList(){
+        this.$ajax({
+          method: 'GET',
+          url: getConsultingListByCustomer() + '?customer_id=6&&page=1',
+        }).then((res) => {
+          this.data = res.data.consultings;
+          console.log(res.data.consultings);
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
+      },
+    },
+    created() {
+      this.getList();
     },
   };
 </script>
@@ -63,5 +74,12 @@
   .op{
     color: #aaaaaa;
     font-size: 12px;
+  }
+  .redpointer{
+    float: right;
+    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+    background: #FF4949;
   }
 </style>

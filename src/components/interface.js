@@ -29,9 +29,32 @@ export const getCity = function () {
   const API = host + URL;
   return API;
 };
-//获取城市列表
+//获取城市医院列表
+export const getHospitals = function () {
+  const URL = 'getHospitals';
+  const API = host + URL;
+  return API;
+};
+//获取城市医院科室列表
+export const getDepartmentDetails = function () {
+  const URL = 'getDepartmentDetails';
+  const API = host + URL;
+  return API;
+};
+//确认预约
+export const saveSeeADoctor = function () {
+  const URL = 'saveSeeADoctor';
+  const API = host + URL;
+  return API;
+};
 export const getDocList = function () {
   const URL = 'getDoctors';
+  const API = host + URL;
+  return API;
+};
+//用户医生互动列表
+export const getConsultingListByCustomer = function () {
+  const URL = 'getConsultingListByCustomer';
   const API = host + URL;
   return API;
 };

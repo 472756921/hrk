@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="text-align: right"><a href="userQuestionList" >历史咨询</a></div>
+    <div style="text-align: right"><a href="#/user/userQuestionList" >历史咨询</a></div>
     <DocList />
   </div>
 </template>

@@ -1,14 +1,14 @@
 <template>
   <div>
     <el-row :gutter="10">
-      <el-col :xs="24" :sm="6" v-for="(o, index) in 3" :key="o" style="padding: 12px">
+      <el-col :xs="24" :sm="6" v-for="(doc, i) in docList" :key="i" style="padding: 12px">
         <el-card :body-style="{ padding: '0px' }">
-          <img src="http://iph.href.lu/300x220" class="image">
+          <img :src='doc.doctor_icon' class="image">
           <div style="padding: 6px;">
-            <div class="center">医生姓名</div>
-            <div>简介简简介简简介简简介简简介简简简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介</div>
+            <div class="center">{{doc.real_name}}</div>
+            <div>{{doc.detail_the_front}}</div>
             <div class="bottom clearfix">
-              <el-button type="primary" class="center_block" @click="yy">咨询</el-button>
+              <el-button type="primary" class="center_block" @click="yy(doc)">咨询</el-button>
             </div>
           </div>
         </el-card>
@@ -24,6 +24,7 @@
     name: 'docList',
     data() {
       return {
+        docList: '',
         currentDate: new Date()
       };
     },
@@ -36,13 +37,13 @@
           method: 'GET',
           url: getDocList(),
         }).then((res) => {
-          console.log(res.data);
+          this.docList = res.data.doctors;
         }).catch((error) => {
           this.$message.error(error.message);
         });
       },
-      yy() {
-        this.$router.push({ name: 'docInfo' })
+      yy(doc) {
+        this.$router.push({ name: 'docInfo', params: {doc: doc} })
       }
     },
   };
