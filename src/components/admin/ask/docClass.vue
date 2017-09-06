@@ -4,8 +4,8 @@
       <el-table-column prop="name" label="姓名" width="220"></el-table-column>
       <el-table-column prop="hs" label="医院" width="220"></el-table-column>
       <el-table-column prop="hs" label="职位" width="220"></el-table-column>
-      <el-table-column prop="head" label="头像" width="220"></el-table-column>
       <el-table-column prop="ks" label="地点" width="220"></el-table-column>
+      <el-table-column prop="fy" label="咨询费用" width="220"></el-table-column>
       <el-table-column label="操作">
         <template scope="scope">
           <el-button @click.native.prevent="changeDate(scope.$index, tableData)" type="text" size="small">删除</el-button>
@@ -22,7 +22,7 @@
     data() {
       return {
         tableData: '',
-      }
+      };
     },
   };
 </script>

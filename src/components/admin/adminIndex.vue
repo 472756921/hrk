@@ -21,6 +21,7 @@
               </el-submenu>
               <el-submenu index="4">
                 <template slot="title"><i class="iconfont icon-iconfontyisheng"></i> 问诊管理</template>
+                <el-menu-item index="4-3"><router-link :to="{ name: 'docClass' }">医生管理</router-link></el-menu-item>
                 <el-menu-item index="4-1"><router-link :to="{ name: 'askS' }">退款处理</router-link></el-menu-item>
                 <el-menu-item index="4-2"><router-link :to="{ name: 'askF' }">退款记录</router-link></el-menu-item>
               </el-submenu>
