@@ -88,6 +88,13 @@
         addks: '',
       };
     },
+    watch: {
+      addClass (newData, oldData) {
+        this.addsp = '';
+        this.addhs = '';
+        this.addks = '';
+      },
+    },
     created(){
       this.getCity();
     },
@@ -120,6 +127,7 @@
       },
       add() {
         this.dialogVisible = false;
+        console.log(this.addsp);
       },
     },
   };

@@ -36,6 +36,7 @@ import AdminUserList from '@/components/admin/adminUser/adminUserList'
 import AddAdmin from '@/components/admin/adminUser/addAdmin'
 import List from '@/components/admin/user/list'
 import ItemClass from '@/components/admin/reservation/itemClass'
+import DocClass from '@/components/admin/ask/docClass'
 
 Vue.use(Router)
 
@@ -146,6 +147,11 @@ export default new Router({
           path: 'itemClass',
           name: 'itemClass',
           component: ItemClass,
+        },
+        {
+          path: 'docClass',
+          name: 'docClass',
+          component: DocClass,
         },
       ],
     },
