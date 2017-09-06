@@ -76,3 +76,9 @@ export const saveAffiliate = function () {
   const API = host + URL;
   return API;
 };
+//新增关联联系人生理指标信息
+export const saveChildRecord = function () {
+  const URL = 'saveChildRecord';
+  const API = host + URL;
+  return API;
+};

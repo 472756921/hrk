@@ -34,6 +34,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { saveChildRecord } from '../interface';
+
   export default {
     name: 'physiological',
     data() {
@@ -61,11 +63,28 @@
         const date = new Date();
         if (this.weight !== '' && this.temperature !== '' && this.volume !== '') {
           let dateF = date.getFullYear() + '-' + (date.getMonth()+1) + '-' +date.getDate()
-          this.data = [{age: this.data[0].age, weight: this.weight, temperature: this.temperature, volume: this.volume, date:dateF},...this.data];
+
+          const data = {age: this.data[0].age, weight: this.weight, temperature: this.temperature, volume: this.volume, date:dateF};
+          this.$ajax({
+            method: 'POST',
+            data: data,
+            dataType: 'JSON',
+            contentType: 'application/json;charset=UTF-8',
+            url: saveChildRecord(),
+          }).then((res) => {
+            if(res.data === 1) {
+              this.$message.success('添加成功！');
+              this.data = [data,...this.data];
+            }
+          }).catch((error) => {
+            this.$message.error(error.message);
+          });
           this.dialogVisible = false;
           this.weight = '' ;
           this.temperature = '' ;
           this.volume = '';
+        } else {
+          this.$message.error('请输入生理指标信息');
         }
       },
     }
