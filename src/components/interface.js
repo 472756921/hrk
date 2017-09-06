@@ -58,3 +58,21 @@ export const getConsultingListByCustomer = function () {
   const API = host + URL;
   return API;
 };
+//发送聊天信息
+export const saveConsultingDetail = function () {
+  const URL = 'saveConsultingDetail';
+  const API = host + URL;
+  return API;
+};
+//获取用户所有关联联系人
+export const selectGuardianDetail = function () {
+  const URL = 'selectGuardianDetail';
+  const API = host + URL;
+  return API;
+};
+//新增关联联系人
+export const saveAffiliate = function () {
+  const URL = 'saveAffiliate';
+  const API = host + URL;
+  return API;
+};

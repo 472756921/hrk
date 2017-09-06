@@ -1,12 +1,12 @@
 <template>
   <div class="contentes">
     <div class="new">
-      <h3>关联联系人<a href="newContact">添加</a></h3>
+      <h3>关联联系人<a href="#/user/newContact">添加</a></h3>
     </div>
-    <div class="contacts" @click="edit" v-for="(it, index) in data">
-      <div>姓名：{{it.name}}</div>
-      <div>月龄：{{it.age}}</div>
-      <div>性别：{{it.sex}}</div>
+    <div class="contacts" @click="edit(it)" v-for="(it, index) in data">
+      <div>姓名：{{it.real_name}}</div>
+      <div>月龄：{{it.month}} 月龄</div>
+      <div>性别：<span  v-if="it.gender==1">男</span><span  v-if="it.gender==0">女</span></div>
       <div>地址：{{it.address}}</div>
       <div class="option">
         <div class="input" @click="input"><i class="iconfont icon-input" style="font-size: 1.4rem"></i></div>
@@ -17,6 +17,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { selectGuardianDetail } from '../interface';
+
   export default {
     name: 'contact',
     mounted() {
@@ -69,18 +71,34 @@
         }, false)
       })
     },
+    created() {
+      this.getList();
+    },
     data() {
       return {
         data: [
-          { name: '刘德华', sex: '男', age: 3, address: '成都', id: 1},
-          { name: '周杰伦', sex: '男', age: 2, address: '绵阳', id: 2},
-          { name: '高圆圆', sex: '女', age: 7, address: '北京', id: 3},
+          { name: '加载中', sex: '男', age: 3, address: '成都', id: 1},
+          { name: '加载中', sex: '男', age: 3, address: '成都', id: 1},
+          { name: '加载中', sex: '男', age: 3, address: '成都', id: 1},
+          { name: '加载中', sex: '男', age: 3, address: '成都', id: 1},
+          { name: '加载中', sex: '男', age: 3, address: '成都', id: 1},
         ],
       };
     },
     methods: {
+      getList() {
+        this.$ajax({
+          method: 'GET',
+          url: selectGuardianDetail(),
+        }).then((res) => {
+          this.data = res.data;
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
+      },
       edit(event){
-        this.$router.push({ name: 'newContact', params: { name: 'benson', sex: '男', brith: '2002-12-21', address: '伦敦' }})
+        window.event.stopPropagation();
+        this.$router.push({ name: 'newContact', params: { obj: event }})
       },
       del(id, i) {
         window.event.stopPropagation();

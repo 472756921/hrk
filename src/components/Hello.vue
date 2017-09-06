@@ -18,6 +18,7 @@
       <li><a>更多功能</a></li>
       <li><a>网上商城</a></li>
     </ul>
+    <a href="#/admin/docIndex">后台</a>
   </div>
 </template>
 

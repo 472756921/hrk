@@ -21,6 +21,7 @@
 <script type="text/ecmascript-6">
   import UserSay from './userSay';
   import DocSay from './docSay';
+  import { saveConsultingDetail } from '../interface';
 
   export default {
     name: 'question',
@@ -46,6 +47,24 @@
         if (this.sendMessage === '') {
           return;
         } else {
+
+          const data = {
+            role: 0,
+            content: this.sendMessage,
+          };
+
+          this.$ajax({
+            method: 'POST',
+            data: data,
+            dataType: 'JSON',
+            contentType: 'application/json;charset=UTF-8',
+            url: saveConsultingDetail(),
+          }).then((res) => {
+
+          }).catch((error) => {
+            this.$message.error(error.message);
+          });
+
           const message = { content: this.sendMessage, re: 1};
           this.egData = [...this.egData, message];
           this.sendMessage = '';

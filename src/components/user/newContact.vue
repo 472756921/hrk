@@ -6,11 +6,6 @@
     </el-input>
     <br/>
     <br/>
-    <el-input  v-model="sex">
-      <template slot="prepend">性别</template>
-    </el-input>
-    <br/>
-    <br/>
     <el-input  v-model="address">
       <template slot="prepend">住址</template>
     </el-input>
@@ -27,50 +22,79 @@
     </el-date-picker>
     <br/>
     <br/>
+    <span>性别：</span>
+    <el-radio class="radio" v-model="sex" label=1>男</el-radio>
+    <el-radio class="radio" v-model="sex" label=0>女</el-radio>
+    <br/>
+    <br/>
     <el-button type="success" @click="save">保存</el-button>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-    export default {
-      name: 'newContact',
-      data() {
-        return {
-          type: 'add',
-          name: '',
-          sex: '',
-          address: '',
-          brith: '',
-          pickerOptions0: {
-            disabledDate(time) {
-              return time.getTime() > Date.now() - 8.64e7;
-            }
-          },
-        };
-      },
-      created() {
-        const par = this.$route.params;
-        if (par !== null) {
-          this.type = 'edit';
-          this.name = par.name;
-          this.address = par.address;
-          this.sex = par.sex;
-          this.brith = par.brith;
-        }
-      },
-      methods: {
-        dateChange(date) {
-          this.brith = date;
-        },
-        save() {
-          if (this.type === 'edit') {
+  import { saveAffiliate } from '../interface';
 
-          } else if (this.type === 'add') {
-
+  export default {
+    name: 'newContact',
+    data() {
+      return {
+        type: 'add',
+        name: '',
+        sex: '',
+        address: '',
+        brith: '',
+        pickerOptions0: {
+          disabledDate(time) {
+            return time.getTime() > Date.now() - 8.64e7;
           }
+        },
+      };
+    },
+    created() {
+      const par = this.$route.params;
+      if ('obj' in par) {
+        this.type = 'edit';
+        this.name = par.obj.real_name;
+        this.address = par.obj.address;
+        this.sex = par.obj.gender.toString();
+        this.brith = par.obj.birthday;
+      }
+    },
+    methods: {
+      dateChange(date) {
+        this.brith = date;
+      },
+      save() {
+        if (this.name === '' || this.sex === '' ||　this.address === '' || this.brith === '') {
+          this.$message.error('请输入关联联系人信息');
+          return;
+        }
+        const data = {
+          real_name: this.name,
+          birthday: this.brith,
+          gender: this.sex,
+          address: this.address,
+        };
+        if (this.type === 'edit') {
+
+        } else if (this.type === 'add') {
+          this.$ajax({
+            method: 'POST',
+            data: data,
+            dataType: 'JSON',
+            contentType: 'application/json;charset=UTF-8',
+            url: saveAffiliate(),
+          }).then((res) => {
+            if(res.data === 1) {
+              this.$message.success('添加成功！');
+            }
+          }).catch((error) => {
+            this.$message.error(error.message);
+          });
         }
       }
-    };
+    }
+  };
 </script>
 
 <style scoped>

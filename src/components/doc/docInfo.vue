@@ -17,9 +17,7 @@
     <div>
       <div class="demonstration">选择病情关联人:</div>
       <el-radio-group v-model="patient" size="small">
-        <el-radio-button label="王凯"></el-radio-button>
-        <el-radio-button label="王祖蓝"></el-radio-button>
-        <el-radio-button label="王源"></el-radio-button>
+        <el-radio-button :label="child.id" key="i" v-for="(child, i) in childs">{{child.real_name}}</el-radio-button>
       </el-radio-group>
     </div>
     <br/>
@@ -30,12 +28,15 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { selectGuardianDetail } from '../interface';
+
   export default {
     name: 'docInfo',
     data() {
       return {
         patient: '',
         doc: '',
+        childs: '',
       };
     },
     created() {
@@ -45,6 +46,14 @@
       } else {
         this.$message.error('网络错误,请稍后再试');
       }
+      this.$ajax({
+        method: 'GET',
+        url: selectGuardianDetail(),
+      }).then((res) => {
+        this.childs = res.data;
+      }).catch((error) => {
+        this.$message.error(error.message);
+      });
     },
     methods: {
       pay() {

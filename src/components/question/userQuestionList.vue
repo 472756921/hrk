@@ -8,7 +8,7 @@
         <div>与 {{item.real_name}} 的会话<small>（关联人:{{item.contact}}）</small></div>
         <div class="Blue" v-if="item.status == 1">正在进行
           <br/>
-          <span class="op" @click="tksq(item.contactID, i)"> 退款 </span>
+          <span class="op" @click="tksq(item.contactID, i)"> 申请退款 </span>
         </div>
         <div class="Success" v-if="item.status == 2">已完成</div>
         <div class="Warning" v-if="item.status == 3">退款中</div>
@@ -39,8 +39,9 @@
         const r = confirm("申请退款后，将关闭会话，是否确认？")
         if (r === true) {
           this.$message.error('对不起，该会话不满足退款条件');
-          this.data[index].status = 3;
+          return;
         }
+        this.data[index].status = 3;
       },
       getList(){
         this.$ajax({

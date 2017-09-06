@@ -1,5 +1,6 @@
 <template>
   <div>
+    <el-button type="primary" class="addBtn" size="small" @click="dialogVisible = true">添加</el-button>
     <el-table :data="tableData" style="width: 100%">
       <el-table-column prop="name" label="姓名" width="220"></el-table-column>
       <el-table-column prop="hs" label="医院" width="220"></el-table-column>
@@ -28,5 +29,7 @@
 </script>
 
 <style scoped>
-
+  .addBtn{
+    margin: 10px;
+  }
 </style>
