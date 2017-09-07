@@ -2,30 +2,44 @@
   <div class="content">
     <h3>肺炎接种记录</h3>
     <div class="card" v-for="(item, i) in data">
-      <div class="name">{{item.name}}</div>
-      <div><span>{{item.age}}月龄</span> - <span>共{{item.totle}}针</span></div>
-      <div>预约地点：{{item.address}}</div>
+      <div class="name">{{item.child_name}}</div>
+      <div><span>{{item.child_month}} 月龄</span> - <span>共 {{item.count}} 针</span></div>
+      <div>预约地点：{{item.hospital_name}}</div>
       <div>注射记录：</div>
       <div>
-        <div class="indate" v-for="(di, dindex) in item.indat">{{di.date}} <span v-if="di.status == 1">已注射</span><span v-if="di.status == 0" class="danger">未注射</span></div>
+        <div class="indate" v-for="(di, dindex) in item.details">{{di.create_date}} <span v-if="di.status == 1">已注射</span><span v-if="di.status == 0" class="danger">未注射</span></div>
       </div>
-      <div class="create">创建时间：{{item.createDate}}</div>
-      <i class="iconfont icon-jinhangzhong2 icons"></i>
+      <div class="create">创建时间：{{item.create_date}}</div>
+      <i class="iconfont icon-jinhangzhong2 icons" v-if="item.status == 1"></i>
+      <i class="iconfont icon-yiguoqi icons" v-if="item.status == 2"></i>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import { getPediatricPneumoniaList } from '../interface';
+
   export default {
     name: 'pneumoniaStatus',
     data() {
       return {
-        data: [
-          { id: 1, name: '王源', age: 7, totle: 3, address: '成都', indat: [{date: '2015-12-12', status: 1 }, {date: '2015-12-12', status: 1 }, {date: '2015-12-12', status: 0 }], createDate: '2015-12-01'},
-        ],
+        data: '',
       };
     },
+    created() {
+      this.getlist();
+    },
     methods: {
+      getlist() {
+        this.$ajax({
+          method: 'GET',
+          url: getPediatricPneumoniaList()+'?customer_id=6',
+        }).then((res) => {
+          this.data = res.data.PediatricPneumonias;
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
+      },
     }
   };
 </script>

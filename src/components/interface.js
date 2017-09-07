@@ -76,9 +76,33 @@ export const saveAffiliate = function () {
   const API = host + URL;
   return API;
 };
+//删除关联联系人
+export const updateChildStatus = function () {
+  const URL = 'updateChildStatus';
+  const API = host + URL;
+  return API;
+};
+//修改关联联系人
+export const updateChild = function () {
+  const URL = 'updateChild   ';
+  const API = host + URL;
+  return API;
+};
 //新增关联联系人生理指标信息
 export const saveChildRecord = function () {
   const URL = 'saveChildRecord';
+  const API = host + URL;
+  return API;
+};
+//预约小儿肺炎
+export const savePediatricPneumonia = function () {
+  const URL = 'savePediatricPneumonia';
+  const API = host + URL;
+  return API;
+};
+//用户获取小儿肺炎预约列表
+export const getPediatricPneumoniaList = function () {
+  const URL = 'getPediatricPneumoniaList';
   const API = host + URL;
   return API;
 };

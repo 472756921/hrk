@@ -22,6 +22,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+
   export default {
     name: 'reservationStatus',
     data() {
@@ -29,10 +30,12 @@
         activeName2: 'first'
       };
     },
+    created() {
+    },
     methods: {
       handleClick(tab, event) {
         console.log(tab, event);
-      }
+      },
     }
   };
 </script>

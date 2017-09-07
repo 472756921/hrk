@@ -32,7 +32,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { selectGuardianDetail, getCity, getHospitals } from '../interface';
+  import { selectGuardianDetail, getCity, getHospitals, savePediatricPneumonia } from '../interface';
 
   export default {
     name: 'pneumonia',
@@ -56,6 +56,25 @@
           this.$message.warning('请选择预约地点医院和患者');
           return;
         }
+        const json = {
+          customer_id: 6,
+          child_id: this.patient,
+          hospital_id: this.hospital,
+          city_id:　this.position,
+        };
+        this.$ajax({
+          method: 'POST',
+          url: savePediatricPneumonia(),
+          dataType: 'JSON',
+          contentType: 'application/json;charset=UTF-8',
+          data: json,
+        }).then((res) => {
+          if (res.data === 1) {
+            this.$message.success('预约成功');
+          }
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
       },
       getList() {
         this.$ajax({

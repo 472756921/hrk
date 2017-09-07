@@ -17,7 +17,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { selectGuardianDetail } from '../interface';
+  import { selectGuardianDetail, updateChildStatus } from '../interface';
 
   export default {
     name: 'contact',
@@ -104,6 +104,15 @@
         window.event.stopPropagation();
         const r = confirm("确认删除关联人？")
         if (r == true) {
+
+          this.$ajax({
+            method: 'GET',
+            url: updateChildStatus() + "?child_id=" + id.id,
+          }).then((res) => {
+//            this.data = res.data;
+          }).catch((error) => {
+            this.$message.error(error.message);
+          });
           const po = window.getComputedStyle(document.getElementsByClassName('contacts')[i].children[4]).width;
           this.data.splice(i, 1);
           document.getElementsByClassName('contacts')[i].children[4].style.marginRight = '-' + po;

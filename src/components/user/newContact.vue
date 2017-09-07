@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <h3>新建关联人</h3>
+    <h3>关联人</h3>
     <el-input  v-model="name">
       <template slot="prepend">姓名</template>
     </el-input>
@@ -16,6 +16,7 @@
       class="birValue"
       v-model="brith"
       type="date"
+      :disabled="type=='add'?false:true"
       placeholder="选择日期"
       @change="dateChange"
       :picker-options="pickerOptions0">
@@ -32,7 +33,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { saveAffiliate } from '../interface';
+  import { saveAffiliate, updateChild } from '../interface';
 
   export default {
     name: 'newContact',
@@ -42,6 +43,7 @@
         name: '',
         sex: '',
         address: '',
+        cid: '',
         brith: '',
         pickerOptions0: {
           disabledDate(time) {
@@ -58,6 +60,7 @@
         this.address = par.obj.address;
         this.sex = par.obj.gender.toString();
         this.brith = par.obj.birthday;
+        this.cid = par.obj.id;
       }
     },
     methods: {
@@ -74,9 +77,22 @@
           birthday: this.brith,
           gender: this.sex,
           address: this.address,
+          child_id: this.cid,
         };
         if (this.type === 'edit') {
-
+          this.$ajax({
+            method: 'POST',
+            data: data,
+            dataType: 'JSON',
+            contentType: 'application/json;charset=UTF-8',
+            url: updateChild(),
+          }).then((res) => {
+            if(res.data === 1) {
+              this.$message.success('修改成功！');
+            }
+          }).catch((error) => {
+            this.$message.error(error.message);
+          });
         } else if (this.type === 'add') {
           this.$ajax({
             method: 'POST',
