@@ -1,7 +1,7 @@
 <template>
   <div class="contentes">
     <div class="new">
-      <h3>关联联系人<a href="#/user/newContact">添加</a></h3>
+      <h3>关联联系人<a href="#/user/newContact" v-if="data.length<5">添加</a></h3>
     </div>
     <div class="contacts" @click="edit(it)" v-for="(it, index) in data">
       <div>姓名：{{it.real_name}}</div>

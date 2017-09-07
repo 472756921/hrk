@@ -5,12 +5,15 @@
     <br/>
     <div class="demonstration">选择病情关联人</div>
     <el-radio-group v-model="patient" size="small">
-      <el-radio-button label="王凯"></el-radio-button>
-      <el-radio-button label="王祖蓝"></el-radio-button>
-      <el-radio-button label="王源"></el-radio-button>
+      <el-radio-button :label="child.id" key="i" v-for="(child, i) in data">{{child.real_name}}</el-radio-button>
     </el-radio-group>
     <br/>
     <br/>
+    <div class="demonstration">选择地点</div>
+    <el-radio-group v-model="position" size="small">
+      <el-radio-button label="成都"></el-radio-button>
+      <el-radio-button label="广州"></el-radio-button>
+    </el-radio-group>
     <div class="demonstration">选择医院</div>
     <el-radio-group v-model="hospital" size="small">
       <el-radio-button label="华西医院"></el-radio-button>
@@ -30,13 +33,20 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { selectGuardianDetail } from '../interface';
+
   export default {
     name: 'pneumonia',
     data() {
       return {
         patient: '',
         hospital: '',
+        position: '',
+        data: '',
       };
+    },
+    created() {
+      this.getList();
     },
     methods: {
       yy() {
@@ -44,6 +54,16 @@
           this.$message.warning('请选择预约地点和患者');
           return;
         }
+      },
+      getList() {
+        this.$ajax({
+          method: 'GET',
+          url: selectGuardianDetail(),
+        }).then((res) => {
+          this.data = res.data;
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
       },
     }
   };
