@@ -10,15 +10,14 @@
     <br/>
     <br/>
     <div class="demonstration">选择地点</div>
-    <el-radio-group v-model="position" size="small">
-      <el-radio-button label="成都"></el-radio-button>
-      <el-radio-button label="广州"></el-radio-button>
+    <el-radio-group v-model="position" size="small" @change="getHospitals">
+      <el-radio-button v-for="(it, i) in positionList" :label='it.id' :key='i'>{{it.city_name}}</el-radio-button>
     </el-radio-group>
+    <br/>
+    <br/>
     <div class="demonstration">选择医院</div>
     <el-radio-group v-model="hospital" size="small">
-      <el-radio-button label="华西医院"></el-radio-button>
-      <el-radio-button label="北京中医药大学"></el-radio-button>
-      <el-radio-button label="广州白云山医院"></el-radio-button>
+      <el-radio-button :label="hospital.id"  v-for="(hospital, i) in hospitalList" key="i">{{hospital.hospital_name}}</el-radio-button>
     </el-radio-group>
     <br/>
     <br/>
@@ -27,13 +26,13 @@
     <el-button type="primary" class="center_block" @click="yy" >预约</el-button>
     <br/>
     <div class="center">
-      <a href="pneumoniaStatus" class="link">历史记录</a>
+      <a href="#/user/pneumoniaStatus" class="link">历史记录</a>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import { selectGuardianDetail } from '../interface';
+  import { selectGuardianDetail, getCity, getHospitals } from '../interface';
 
   export default {
     name: 'pneumonia',
@@ -42,16 +41,19 @@
         patient: '',
         hospital: '',
         position: '',
+        positionList: '',
+        hospitalList: '',
         data: '',
       };
     },
     created() {
       this.getList();
+      this.getCity();
     },
     methods: {
       yy() {
-        if (this.patient === '' || this.hospital === '') {
-          this.$message.warning('请选择预约地点和患者');
+        if (this.patient === '' || this.hospital === '' || this.position === '') {
+          this.$message.warning('请选择预约地点医院和患者');
           return;
         }
       },
@@ -61,6 +63,28 @@
           url: selectGuardianDetail(),
         }).then((res) => {
           this.data = res.data;
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
+      },
+      getCity() {
+        this.$ajax({
+          method: 'GET',
+          url: getCity(),
+        }).then((res) => {
+          this.positionList = res.data.citys;
+          this.getHospitals(this.positionList[0].id);
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
+      },
+      getHospitals(cityID) {
+        this.$ajax({
+          method: 'GET',
+          url: getHospitals() +　'/?city_id=' + cityID,
+        }).then((res) => {
+          this.hospitalList = res.data.hospitals;
+          this.hospital = '';
         }).catch((error) => {
           this.$message.error(error.message);
         });
