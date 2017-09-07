@@ -22,6 +22,7 @@
       <el-radio class="radio" v-model="addClass" label="1">地点</el-radio>
       <el-radio class="radio" v-model="addClass" label="2">医院</el-radio>
       <el-radio class="radio" v-model="addClass" label="3">科室</el-radio>
+      <el-radio class="radio" v-model="addClass" label="4">科室名称</el-radio>
       <div>
         <br/>
         <el-input v-if="addClass==1" v-model="addsp" placeholder="请输入地点"></el-input>
@@ -55,7 +56,17 @@
         </el-select>
         <br v-if="addClass == 3"/>
         <br v-if="addClass == 3"/>
-        <el-input v-if="addClass==3" v-model="addks" placeholder="请输入科室"></el-input>
+        <el-select v-model="addhs" placeholder="请选择" v-if = 'addClass==3'>
+          <el-option
+            v-for="(item, i) in ksList"
+            :key="i"
+            :label="item.name"
+            :value="item.id">
+          </el-option>
+        </el-select>
+        <br v-if="addClass == 4"/>
+        <br v-if="addClass == 4"/>
+        <el-input v-if="addClass==4" v-model="addks" placeholder="请输入科室名称"></el-input>
       </div>
 
       <span slot="footer" class="dialog-footer">
@@ -78,6 +89,7 @@
       return {
         sp: '',
         hs: '',
+        ksList: [ {id:1, name: '妇产科'}, {id:1, name: '儿科'}, ],
         tableData: [
           {sp: '成都', hs: '华西医院', ks: '妇产科'},
         ],
