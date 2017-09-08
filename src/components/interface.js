@@ -106,3 +106,9 @@ export const getPediatricPneumoniaList = function () {
   const API = host + URL;
   return API;
 };
+//用户获取预约就诊列表
+export const getAppointmentExamineList = function () {
+  const URL = 'getAppointmentExamineList';
+  const API = host + URL;
+  return API;
+};
