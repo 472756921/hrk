@@ -29,6 +29,7 @@ import TreatmentF from '@/components/admin/reservation/treatmentF'
 import AskF from '@/components/admin/ask/askF'
 import AskS from '@/components/admin/ask/askS'
 import Injection from '@/components/admin/pneumonia/injection'
+import InjectionD from '@/components/admin/pneumonia/injectionD'
 import InjectionC from '@/components/admin/pneumonia/injectionC'
 import InjectionB from '@/components/admin/pneumonia/injectionB'
 import InjectionO from '@/components/admin/pneumonia/injectionO'
@@ -122,6 +123,11 @@ export default new Router({
           path: 'injectionC',
           name: 'injectionC',
           component: InjectionC,
+        },
+        {
+          path: 'injectionD',
+          name: 'injectionD',
+          component: InjectionD,
         },
         {
           path: 'injectionO',

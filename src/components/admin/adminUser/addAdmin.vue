@@ -35,7 +35,7 @@
     },
     created() {
       const par = this.$route.params;
-      if (par.radio !== undefined) {
+      if ('radio' in par) {
         this.radio = par.rout;
         this.account = par.account;
         this.id = par.id;

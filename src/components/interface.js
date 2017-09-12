@@ -112,3 +112,9 @@ export const getAppointmentExamineList = function () {
   const API = host + URL;
   return API;
 };
+//用户获取聊天
+export const getConsultingDetails = function () {
+  const URL = 'getConsultingDetails';
+  const API = host + URL;
+  return API;
+};

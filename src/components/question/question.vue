@@ -6,8 +6,8 @@
     </div>
     <div class="talk">
       <span  v-for="(o, index) in egData">
-        <UserSay v-if="o.re === 1" :content="o.content"></UserSay>
-        <DocSay v-if="o.re === 0" :content="o.content"></DocSay>
+        <UserSay v-if="o.role === 1" :content="o.content"></UserSay>
+        <DocSay v-if="o.role === 0" :content="o.content"></DocSay>
       </span>
       <span id="nn"></span>
     </div>
@@ -21,37 +21,47 @@
 <script type="text/ecmascript-6">
   import UserSay from './userSay';
   import DocSay from './docSay';
-  import { saveConsultingDetail } from '../interface';
+  import { saveConsultingDetail, getConsultingDetails } from '../interface';
 
   export default {
     name: 'question',
     components: { UserSay, DocSay},
     data() {
       return {
+        tid: '',
         sendMessage: '',
-        egData: [
-          {content: '你好问一下', re: 1},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-        ],
+        egData: '',
       };
     },
+    created() {
+      const par = this.$route.params;
+      if ('id' in par) {
+        this.tid = par.id;
+        this.getList();
+      }
+    },
     methods: {
+      getList() {
+        this.$ajax({
+          method: 'GET',
+          dataType: 'JSON',
+          url: getConsultingDetails() + "?consulting_id=" + this.tid + '&&isDoctor=0' ,
+        }).then((res) => {
+          this.egData = res.data.consultingDetails;
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
+      },
       send() {
         if (this.sendMessage === '') {
           return;
         } else {
 
           const data = {
-            role: 0,
+            role: 1,
             content: this.sendMessage,
-          };
+            consulting_id: this.tid,
+        };
 
           this.$ajax({
             method: 'POST',
@@ -65,7 +75,7 @@
             this.$message.error(error.message);
           });
 
-          const message = { content: this.sendMessage, re: 1};
+          const message = { content: this.sendMessage, role: 1, };
           this.egData = [...this.egData, message];
           this.sendMessage = '';
           let anchor = document.getElementById('nn').offsetTop;

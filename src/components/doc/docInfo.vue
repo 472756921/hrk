@@ -41,7 +41,7 @@
     },
     created() {
       const par = this.$route.params;
-      if (par.doc != undefined) {
+      if ('doc' in par) {
         this.doc = par.doc;
       } else {
         this.$message.error('网络错误,请稍后再试');

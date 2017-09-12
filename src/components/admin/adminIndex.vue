@@ -30,6 +30,7 @@
                 <el-menu-item index="5-1"><router-link :to="{ name: 'injection' }">第一针</router-link></el-menu-item>
                 <el-menu-item index="5-2"><router-link :to="{ name: 'injectionB' }">第二针</router-link></el-menu-item>
                 <el-menu-item index="5-3"><router-link :to="{ name: 'injectionC' }">第三针</router-link></el-menu-item>
+                <el-menu-item index="5-3"><router-link :to="{ name: 'injectionD' }">第四针</router-link></el-menu-item>
                 <el-menu-item index="5-4"><router-link :to="{ name: 'injectionO' }">完成记录</router-link></el-menu-item>
               </el-submenu>
               <el-menu-item index="6"><i class="iconfont icon-dingdan-copy"></i> 订单号查询</el-menu-item>
