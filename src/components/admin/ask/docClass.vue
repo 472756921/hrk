@@ -18,8 +18,7 @@
     <el-dialog
       title="添加医生"
       :visible.sync="dialogVisible"
-      size="tiny"
-      :before-close="handleClose">
+      size="tiny">
       <el-input placeholder="请输入内容" v-model="name" maxlength="7">
         <template slot="prepend">姓名</template>
       </el-input>
@@ -42,7 +41,7 @@
         placeholder="医生简介"
         resize="none"
         maxlength = 500
-        v-model="textarea3">
+        v-model="jianjie">
       </el-input>
       <br/>
       <br/>
@@ -73,9 +72,13 @@
     name: 'docClass',
     data() {
       return {
-        tableData: '',
+        tableData: [],
         dialogVisible: false,
         imageUrl: '',
+        jianjie: '',
+        name: '',
+        zw: '',
+        sf: '',
       };
     },
     methods: {

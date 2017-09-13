@@ -33,55 +33,7 @@
     },
     data() {
       return {
-        tableData: [{
-          date: '2016-05-02',
-          orderNum: '1239384847',
-          name: '王大虎',
-          cuname: '王小虎',
-          tks: 1,
-          sp: '成都',
-          money: '213',
-          md: '华西医院',
-          datetk: '2017-12-12',
-          ks: '小儿内科',
-          id: '12',
-        }, {
-          date: '2016-05-04',
-          name: '王大虎',
-          cuname: '王小虎',
-          sp: '成都',
-          orderNum: '1239384847',
-          money: '213',
-          tks: 1,
-          md: '华西医院',
-          datetk: '2017-12-12',
-          ks: '小儿内科',
-          id: '1',
-        }, {
-          date: '2016-05-01',
-          name: '王大虎',
-          cuname: '王小虎',
-          datetk: '2017-12-12',
-          orderNum: '1239384847',
-          money: '213',
-          sp: '成都',
-          md: '华西医院',
-          ks: '小儿内科',
-          tks: 1,
-          id: '8',
-        }, {
-          date: '2016-05-03',
-          name: '王大虎',
-          cuname: '王小虎',
-          money: '213',
-          datetk: '2017-12-12',
-          sp: '成都',
-          orderNum: '1239384847',
-          md: '华西医院',
-          ks: '小儿内科',
-          tks: 0,
-          id: '29',
-        }]
+        tableData: []
       };
     },
   };

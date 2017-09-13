@@ -98,6 +98,11 @@ export const updateExamineStatus = function () {
   const API = host + URL;
   return API;
 };
+export const getConsultings = function () {
+  const URL = 'getConsultings';
+  const API = host + URL;
+  return API;
+};
 export const getDocList = function () {
   const URL = 'getDoctors';
   const API = host + URL;

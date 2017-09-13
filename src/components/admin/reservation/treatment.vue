@@ -17,12 +17,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <div class="block">
-        <el-pagination
-          layout="prev, pager, next"
-          :total="50">
-        </el-pagination>
-      </div>
+      <Page :page="page" v-if="over"/>
       <div class="model" v-if="cover">
         <div style="font-weight: bold">修改时间</div>
         <br/>
@@ -46,9 +41,11 @@
 
 <script type="text/ecmascript-6">
   import { getExamineManager, updateExamineDate, updateExamineStatus } from '../../interface';
+  import Page from '../page';
 
   export default {
     name: 'treatment',
+    components: { Page },
     methods: {
       dateChange(date) {
         this.changeDateValue = date;
@@ -84,7 +81,7 @@
         const r = confirm("确认预约？")
         if (r === true) {
           const data = {
-            status: 1,
+            status: 2,
             id: rows[index].id,
           };
           this.$ajax({
@@ -107,16 +104,20 @@
           rows.splice(index, 1);
         }
       },
+      getList() {
+        this.$ajax({
+          method: 'GET',
+          url: getExamineManager() + "?status=1&page=1",
+        }).then((res) => {
+          this.tableData = res.data.ExamineManager;
+          this.page = { totalPage: res.data.totalPage, page:  res.data.page,  };
+          this.over = true;
+        }).catch((error) => {
+        });
+      }
     },
     created() {
-      this.$ajax({
-        method: 'GET',
-        url: getExamineManager() + "?status=1&page=1",
-      }).then((res) => {
-        this.tableData = res.data.ExamineManager;
-        console.log(res.data.ExamineManager);
-      }).catch((error) => {
-      });
+     this.getList();
     },
     data() {
       return {
@@ -127,18 +128,16 @@
         },
         changeDateValue: '',
         index: '',
+        over: false,
         cover: false,
         tableData: [],
+        page: '',
       };
     },
   };
 </script>
 
 <style scoped>
-  .block{
-    margin-top: 10px;
-    text-align: center;
-  }
   .model{
     width: 200px;
     border: 1px solid #e4e4e4;
