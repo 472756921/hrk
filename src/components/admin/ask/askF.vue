@@ -1,30 +1,30 @@
 <template>
     <div >
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="date" label="预约日期" width="120"></el-table-column>
-        <el-table-column prop="datetk" label="退款日期" width="120"></el-table-column>
-        <el-table-column prop="name" label="用户姓名" width="120"></el-table-column>
-        <el-table-column prop="cuname" label="患者姓名" width="120"></el-table-column>
-        <el-table-column prop="sp" label="预约地点" width="120"></el-table-column>
-        <el-table-column prop="md" label="预约医院" width="120"></el-table-column>
-        <el-table-column prop="ks" label="预约科室" width="120"></el-table-column>
-        <el-table-column prop="orderNum" label="订单号" width="180"></el-table-column>
-        <el-table-column prop="money" label="金额（RMB）" width="180"></el-table-column>
+        <el-table-column prop="create_date" label="提问日期" width="120"></el-table-column>
+        <el-table-column prop="customer_name" label="用户姓名" width="120"></el-table-column>
+        <el-table-column prop="child_name" label="患者姓名" width="120"></el-table-column>
+        <el-table-column prop="doctor_name" label="医生姓名" width="120"></el-table-column>
+        <el-table-column prop="order_on" label="订单号" width="180"></el-table-column>
+        <el-table-column prop="price" label="金额（RMB）" width="180"></el-table-column>
         <el-table-column label="状态">
           <template scope="scope">
-            <span class="Success" v-if="scope.row.tks==1">退款成功</span>
+            <span class="Success" v-if="scope.row.status==4">退款成功</span>
             <span class="danger" v-if="scope.row.tks==0">退款失败 <button class="tui" @click="tuikuan(scope.$index)">退款</button></span>
           </template>
         </el-table-column>
       </el-table>
+      <Page :page="page" v-if="over"/>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
   import { getConsultings } from '../../interface';
+  import Page from '../page';
 
   export default {
     name: 'ask',
+    components: { Page },
     methods: {
       tuikuan(index) {
         const r = confirm("确认退款？")
@@ -35,8 +35,11 @@
       getList(page) {
         this.$ajax({
           method: 'GET',
-          url: getConsultings() + "?status=1&page=" + page,
+          url: getConsultings() + "?status=4&page=" + page,
         }).then((res) => {
+          this.tableData = res.data.consultings;
+          this.page = { totalPage: res.data.totalPage, page:  res.data.page,  };
+          this.over = true;
         }).catch((error) => {
         });
       },
@@ -46,7 +49,9 @@
     },
     data() {
       return {
-        tableData: []
+        tableData: [],
+        over: false,
+        page: '',
       };
     },
   };

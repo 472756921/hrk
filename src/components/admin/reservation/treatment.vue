@@ -40,7 +40,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { getExamineManager, updateExamineDate, updateExamineStatus } from '../../interface';
+  import { getExamineManager, updateExamineDate, updateExamineStatus, updateExamineRefundDate } from '../../interface';
   import Page from '../page';
 
   export default {
@@ -101,7 +101,18 @@
         const r = confirm("确认关闭订单，并向用户退款？")
         if (r === true) {
           const id = rows[index].id;
-          rows.splice(index, 1);
+          const data = { status:3, id: id };
+          this.$ajax({
+            method: 'post',
+            url: updateExamineRefundDate(),
+            data: data,
+            dataType: 'JSON',
+            contentType: 'application/json;charset=UTF-8',
+          }).then((res) => {
+            rows.splice(index, 1);
+          }).catch((error) => {
+            this.$message.error('网络有问题，请稍后再试');
+          });
         }
       },
       getList() {

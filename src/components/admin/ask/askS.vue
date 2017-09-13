@@ -1,73 +1,61 @@
 <template>
     <div >
+      <!--退款申请-->
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="date" label="提问日期" width="120"></el-table-column>
-        <el-table-column prop="name" label="用户姓名" width="120"></el-table-column>
-        <el-table-column prop="cuname" label="患者姓名" width="120"></el-table-column>
-        <el-table-column prop="ks" label="医生姓名" width="120"></el-table-column>
-        <el-table-column prop="orderNum" label="订单号" width="180"></el-table-column>
-        <el-table-column prop="money" label="金额（RMB）" width="180"></el-table-column>
+        <el-table-column prop="create_date" label="提问日期" width="120"></el-table-column>
+        <el-table-column prop="customer_name" label="用户姓名" width="120"></el-table-column>
+        <el-table-column prop="child_name" label="患者姓名" width="120"></el-table-column>
+        <el-table-column prop="doctor_name" label="医生姓名" width="120"></el-table-column>
+        <el-table-column prop="order_on" label="订单号" width="180"></el-table-column>
+        <el-table-column prop="price" label="金额（RMB）" width="180"></el-table-column>
         <el-table-column label="操作">
           <template scope="scope"><span class="danger" @click="tuikuan(scope.$index, tableData)">退款</span></template>
         </el-table-column>
       </el-table>
+      <Page :page="page" v-if="over"/>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import { getConsultings, updateConsultingStatus } from '../../interface';
+  import Page from '../page';
+
   export default {
     name: 'askS',
+    components: { Page },
+    created() {
+      this.getList(1);
+    },
     methods: {
       tuikuan(index, rows) {
         const r = confirm("确认退款？")
         if (r === true) {
-          rows.splice(index, 1);
+          this.$ajax({
+            method: 'GET',
+            url: updateConsultingStatus() + "?id="+rows[index].id,
+          }).then((res) => {
+            rows.splice(index, 1);
+          }).catch((error) => {
+          });
         }
+      },
+      getList(page) {
+        this.$ajax({
+          method: 'GET',
+          url: getConsultings() + "?status=3&page=" + page,
+        }).then((res) => {
+          this.tableData = res.data.consultings;
+          this.page = { totalPage: res.data.totalPage, page:  res.data.page,  };
+          this.over = true;
+        }).catch((error) => {
+        });
       },
     },
     data() {
       return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '王大虎',
-          cuname: '王小虎',
-          sp: '成都',
-          md: '华西医院',
-          ks: '小儿内科',
-          money: '213',
-          orderNum: '1239384847',
-          id: '12',
-        }, {
-          date: '2016-05-04',
-          name: '王大虎',
-          cuname: '王小虎',
-          sp: '成都',
-          money: '213',
-          orderNum: '1239384847',
-          md: '华西医院',
-          ks: '小儿内科',
-          id: '1',
-        }, {
-          date: '2016-05-01',
-          money: '213',
-          name: '王大虎',
-          cuname: '王小虎',
-          sp: '成都',
-          orderNum: '1239384847',
-          md: '华西医院',
-          ks: '小儿内科',
-          id: '8',
-        }, {
-          date: '2016-05-03',
-          name: '王大虎',
-          cuname: '王小虎',
-          money: '213',
-          sp: '成都',
-          orderNum: '1239384847',
-          md: '华西医院',
-          ks: '小儿内科',
-          id: '29',
-        }]
+        tableData: [],
+        over: false,
+        page: '',
       };
     },
   };

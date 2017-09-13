@@ -2,11 +2,10 @@
   <div>
     <el-button type="primary" class="addBtn" size="small" @click="dialogVisible = true">添加</el-button>
     <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="name" label="姓名" width="220"></el-table-column>
-      <el-table-column prop="hs" label="医院" width="220"></el-table-column>
-      <el-table-column prop="hs" label="职位" width="220"></el-table-column>
-      <el-table-column prop="ks" label="地点" width="220"></el-table-column>
-      <el-table-column prop="fy" label="咨询费用" width="220"></el-table-column>
+      <el-table-column prop="real_name" label="姓名" width="220"></el-table-column>
+      <el-table-column prop="hospital_name" label="医院" width="220"></el-table-column>
+      <el-table-column prop="position" label="职位" width="220"></el-table-column>
+      <el-table-column prop="beans" label="咨询费用" width="220"></el-table-column>
       <el-table-column label="操作">
         <template scope="scope">
           <el-button @click.native.prevent="changeDate(scope.$index, tableData)" type="text" size="small">删除</el-button>
@@ -29,6 +28,11 @@
       </el-input>
       <br/>
       <br/>
+      <el-input placeholder="请输入内容" v-model="yy" maxlength="5">
+        <template slot="prepend">医院</template>
+      </el-input>
+      <br/>
+      <br/>
       <el-input placeholder="请输入内容" v-model="sf" maxlength="5">
         <template slot="prepend">收费标准</template>
         <template slot="append">.00</template>
@@ -48,6 +52,7 @@
       <span>照片</span>
       <div style="border: 1px solid #eee;width: 178px;">
         <el-upload
+          v-model="headImg"
           class="avatar-uploader"
           action="https://jsonplaceholder.typicode.com/posts/"
           :show-file-list="false"
@@ -61,13 +66,15 @@
 
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        <el-button type="primary" @click="save">确 定</el-button>
       </span>
     </el-dialog>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import { AdminGetDoctors, createDoctor } from '../../interface';
+
   export default {
     name: 'docClass',
     data() {
@@ -78,10 +85,47 @@
         jianjie: '',
         name: '',
         zw: '',
+        yy: '',
+        headImg: '',
         sf: '',
       };
     },
+    created() {
+      this.getList();
+    },
     methods: {
+      save() {
+        const data = {
+          real_name: this.name,
+          doctor_icon: this.headImg,
+          position: this.jianjie,
+          detail: this.jianjie,
+          beans: this.sf,
+          detail_the_front: his.jianjie,
+        };
+        this.$ajax({
+          method: 'post',
+          url: updateExamineStatus(),
+          data: data,
+          dataType: 'JSON',
+          contentType: 'application/json;charset=UTF-8',
+        }).then((res) => {
+          this.dialogVisible = false
+        }).catch((error) => {
+          this.$message.error('网络有问题，请稍后再试');
+        });
+
+
+      },
+      getList() {
+        this.$ajax({
+          method: 'GET',
+          url: AdminGetDoctors(),
+        }).then((res) => {
+          this.tableData = res.data;
+        }).catch((error) => {
+        });
+      },
       handleAvatarSuccess(res, file) {
         this.imageUrl = URL.createObjectURL(file.raw);
       },
