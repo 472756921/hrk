@@ -41,14 +41,83 @@ export const getDepartmentDetails = function () {
   const API = host + URL;
   return API;
 };
+//获取城市医院科室列表包括禁用的
+export const getHospitalDetails = function () {
+  const URL = 'getHospitalDetails';
+  const API = host + URL;
+  return API;
+};
+//获取所有科室列表
+export const getdepartments = function () {
+  const URL = 'getdepartments';
+  const API = host + URL;
+  return API;
+};
+//添加城市
+export const createCity = function () {
+  const URL = 'createCity';
+  const API = host + URL;
+  return API;
+};
+//添加医院
+export const createHospital = function () {
+  const URL = 'createHospital';
+  const API = host + URL;
+  return API;
+};
+//添加医院的科室和价格
+export const createHospitalDetail = function () {
+  const URL = 'createHospitalDetail';
+  const API = host + URL;
+  return API;
+};
+//添加科室
+export const createDepartment = function () {
+  const URL = 'createDepartment';
+  const API = host + URL;
+  return API;
+};
 //确认预约
 export const saveSeeADoctor = function () {
   const URL = 'saveSeeADoctor';
   const API = host + URL;
   return API;
 };
+export const getExamineManager = function () {
+  const URL = 'getExamineManager';
+  const API = host + URL;
+  return API;
+};
+export const updateExamineDate = function () {
+  const URL = 'updateExamineDate';
+  const API = host + URL;
+  return API;
+};
+export const updateExamineStatus = function () {
+  const URL = 'updateExamineStatus';
+  const API = host + URL;
+  return API;
+};
 export const getDocList = function () {
   const URL = 'getDoctors';
+  const API = host + URL;
+  return API;
+};
+//修改城市状态
+export const updateCityStatus = function () {
+  const URL = 'updateCityStatus';
+  const API = host + URL;
+  return API;
+};
+//修改医院状态
+export const updateHospitalStatus = function () {
+  const URL = 'updateHospitalStatus';
+  const API = host + URL;
+  return API;
+};
+//修改医院状态
+export const updateHospitalDetailStatus = function () {
+  const URL = 'updateHospitalDetailStatus';
   const API = host + URL;
   return API;
 };

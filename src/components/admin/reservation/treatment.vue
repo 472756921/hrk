@@ -1,14 +1,14 @@
 <template>
     <div >
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="date" label="预约日期" width="120"></el-table-column>
-        <el-table-column prop="name" label="用户姓名" width="120"></el-table-column>
-        <el-table-column prop="cuname" label="患者姓名" width="120"></el-table-column>
-        <el-table-column prop="sp" label="预约地点" width="120"></el-table-column>
-        <el-table-column prop="md" label="预约医院" width="120"></el-table-column>
-        <el-table-column prop="ks" label="预约科室" width="120"></el-table-column>
-        <el-table-column prop="orderNum" label="订单号" width="180"></el-table-column>
-        <el-table-column prop="money" label="金额（RMB）" width="180"></el-table-column>
+        <el-table-column prop="appointment_date" label="预约日期" width="120"></el-table-column>
+        <el-table-column prop="customer_name" label="用户姓名" width="120"></el-table-column>
+        <el-table-column prop="child_name" label="患者姓名" width="120"></el-table-column>
+        <el-table-column prop="address" label="预约地点" width="120"></el-table-column>
+        <el-table-column prop="hospital_name" label="预约医院" width="120"></el-table-column>
+        <el-table-column prop="department_name" label="预约科室" width="120"></el-table-column>
+        <el-table-column prop="order_on" label="订单号" width="180"></el-table-column>
+        <el-table-column prop="price" label="金额（RMB）" width="180"></el-table-column>
         <el-table-column label="操作">
           <template scope="scope">
             <el-button @click.native.prevent="sure(scope.$index, tableData)" type="text" size="small">确认预约</el-button>
@@ -17,7 +17,12 @@
           </template>
         </el-table-column>
       </el-table>
-
+      <div class="block">
+        <el-pagination
+          layout="prev, pager, next"
+          :total="50">
+        </el-pagination>
+      </div>
       <div class="model" v-if="cover">
         <div style="font-weight: bold">修改时间</div>
         <br/>
@@ -40,6 +45,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { getExamineManager, updateExamineDate, updateExamineStatus } from '../../interface';
+
   export default {
     name: 'treatment',
     methods: {
@@ -47,8 +54,23 @@
         this.changeDateValue = date;
       },
       change() {
-        this.tableData[this.index].date = this.changeDateValue;
-        this.cover = false;
+        this.tableData[this.index].appointment_date = this.changeDateValue;
+        const data = {
+          appointment_date: this.changeDateValue,
+          id: this.tableData[this.index].id,
+        };
+        this.$ajax({
+          method: 'post',
+          url: updateExamineDate(),
+          data: data,
+          dataType: 'JSON',
+          contentType: 'application/json;charset=UTF-8',
+        }).then((res) => {
+          this.cover = false;
+        }).catch((error) => {
+          this.$message.error('网络有问题，请稍后再试');
+        });
+
       },
       cancle() {
         this.cover = false;
@@ -61,8 +83,21 @@
       sure(index, rows) {
         const r = confirm("确认预约？")
         if (r === true) {
-          const id = rows[index].id;
-          rows.splice(index, 1);
+          const data = {
+            status: 1,
+            id: rows[index].id,
+          };
+          this.$ajax({
+            method: 'post',
+            url: updateExamineStatus(),
+            data: data,
+            dataType: 'JSON',
+            contentType: 'application/json;charset=UTF-8',
+          }).then((res) => {
+            rows.splice(index, 1);
+          }).catch((error) => {
+            this.$message.error('网络有问题，请稍后再试');
+          });
         }
       },
       colse(index, rows) {
@@ -72,6 +107,16 @@
           rows.splice(index, 1);
         }
       },
+    },
+    created() {
+      this.$ajax({
+        method: 'GET',
+        url: getExamineManager() + "?status=1&page=1",
+      }).then((res) => {
+        this.tableData = res.data.ExamineManager;
+        console.log(res.data.ExamineManager);
+      }).catch((error) => {
+      });
     },
     data() {
       return {
@@ -83,53 +128,17 @@
         changeDateValue: '',
         index: '',
         cover: false,
-        tableData: [{
-          date: '2016-05-02',
-          name: '王大虎',
-          cuname: '王小虎',
-          sp: '成都',
-          md: '华西医院',
-          orderNum: '1239384847',
-          ks: '小儿内科',
-          money: '213',
-          id: '12',
-        }, {
-          date: '2016-05-04',
-          money: '213',
-          name: '王大虎',
-          cuname: '王小虎',
-          sp: '成都',
-          md: '华西医院',
-          ks: '小儿内科',
-          orderNum: '1239384847',
-          id: '1',
-        }, {
-          date: '2016-05-01',
-          name: '王大虎',
-          cuname: '王小虎',
-          sp: '成都',
-          md: '华西医院',
-          orderNum: '1239384847',
-          money: '213',
-          ks: '小儿内科',
-          id: '8',
-        }, {
-          date: '2016-05-03',
-          name: '王大虎',
-          cuname: '王小虎',
-          orderNum: '1239384847',
-          sp: '成都',
-          money: '213',
-          md: '华西医院',
-          ks: '小儿内科',
-          id: '29',
-        }]
+        tableData: [],
       };
     },
   };
 </script>
 
 <style scoped>
+  .block{
+    margin-top: 10px;
+    text-align: center;
+  }
   .model{
     width: 200px;
     border: 1px solid #e4e4e4;
