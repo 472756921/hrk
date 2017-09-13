@@ -2,13 +2,13 @@
     <div>
       <div class="title">小儿肺炎疫苗第一次注射安排</div>
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="date" label="创建日期" width="120"></el-table-column>
-        <el-table-column prop="name" label="用户姓名" width="120"></el-table-column>
-        <el-table-column prop="cuname" label="患者姓名" width="120"></el-table-column>
-        <el-table-column prop="sp" label="住址" width="120"></el-table-column>
-        <el-table-column prop="md" label="总注射次数" width="120"></el-table-column>
-        <el-table-column prop="orderNum" label="当前注射次数" width="180"></el-table-column>
-        <el-table-column prop="injectionDate" label="注射时间" width="120"></el-table-column>
+        <el-table-column prop="injection_date" label="创建日期" width="120"></el-table-column>
+        <el-table-column prop="customer_name" label="用户姓名" width="120"></el-table-column>
+        <el-table-column prop="child_name" label="患者姓名" width="120"></el-table-column>
+        <el-table-column prop="address" label="住址" width="120"></el-table-column>
+        <el-table-column prop="sum_count" label="总注射次数" width="120"></el-table-column>
+        <el-table-column prop="now_count" label="当前注射次数" width="180"></el-table-column>
+        <el-table-column prop="injection_date" label="注射时间" width="120"></el-table-column>
         <el-table-column label="操作">
           <template scope="scope">
             <el-button v-if="scope.row.injectionDate==''" @click.native.prevent="changeDate(scope.$index, tableData)" type="text" size="small">安排日期</el-button>
@@ -54,7 +54,7 @@
           method: 'GET',
           url: getInjection()+"?count=1&page="+page,
         }).then((res) => {
-          console.log(res.data);
+          this.tableData = res.data.pediatricPneumonia;
         }).catch((error) => {
         });
       },
