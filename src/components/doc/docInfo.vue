@@ -3,7 +3,7 @@
     <img src="http://iph.href.lu/150x200" class="center_block" />
     <br/>
     <h3 class="center">{{doc.real_name}}</h3>
-    <div class="center">{{doc.real_name}}</div>
+    <div class="center">{{doc.hospital_name}}</div>
     <div class="center">{{doc.position}}</div>
     <br/>
     <el-collapse>

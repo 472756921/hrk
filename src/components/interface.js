@@ -3,6 +3,7 @@
  */
 
 
+//const host = 'http://www.9jck.com:8099/';
 const host = 'http://192.168.1.103:8080/';
 
 //用户注册
@@ -113,8 +114,33 @@ export const AdminGetDoctors = function () {
   const API = host + URL;
   return API;
 };
+export const updateDoctor = function () {
+  const URL = 'updateDoctor';
+  const API = host + URL;
+  return API;
+};
+export const getConsultingListByDoctor = function () {
+  const URL = 'getConsultingListByDoctor';
+  const API = host + URL;
+  return API;
+};
 export const createDoctor = function () {
   const URL = 'createDoctor';
+  const API = host + URL;
+  return API;
+};
+export const updateInjectionDate = function () {
+  const URL = 'updateInjectionDate';
+  const API = host + URL;
+  return API;
+};
+export const updatePediatricPneumoniaStatus = function () {
+  const URL = 'updatePediatricPneumoniaStatus';
+  const API = host + URL;
+  return API;
+};
+export const refunds = function () {
+  const URL = 'refunds';
   const API = host + URL;
   return API;
 };

@@ -2,22 +2,23 @@
     <div>
       <div class="title">小儿肺炎疫苗第一次注射安排</div>
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="injection_date" label="创建日期" width="120"></el-table-column>
+        <el-table-column prop="create_date" label="创建日期" width="120"></el-table-column>
+        <el-table-column prop="injection_date" label="注射时间" width="120"></el-table-column>
         <el-table-column prop="customer_name" label="用户姓名" width="120"></el-table-column>
         <el-table-column prop="child_name" label="患者姓名" width="120"></el-table-column>
         <el-table-column prop="address" label="住址" width="120"></el-table-column>
         <el-table-column prop="sum_count" label="总注射次数" width="120"></el-table-column>
-        <el-table-column prop="now_count" label="当前注射次数" width="180"></el-table-column>
-        <el-table-column prop="injection_date" label="注射时间" width="120"></el-table-column>
+        <el-table-column prop="now_count" label="当前待注射次数" width="180"></el-table-column>
         <el-table-column label="操作">
           <template scope="scope">
-            <el-button v-if="scope.row.injectionDate==''" @click.native.prevent="changeDate(scope.$index, tableData)" type="text" size="small">安排日期</el-button>
-            <el-button v-if="scope.row.injectionDate!=''" @click.native.prevent="sure(scope.$index, tableData)" type="text" size="small">完成注射</el-button>
-            <el-button v-if="scope.row.injectionDate!=''" @click.native.prevent="changeDate(scope.$index, tableData)" type="text" size="small">修改日期</el-button>
-            <el-button v-if="scope.row.injectionDate==''" @click.native.prevent="colse(scope.$index, tableData)" type="text" size="small" style="color: red;">退款</el-button>
+            <el-button @click.native.prevent="sure(scope.$index, tableData)" type="text" size="small">完成注射</el-button>
+            <el-button @click.native.prevent="changeDate(scope.$index, tableData)" type="text" size="small">b</el-button>
+            <el-button @click.native.prevent="colse(scope.$index, tableData)" type="text" size="small" style="color: red;">退款</el-button>
           </template>
         </el-table-column>
       </el-table>
+
+      <Page :page="page" v-if="over"/>
 
       <div class="model" v-if="cover">
         <div style="font-weight: bold">修改时间</div>
@@ -41,10 +42,12 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { getInjection } from '../../interface';
+  import { getInjection, updateInjectionDate, updatePediatricPneumoniaStatus, refunds } from '../../interface';
+  import Page from '../page';
 
   export default {
     name: 'injection',
+    components: { Page },
     created() {
       this.getList(1);
     },
@@ -55,6 +58,8 @@
           url: getInjection()+"?count=1&page="+page,
         }).then((res) => {
           this.tableData = res.data.pediatricPneumonia;
+          this.page = { totalPage: res.data.totalPage, page:  res.data.page,  };
+          this.over = true;
         }).catch((error) => {
         });
       },
@@ -63,8 +68,23 @@
         this.changeDateValue = date;
       },
       change() {
-        this.tableData[this.index].injectionDate = this.changeDateValue;
-        this.cover = false;
+        const data = {
+          injection_date: this.changeDateValue,
+          id: this.tableData[this.index].id,
+          count: 1,
+        };
+        this.$ajax({
+          method: 'post',
+          url: updateInjectionDate(),
+          data: data,
+          dataType: 'JSON',
+          contentType: 'application/json;charset=UTF-8',
+        }).then((res) => {
+          this.tableData[this.index].injection_date = this.changeDateValue;
+          this.cover = false;
+        }).catch((error) => {
+          this.$message.error('网络有问题，请稍后再试');
+        });
       },
       cancle() {
         this.cover = false;
@@ -75,17 +95,47 @@
         this.cover = true;
       },
       colse(index, rows) {
-        const r = confirm("确认关闭订单，并向用户退款？")
+        const ijdate =  rows[index].injection_date;
+        let mes = '确认关闭订单，并向用户退款？该用户已设置预约注射时间';
+        if(ijdate == '' || ijdate == null || ijdate == undefined) {
+          mes = '确认关闭订单，并向用户退款？';
+        };
+        const id = rows[index].id;
+        const r = confirm(mes);
         if (r === true) {
-          const id = rows[index].id;
-          rows.splice(index, 1);
+          this.$ajax({
+            method: 'post',
+            url: refunds(),
+            data: {id: id},
+            dataType: 'JSON',
+            contentType: 'application/json;charset=UTF-8',
+          }).then((res) => {
+            rows.splice(index, 1);
+          }).catch((error) => {
+            this.$message.error('网络有问题，请稍后再试');
+          });
         }
       },
       sure(index, rows) {
+        const ijdate =  rows[index].injection_date;
+        if(ijdate == '' || ijdate == null || ijdate == undefined) {
+          this.$message.error('当前用户还未设置注射时间，不能完成注射');
+          return ;
+        };
         const r = confirm("确认该用户已经完成第一次注射？")
+        const id = rows[index].id;
         if (r === true) {
-          const id = rows[index].id;
-          rows.splice(index, 1);
+          this.$ajax({
+            method: 'post',
+            url: updatePediatricPneumoniaStatus(),
+            data: {id: id, count: 1},
+            dataType: 'JSON',
+            contentType: 'application/json;charset=UTF-8',
+          }).then((res) => {
+            rows.splice(index, 1);
+          }).catch((error) => {
+            this.$message.error('网络有问题，请稍后再试');
+          });
         }
       },
     },
@@ -97,9 +147,11 @@
           }
         },
         changeDateValue: '',
+        over: false,
         index: '',
         cover: false,
         tableData: [],
+        page: '',
       };
     },
   };

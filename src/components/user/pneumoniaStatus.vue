@@ -7,11 +7,12 @@
       <div>预约地点：{{item.hospital_name}}</div>
       <div>注射记录：</div>
       <div>
-        <div class="indate" v-for="(di, dindex) in item.details">{{di.create_date}} <span v-if="di.status == 1">已注射</span><span v-if="di.status == 0" class="danger">未注射</span></div>
+        <div class="indate" v-for="(di, dindex) in item.details">第{{dindex+1}}针  {{di.create_date==null?'未安排时间':di.create_date}} <span v-if="di.status == 2">已注射</span><span v-if="di.status == 1" class="danger">未注射</span></div>
       </div>
       <div class="create">创建时间：{{item.create_date}}</div>
-      <i class="iconfont icon-jinhangzhong2 icons" v-if="item.status == 1"></i>
-      <i class="iconfont icon-yiguoqi icons" v-if="item.status == 2"></i>
+      <i class="iconfont icon-jinhangzhong2 icons" v-if="item.status == 1" style="font-size: 4rem;color:#4679ed"></i>
+      <i class="iconfont icon-wancheng icons" v-if="item.status == 2" style="font-size: 5.5rem;color:green"></i>
+      <i class="iconfont icon-yituikuan icons" v-if="item.status == 3" style="font-size: 4rem;color:red"></i>
     </div>
   </div>
 </template>
@@ -59,6 +60,7 @@
     background-color: #EFF2F7;
     padding: .8rem;
     position: relative;
+    margin: .2rem;
   }
   .create{
     color: #aaa;

@@ -46,6 +46,7 @@
 <script type="text/ecmascript-6">
   import UserSay from '../question/userSay';
   import DocSay from '../question/docSay';
+  import { saveConsultingDetail, getConsultingDetails } from '../interface';
 
   export default {
     components: { UserSay, DocSay},
@@ -55,9 +56,14 @@
       const anchor = document.getElementById('nn').offsetTop;
       scrollDiv.scrollTop = anchor;
     },
+    created() {
+      const par = this.$route.params;
+      this.tid = par.id;
+    },
     data() {
       return {
         sendMessage: '',
+        tid: '',
         egData: [
           {content: '你好问一下', re: 1},
           {content: '很好很好在那里', re: 0},
