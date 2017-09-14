@@ -6,8 +6,8 @@
       <el-col :span="16">
         <div class="chart" id="chart">
           <span  v-for="(o, index) in egData">
-            <UserSay v-if="o.re === 0" :content="o.content"></UserSay>
-            <DocSay v-if="o.re === 1" :content="o.content"></DocSay>
+            <UserSay v-if="o.role === 0" :content="o.content"></UserSay>
+            <DocSay v-if="o.role === 1" :content="o.content"></DocSay>
           </span>
           <span id="nn"></span>
         </div>
@@ -31,11 +31,11 @@
             <h4 class="center">生理指标</h4>
           </div>
           <el-row class="card" v-for="(o, index) in data" key="index">
-            <el-col :span="12"><div>日期：{{o.date}}</div></el-col>
-            <el-col :span="12"><div>月龄：{{o.age}}</div></el-col>
-            <el-col :span="12"> <div>体重：{{o.weight}} KG</div></el-col>
-            <el-col :span="12"><div>体温：{{o.temperature}} ℃</div></el-col>
-            <el-col :span="12"><div>奶量：{{o.volume}} ML</div></el-col>
+            <el-col :span="12"><div>日期：{{o.creation_date}}</div></el-col>
+            <el-col :span="12"><div>月龄：{{o.month}}</div></el-col>
+            <el-col :span="12"> <div>体重：{{o.weight}}</div></el-col>
+            <el-col :span="12"><div>体温：{{o.body_temperature}} ℃</div></el-col>
+            <el-col :span="12"><div>奶量：{{o.milk}}</div></el-col>
           </el-row>
         </div>
       </el-col>
@@ -59,42 +59,57 @@
     created() {
       const par = this.$route.params;
       this.tid = par.id;
+      if ('id' in par) {
+        this.tid = par.id;
+        this.getList();
+      }
     },
     data() {
       return {
         sendMessage: '',
         tid: '',
-        egData: [
-          {content: '你好问一下', re: 1},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-          {content: '很好很好在那里', re: 0},
-        ],
-        data: [
-          {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-13'},
-          {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-12'},
-          {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-11'},
-          {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-10'},
-        ],
+        egData: [],
+        data: [],
       };
     },
     methods: {
       back() {
         this.$router.go(-1);
       },
+      getList() {
+        this.$ajax({
+          method: 'GET',
+          dataType: 'JSON',
+          url: getConsultingDetails() + "?consulting_id=" + this.tid + '&&isDoctor=1' ,
+        }).then((res) => {
+          this.egData = res.data.consultingDetails;
+          this.data = res.data.childRecord;
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
+      },
       send() {
         if (this.sendMessage === '') {
           return;
         } else {
-          const message = { content: this.sendMessage, re: 0};
+          const data = {
+            role: 0,
+            content: this.sendMessage,
+            consulting_id: this.tid,
+          };
+          this.$ajax({
+            method: 'POST',
+            data: data,
+            dataType: 'JSON',
+            contentType: 'application/json;charset=UTF-8',
+            url: saveConsultingDetail(),
+          }).then((res) => {
+
+          }).catch((error) => {
+            this.$message.error(error.message);
+          });
+
+          const message = { content: this.sendMessage, role: 0};
           this.egData = [...this.egData, message];
           this.sendMessage = '';
           let anchor = document.getElementById('nn').offsetTop;

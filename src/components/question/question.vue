@@ -56,13 +56,11 @@
         if (this.sendMessage === '') {
           return;
         } else {
-
           const data = {
             role: 1,
             content: this.sendMessage,
             consulting_id: this.tid,
-        };
-
+          };
           this.$ajax({
             method: 'POST',
             data: data,
