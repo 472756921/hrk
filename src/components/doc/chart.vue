@@ -46,7 +46,7 @@
 <script type="text/ecmascript-6">
   import UserSay from '../question/userSay';
   import DocSay from '../question/docSay';
-  import { saveConsultingDetail, getConsultingDetails } from '../interface';
+  import { saveConsultingDetail, getConsultingDetails, closeTheConsulting } from '../interface';
 
   export default {
     components: { UserSay, DocSay},
@@ -122,7 +122,18 @@
         const r = confirm("确认关闭？关闭后用户将无法继续向您提问")
         if (r === true) {
           const id = rows[index].id;
-          rows.splice(index, 1);
+          const data = {id: id};
+          this.$ajax({
+            method: 'POST',
+            data: data,
+            dataType: 'JSON',
+            contentType: 'application/json;charset=UTF-8',
+            url: closeTheConsulting(),
+          }).then((res) => {
+            rows.splice(index, 1);
+          }).catch((error) => {
+            this.$message.error(error.message);
+          });
         }
       },
     },
