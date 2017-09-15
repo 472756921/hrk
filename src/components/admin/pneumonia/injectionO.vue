@@ -2,12 +2,12 @@
     <div>
       <div class="title">小儿肺炎疫苗完成注射</div>
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="date" label="创建日期" width="120"></el-table-column>
-        <el-table-column prop="name" label="用户姓名" width="120"></el-table-column>
-        <el-table-column prop="cuname" label="患者姓名" width="120"></el-table-column>
-        <el-table-column prop="sp" label="住址" width="120"></el-table-column>
-        <el-table-column prop="md" label="总注射次数" width="120"></el-table-column>
-        <el-table-column prop="injectionDate" label="完成时间"></el-table-column>
+        <el-table-column prop="create_date" label="创建日期" width="120"></el-table-column>
+        <el-table-column prop="customer_name" label="用户姓名" width="120"></el-table-column>
+        <el-table-column prop="child_name" label="患者姓名" width="120"></el-table-column>
+        <el-table-column prop="address" label="住址" width="120"></el-table-column>
+        <el-table-column prop="now_count" label="总注射次数" width="120"></el-table-column>
+        <el-table-column prop="injection_date" label="完成时间"></el-table-column>
       </el-table>
       <Page :page="page" v-if="over"/>
     </div>
@@ -19,6 +19,7 @@
 
   export default {
     name: 'injectionO',
+    components: { Page },
     created() {
       this.getList(1);
     },
