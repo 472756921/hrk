@@ -39,7 +39,6 @@
     word-break: break-all;
     padding: .6rem;
     border-radius: .4rem;
-
     font-size: .8rem;
   }
 </style>
