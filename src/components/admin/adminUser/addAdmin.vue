@@ -18,10 +18,15 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { createAdmin } from '../../interface';
+
   export default {
     name: 'addAdmin',
     methods: {
       add(){
+        if (this.edit){
+          return;
+        }
         if (this.account === '' || this.pwd === '' || this.pwda === ''){
           this.$message.error('请输入必要信息');
           return;
@@ -30,12 +35,33 @@
           this.$message.error('两次输入的密码不一致');
           return;
         }
+        const data = {
+          account: this.account,
+          pass_word: this.pwd,
+          admin_type: 1,
+        };
+        this.$ajax({
+          method: 'post',
+          url: createAdmin(),
+          data: data,
+          dataType: 'JSON',
+          contentType: 'application/json;charset=UTF-8',
+        }).then((res) => {
+
+          this.cover = false;
+        }).catch((error) => {
+          this.$message.error('网络有问题，请稍后再试');
+        });
       },
-      chang() {},
+      chang() {
+        if (!this.edit){
+          return;
+        }
+      },
     },
     created() {
       const par = this.$route.params;
-      if ('radio' in par) {
+      if ('account' in par) {
         this.radio = par.rout;
         this.account = par.account;
         this.id = par.id;

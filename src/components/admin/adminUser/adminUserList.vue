@@ -10,13 +10,12 @@
           width="180">
         </el-table-column>
         <el-table-column
-          prop="rout"
-          label="角色"
-          width="180">
+          prop="admin_type"
+          label="角色（1：超级管理员，2：管理员，3：客服）">
         </el-table-column>
         <el-table-column
-          prop="lastLoginDate"
-          label="最后登录时间">
+          prop="create_date"
+          label="注册时间">
         </el-table-column>
         <el-table-column label="状态">
           <template scope="scope">
@@ -42,7 +41,7 @@
         }
       },
       chang(index) {
-        this.$router.push({ name: 'addAdmin', params: { account: this.tableData[index].account, rout: this.tableData[index].rout, id: this.tableData[index].id } })
+        this.$router.push({ name: 'addAdmin', params: { account: this.tableData[index].account, rout: this.tableData[index].admin_type, id: this.tableData[index].id } })
       },
     },
     created() {
@@ -50,34 +49,14 @@
         method: 'get',
         url: getAdmins(),
       }).then((res) => {
-        console.log(res.data);
+        this.tableData = res.data.admins;
       }).catch((error) => {
         this.$message.error('网络有问题，请稍后再试');
       });
     },
     data() {
       return {
-        tableData: [{
-          lastLoginDate: '2016-05-02',
-          account: '王小虎',
-          id: 1,
-          rout: '1'
-        }, {
-          lastLoginDate: '2016-05-04',
-          account: '王小虎',
-          rout: '2',
-          id: 21,
-        }, {
-          lastLoginDate: '2016-05-01',
-          account: '王小虎',
-          id: 1,
-          rout: '3',
-        }, {
-          lastLoginDate: '2016-05-03',
-          account: '王小虎',
-          rout: '4',
-          id: 11,
-        }]
+        tableData: [],
       }
     }
   };

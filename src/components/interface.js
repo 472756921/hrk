@@ -114,6 +114,11 @@ export const getAdmins = function () {
   const API = host + URL;
   return API;
 };
+export const createAdmin = function () {
+  const URL = 'createAdmin';
+  const API = host + URL;
+  return API;
+};
 export const updateExamineRefundDate = function () {
   const URL = 'updateExamineRefundDate';
   const API = host + URL;
