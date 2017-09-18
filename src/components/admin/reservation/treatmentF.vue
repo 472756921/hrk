@@ -17,16 +17,19 @@
           </template>
         </el-table-column>
       </el-table>
+      <Page :page="page" v-if="over"/>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import Page from '../page';
   import { getExamineManager } from '../../interface';
 
   export default {
+    components: { Page },
     name: 'treatmentF',
     created() {
-      this.getList();
+      this.getList(1);
     },
     methods: {
       tuikuan(index) {
@@ -35,19 +38,23 @@
           this.tableData[index].tks = 1;
         }
       },
-      getList() {
+      getList(page) {
         this.$ajax({
           method: 'GET',
-          url: getExamineManager() + "?status=3&page=1",
+          url: getExamineManager() + "?status=3&page="+page,
         }).then((res) => {
           this.tableData = res.data.ExamineManager;
+          this.over = true;
+          this.page = { totalPage: res.data.totalPage, page:  res.data.page,  };
         }).catch((error) => {
         });
       }
     },
     data() {
       return {
-        tableData: []
+        tableData: [],
+        over: false,
+        page: '',
       };
     },
   };

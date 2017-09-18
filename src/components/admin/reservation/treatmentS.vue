@@ -13,6 +13,7 @@
           <template scope="scope"><span class="Success">预约成功</span></template>
         </el-table-column>
       </el-table>
+      <Page :page="page" v-if="over"/>
     </div>
 </template>
 
@@ -21,20 +22,23 @@
   import Page from '../page';
 
   export default {
+    components: { Page },
     name: 'treatmentS',
     data() {
       return {
-        tableData: []
+        tableData: [],
+        over: false,
+        page: '',
       };
     },
     created() {
-      this.getList();
+      this.getList(1);
     },
     methods: {
-      getList() {
+      getList(page) {
         this.$ajax({
           method: 'GET',
-          url: getExamineManager() + "?status=2&page=1",
+          url: getExamineManager() + "?status=2&page=" + page,
         }).then((res) => {
           this.tableData = res.data.ExamineManager;
           this.page = { totalPage: res.data.totalPage, page:  res.data.page,  };
