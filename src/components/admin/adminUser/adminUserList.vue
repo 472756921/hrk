@@ -30,6 +30,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { getAdmins } from '../../interface';
+
   export default {
     name: 'adminUserList',
     methods: {
@@ -42,6 +44,16 @@
       chang(index) {
         this.$router.push({ name: 'addAdmin', params: { account: this.tableData[index].account, rout: this.tableData[index].rout, id: this.tableData[index].id } })
       },
+    },
+    created() {
+      this.$ajax({
+        method: 'get',
+        url: getAdmins(),
+      }).then((res) => {
+        console.log(res.data);
+      }).catch((error) => {
+        this.$message.error('网络有问题，请稍后再试');
+      });
     },
     data() {
       return {

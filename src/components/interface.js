@@ -109,6 +109,11 @@ export const getConsultings = function () {
   const API = host + URL;
   return API;
 };
+export const getAdmins = function () {
+  const URL = 'getAdmins';
+  const API = host + URL;
+  return API;
+};
 export const updateExamineRefundDate = function () {
   const URL = 'updateExamineRefundDate';
   const API = host + URL;
