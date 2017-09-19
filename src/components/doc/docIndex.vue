@@ -29,7 +29,7 @@
           this.$router.push({ name: 'chart', params: { id: id } });
         },
         colse(index, rows) {
-          const r = confirm("确认关闭问题？")
+          const r = confirm("确认完成并关闭会话？关闭后用户将无法继续向您提问")
           const id = rows[index].id;
           const data = {id: id};
           if (r === true) {

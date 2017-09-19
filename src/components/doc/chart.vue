@@ -119,10 +119,9 @@
         }
       },
       colse() {
-        const r = confirm("确认关闭？关闭后用户将无法继续向您提问")
+        const r = confirm("确认完成并关闭会话？关闭后用户将无法继续向您提问")
         if (r === true) {
-          const id = rows[index].id;
-          const data = {id: id};
+          const data = {id: this.tid,};
           this.$ajax({
             method: 'POST',
             data: data,
@@ -130,7 +129,7 @@
             contentType: 'application/json;charset=UTF-8',
             url: closeTheConsulting(),
           }).then((res) => {
-            rows.splice(index, 1);
+            this.$router.go(-1);
           }).catch((error) => {
             this.$message.error(error.message);
           });
