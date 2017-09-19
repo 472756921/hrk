@@ -1,5 +1,6 @@
 <template>
   <div class="doccontent" ref="logonBG">
+    <div class="center titleA">和润康管理系统</div>
     <div class="infoContent">
       <input type="text" class="inputtype" placeholder="账号" v-model="u"/>
       <input type="password" class="inputtype" v-model="p" placeholder="密码"/>
@@ -57,44 +58,35 @@
 
 <style scoped>
   .doccontent{
-    background: #aaa;
-    color: #ffffff;
     font-size: 2rem;
-    background: url("../../assets/login.jpg");
-    background-repeat:no-repeat;
-    background-size:100%;
-    -moz-background-size:100%;
+  }
+  .titleA{
+    padding: 40px;
   }
   .infoContent{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width:20%;
-    height: 30%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
+    width: 500px;
+    padding: 60px;
+    margin: 0 auto;
   }
   .inputtype{
     margin: 0 auto;
-    border: 1px solid #aaa;
+    border: 1px solid #ccc;
     border-radius: 5px;
     background: none;
     height: 30px;
     width: 100%;
     outline: none;
     padding-left: 5px;
-    color: #ffffff;
+    color: #333;
     font-size: 14px;
   }
   .inputtype:focus{
-    background-color: #ccc;
+    background-color: #eee;
   }
   .loginBtn{
-    color: #999;
+    color: #666;
     background: none;
-    border: 1px solid #999;
+    border: 1px solid #ccc;
     border-radius: 5px;
     padding: 8px 16px;
     font-size: 16px;
@@ -102,10 +94,10 @@
     cursor: pointer;
   }
   .loginBtn:hover{
-    border: 1px solid #ccc;
-    color: #eee;
+    border: 1px solid #aaa;
+    color: #333;
   }
   .radio{
-    color: #ffffff;
+    color: #666;
   }
 </style>
