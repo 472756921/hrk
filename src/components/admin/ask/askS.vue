@@ -12,7 +12,7 @@
           <template scope="scope"><span class="danger" @click="tuikuan(scope.$index, tableData)">退款</span></template>
         </el-table-column>
       </el-table>
-      <Page :page="page" v-if="over"/>
+      <Page :page="page" v-if="over" v-on:pageChange="getList"/>
     </div>
 </template>
 

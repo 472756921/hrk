@@ -129,6 +129,11 @@ export const AdminGetDoctors = function () {
   const API = host + URL;
   return API;
 };
+export const userLogin = function () {
+  const URL = 'userLogin';
+  const API = host + URL;
+  return API;
+};
 export const updateDoctor = function () {
   const URL = 'updateDoctor';
   const API = host + URL;

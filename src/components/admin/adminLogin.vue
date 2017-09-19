@@ -1,23 +1,51 @@
 <template>
   <div class="doccontent" ref="logonBG">
     <div class="infoContent">
-      <input type="text" class="inputtype" placeholder="账号"/>
-      <input type="password" class="inputtype" placeholder="密码"/>
+      <input type="text" class="inputtype" placeholder="账号" v-model="u"/>
+      <input type="password" class="inputtype" v-model="p" placeholder="密码"/>
       <el-radio class="radio" v-model="radio" label="1">管理员</el-radio>
       <el-radio class="radio" v-model="radio" label="2">专家</el-radio>
       <br/>
-      <button class="loginBtn">登录</button>
+      <button class="loginBtn" @click="login">登录</button>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import { userLogin } from '../interface';
+
   export default {
     name: 'adminLogin',
     data() {
       return {
         radio: '1',
+        u: '',
+        p: '',
       };
+    },
+    methods: {
+      login() {
+        if (this.u == '' || this.p == '') {
+          this.$message.error('请输入账号和密码');
+          return ;
+        }
+        const data = {
+          account: this.u,
+          Pass_word: this.p,
+          Type: this.radio,
+        };
+        this.$ajax({
+          method: 'post',
+          url: userLogin(),
+          data: data,
+          dataType: 'JSON',
+          contentType: 'application/json;charset=UTF-8',
+        }).then((res) => {
+          console.log(res.data);
+        }).catch((error) => {
+          this.$message.error('网络有问题，请稍后再试');
+        });
+      },
     },
     mounted() {
       const w = document.body.clientWidth;
@@ -47,11 +75,10 @@
     -moz-transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    margin: 40px 0;
   }
   .inputtype{
     margin: 0 auto;
-    border: 1px solid #888;
+    border: 1px solid #aaa;
     border-radius: 5px;
     background: none;
     height: 30px;
@@ -62,7 +89,7 @@
     font-size: 14px;
   }
   .inputtype:focus{
-    background-color: #777;
+    background-color: #ccc;
   }
   .loginBtn{
     color: #999;

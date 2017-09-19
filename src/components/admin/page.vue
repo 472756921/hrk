@@ -2,6 +2,7 @@
   <div class="block">
     <el-pagination
       layout="prev, pager, next"
+      @current-change="changPage"
       :page-count = 'totalPage'
       :current-page = 'pageNow'
       :page-size = 50>
@@ -18,6 +19,11 @@
         totalPage: this.page.totalPage,
         pageNow: this.page.page,
       }
+    },
+    methods: {
+      changPage(pageNow) {
+        this.$emit('pageChange', pageNow);
+      },
     },
     created(){
     },

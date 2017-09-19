@@ -7,13 +7,13 @@
         <el-table-column prop="address" label="预约地点" width="120"></el-table-column>
         <el-table-column prop="hospital_name" label="预约医院" width="120"></el-table-column>
         <el-table-column prop="department_name" label="预约科室" width="120"></el-table-column>
-        <el-table-column prop="order_on" label="订单号" width="180"></el-table-column>
+        <el-table-column prop="order_on" label="订单号" width="190"></el-table-column>
         <el-table-column prop="price" label="金额（RMB）" width="180"></el-table-column>
         <el-table-column label="状态">
           <template scope="scope"><span class="Success">预约成功</span></template>
         </el-table-column>
       </el-table>
-      <Page :page="page" v-if="over"/>
+      <Page :page="page" v-if="over"  v-on:pageChange="getList"/>
     </div>
 </template>
 

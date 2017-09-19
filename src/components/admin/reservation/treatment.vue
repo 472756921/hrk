@@ -7,7 +7,7 @@
         <el-table-column prop="address" label="预约地点" width="120"></el-table-column>
         <el-table-column prop="hospital_name" label="预约医院" width="120"></el-table-column>
         <el-table-column prop="department_name" label="预约科室" width="120"></el-table-column>
-        <el-table-column prop="order_on" label="订单号" width="180"></el-table-column>
+        <el-table-column prop="order_on" label="订单号" width="190"></el-table-column>
         <el-table-column prop="price" label="金额（RMB）" width="180"></el-table-column>
         <el-table-column label="操作">
           <template scope="scope">
@@ -17,7 +17,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <Page :page="page" v-if="over"/>
+      <Page :page="page" v-if="over" v-on:pageChange="getList"/>
       <div class="model" v-if="cover">
         <div style="font-weight: bold">修改时间</div>
         <br/>
@@ -115,10 +115,10 @@
           });
         }
       },
-      getList() {
+      getList(page) {
         this.$ajax({
           method: 'GET',
-          url: getExamineManager() + "?status=1&page=1",
+          url: getExamineManager() + "?status=1&page="+page,
         }).then((res) => {
           this.tableData = res.data.ExamineManager;
           this.page = { totalPage: res.data.totalPage, page:  res.data.page,  };
@@ -128,7 +128,7 @@
       }
     },
     created() {
-     this.getList();
+     this.getList(1);
     },
     data() {
       return {

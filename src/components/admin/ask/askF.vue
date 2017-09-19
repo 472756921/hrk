@@ -14,7 +14,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <Page :page="page" v-if="over"/>
+      <Page :page="page" v-if="over" v-on:pageChange="getList"/>
     </div>
 </template>
 

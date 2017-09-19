@@ -47,8 +47,8 @@
           dataType: 'JSON',
           contentType: 'application/json;charset=UTF-8',
         }).then((res) => {
-
           this.cover = false;
+          location.reload();
         }).catch((error) => {
           this.$message.error('网络有问题，请稍后再试');
         });

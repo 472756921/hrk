@@ -17,7 +17,7 @@
         </el-table-column>
       </el-table>
 
-      <Page :page="page" v-if="over"/>
+      <Page :page="page" v-if="over" v-on:pageChange="getList"/>
 
       <div class="model" v-if="cover">
         <div style="font-weight: bold">修改时间</div>

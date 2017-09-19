@@ -9,7 +9,7 @@
         <el-table-column prop="now_count" label="总注射次数" width="120"></el-table-column>
         <el-table-column prop="injection_date" label="完成时间"></el-table-column>
       </el-table>
-      <Page :page="page" v-if="over"/>
+      <Page :page="page" v-if="over" v-on:pageChange="getList"/>
     </div>
 </template>
 
