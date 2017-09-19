@@ -57,6 +57,14 @@
 <script type="text/ecmascript-6">
   export default {
     name: 'docIndex',
+    created() {
+      const userdata = JSON.parse(sessionStorage.getItem('user'));
+      if (!'account' in userdata){
+
+      } else {
+        alert('123');
+      }
+    },
     methods: {
     }
   };

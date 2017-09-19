@@ -32,8 +32,8 @@
         }
         const data = {
           account: this.u,
-          Pass_word: this.p,
-          Type: this.radio,
+          pass_word: this.p,
+          type: this.radio,
         };
         this.$ajax({
           method: 'post',
@@ -42,9 +42,10 @@
           dataType: 'JSON',
           contentType: 'application/json;charset=UTF-8',
         }).then((res) => {
-          console.log(res.data);
+          sessionStorage.setItem('user', JSON.stringify(res.data));
+          console.log(sessionStorage.getItem('user'));
         }).catch((error) => {
-          this.$message.error('网络有问题，请稍后再试');
+          this.$message.error('账号或密码错误');
         });
       },
     },
