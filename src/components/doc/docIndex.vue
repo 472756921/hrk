@@ -14,11 +14,13 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { getConsultingListByDoctor } from '../interface';
+  import { getConsultingListByDoctor, closeTheConsulting } from '../interface';
 
     export default {
       name: 'docIndex',
       created() {
+        const userdata = JSON.parse(sessionStorage.getItem('user'));
+        this.docID = userdata.doctor.id;
         this.getList(1);
       },
       methods: {
@@ -28,15 +30,26 @@
         },
         colse(index, rows) {
           const r = confirm("确认关闭问题？")
+          const id = rows[index].id;
+          const data = {id: id};
           if (r === true) {
-            const id = rows[index].id;
-            rows.splice(index, 1);
+            this.$ajax({
+              method: 'POST',
+              data: data,
+              dataType: 'JSON',
+              contentType: 'application/json;charset=UTF-8',
+              url: closeTheConsulting(),
+            }).then((res) => {
+              rows.splice(index, 1);
+            }).catch((error) => {
+              this.$message.error(error.message);
+            });
           }
         },
         getList(page) {
           this.$ajax({
             method: 'GET',
-            url: getConsultingListByDoctor() + "?doctor_id=1&&page=" + page,
+            url: getConsultingListByDoctor() + "?doctor_id=" + this.docID + "&&page=" + page,
           }).then((res) => {
             this.tableData = res.data.consultings;
           }).catch((error) => {
@@ -46,6 +59,7 @@
       data() {
         return {
           tableData: [],
+          docID: '',
         };
       },
     };

@@ -43,7 +43,8 @@
           contentType: 'application/json;charset=UTF-8',
         }).then((res) => {
           sessionStorage.setItem('user', JSON.stringify(res.data));
-          console.log(sessionStorage.getItem('user'));
+          sessionStorage.setItem('type', this.radio);
+          this.$router.push({ name: 'admin' });
         }).catch((error) => {
           this.$message.error('账号或密码错误');
         });
