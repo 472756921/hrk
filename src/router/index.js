@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import Reg from '@/components/public/reg'
 import AG from '@/components/public/ag'
 import UserIndex from '@/components/user/userIndex'
+import UpdataLive from '@/components/user/updataLive'
 import Reservation from '@/components/user/reservation'
 import ASK from '@/components/user/ask'
 import DocInfo from '@/components/doc/docInfo'
@@ -17,6 +18,7 @@ import Physiological from '@/components/user/physiological'
 import Pneumonia from '@/components/user/pneumonia'
 import PneumoniaStatus from '@/components/user/pneumoniaStatus'
 import UserHeadUplode from '@/components/user/userHeadUplode'
+import FamousDoctorStudio from '@/components/user/famousDoctorStudio'
 
 import AdminIndex from '@/components/admin/adminIndex'
 import AdminLogin from '@/components/admin/adminLogin'
@@ -167,6 +169,11 @@ export default new Router({
       component: UserIndex,
       children: [
         {
+          path: 'updataLive',
+          name: 'updataLive',
+          component: UpdataLive,
+        },
+        {
           path: 'reservation',
           name: 'reservation',
           component: Reservation,
@@ -230,6 +237,11 @@ export default new Router({
           path: 'userHeadUplode',
           name: 'userHeadUplode',
           component: UserHeadUplode,
+        },
+        {
+          path: 'famousDoctorStudio',
+          name: 'famousDoctorStudio',
+          component: FamousDoctorStudio,
         },
       ],
     }

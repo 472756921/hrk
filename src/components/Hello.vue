@@ -4,7 +4,7 @@
       <li><a href="#/public/reg">注册会员</a></li>
       <li><a href="#/user/reservation">预约面对面</a></li>
       <li><a href="#/user/ask">在线咨询</a></li>
-      <li><a>名医工作站</a></li>
+      <li><a href="#/user/famousDoctorStudio">名医工作站</a></li>
     </ul>
     <ul>
       <li><a href="#/user/userInfo">会员信息</a></li>
