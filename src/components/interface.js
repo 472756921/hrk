@@ -144,6 +144,11 @@ export const getConsultingListByDoctor = function () {
   const API = host + URL;
   return API;
 };
+export const updateAdmin = function () {
+  const URL = 'updateAdmin';
+  const API = host + URL;
+  return API;
+};
 export const createDoctor = function () {
   const URL = 'createDoctor';
   const API = host + URL;

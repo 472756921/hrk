@@ -18,7 +18,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { createAdmin } from '../../interface';
+  import { createAdmin, updateAdmin } from '../../interface';
 
   export default {
     name: 'addAdmin',
@@ -57,14 +57,31 @@
         if (!this.edit){
           return;
         }
+        const data = {
+          id: this.id,
+          status: 1,
+          admin_type: this.radio,
+        };
+        this.$ajax({
+          method: 'post',
+          url: updateAdmin(),
+          data: data,
+          dataType: 'JSON',
+          contentType: 'application/json;charset=UTF-8',
+        }).then((res) => {
+          this.$message.success('修改成功');
+        }).catch((error) => {
+          this.$message.error('网络有问题，请稍后再试');
+        });
+
       },
     },
     created() {
       const par = this.$route.params;
       if ('account' in par) {
-        this.radio = par.rout;
         this.account = par.account;
         this.id = par.id;
+        this.radio = par.rout.toString();
         this.edit = true;
       }
     },

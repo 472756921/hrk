@@ -14,14 +14,14 @@
               <el-menu-item index="2" v-if="type==1"><i class="iconfont icon-user"></i> 用户管理</el-menu-item>
               <el-submenu index="3" v-if="type==1">
                 <template slot="title"><i class="iconfont icon-reservation"></i> 就诊管理</template>
-                <el-menu-item index="3-1"><router-link :to="{ name: 'itemClass' }">列表项管理</router-link></el-menu-item>
+                <el-menu-item index="3-1"  v-if="adminType<=2"><router-link :to="{ name: 'itemClass' }">列表项管理</router-link></el-menu-item>
                 <el-menu-item index="3-1"><router-link :to="{ name: 'treatment' }">预约就诊</router-link></el-menu-item>
                 <el-menu-item index="3-2"><router-link :to="{ name: 'treatmentS' }">已确定就诊</router-link></el-menu-item>
                 <el-menu-item index="3-3"><router-link :to="{ name: 'treatmentF' }">就诊退款</router-link></el-menu-item>
               </el-submenu>
               <el-submenu index="4" v-if="type==1">
                 <template slot="title"><i class="iconfont icon-iconfontyisheng"></i> 问诊管理</template>
-                <el-menu-item index="4-3"><router-link :to="{ name: 'docClass' }">医生管理</router-link></el-menu-item>
+                <el-menu-item index="4-3" v-if="adminType<=2"><router-link :to="{ name: 'docClass' }">医生管理</router-link></el-menu-item>
                 <el-menu-item index="4-1"><router-link :to="{ name: 'askS' }">退款处理</router-link></el-menu-item>
                 <el-menu-item index="4-2"><router-link :to="{ name: 'askF' }">退款记录</router-link></el-menu-item>
               </el-submenu>
@@ -34,7 +34,7 @@
                 <el-menu-item index="5-4"><router-link :to="{ name: 'injectionO' }">完成记录</router-link></el-menu-item>
               </el-submenu>
               <el-menu-item index="6" v-if="type==1"><i class="iconfont icon-dingdan-copy"></i> 订单号查询</el-menu-item>
-              <el-submenu index="7" v-if="type==1">
+              <el-submenu index="7" v-if="type==1&&adminType==1">
                 <template slot="title"><i class="iconfont icon-guanliyuan"></i> 管理员管理</template>
                 <el-menu-item index="7-1"><router-link :to="{ name: 'adminUserList' }">管理员列表</router-link></el-menu-item>
                 <el-menu-item index="7-1"><router-link :to="{ name: 'addAdmin' }">新增管理员</router-link></el-menu-item>
@@ -61,12 +61,15 @@
       const userdata = sessionStorage.getItem('user');
       if (userdata == null || userdata == '' || userdata == undefined){
         this.$router.push({ name: 'adminLogin' });
+      } else {
+        this.type = sessionStorage.getItem('type');
+        this.adminType = JSON.parse(userdata).admin.admin_type;
       }
-      this.type = sessionStorage.getItem('type');
     },
     data() {
       return {
         type: '',
+        adminType: '',
       };
     },
     methods: {
