@@ -118,9 +118,9 @@
           document.getElementsByClassName('contacts')[i].children[4].style.marginRight = '-' + po;
         }
       },
-      input(id, i) {
+      input(item, i) {
         window.event.stopPropagation();
-        this.$router.push({ name: 'physiological', params: { id: id.id } })
+        this.$router.push({ name: 'physiological', params: { item: item } })
       },
     },
   };

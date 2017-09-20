@@ -1,12 +1,19 @@
 <template>
   <div class="content">
     <h3>生理指标<i class="iconfont icon-add" style="float:right;color: #1D8CE0;" @click="dialogVisible = true"></i></h3>
+    <div style="line-height: 1.4rem;padding: 0.4rem">
+      名字：{{user.real_name}} &nbsp;&nbsp;
+      生日：{{user.birthday}} &nbsp;&nbsp;
+      性别：{{user.gender==0?'女':'男'}}
+    </div>
     <el-row class="card" v-for="(o, index) in data" key="index">
       <el-col :span="12"><div>日期：{{o.date}}</div></el-col>
       <el-col :span="12"><div>月龄：{{o.age}}</div></el-col>
       <el-col :span="12"> <div>体重：{{o.weight}} KG</div></el-col>
       <el-col :span="12"><div>体温：{{o.temperature}} ℃</div></el-col>
       <el-col :span="12"><div>奶量：{{o.volume}} ML</div></el-col>
+      <el-col :span="12"><div>心率：{{o.xl}} 次/min</div></el-col>
+      <el-col :span="12"><div>坐高：{{o.zg}} CM</div></el-col>
     </el-row>
     <el-dialog
       title="录入今日指标"
@@ -26,6 +33,16 @@
       <el-input  v-model="volume" maxlength=4 placeholder="ML">
         <template slot="prepend">奶量</template>
       </el-input>
+      <br/>
+      <br/>
+      <el-input  v-model="xl" maxlength=4 placeholder="次/min">
+        <template slot="prepend">心率</template>
+      </el-input>
+      <br/>
+      <br/>
+      <el-input  v-model="zg" maxlength=4 placeholder="CM">
+        <template slot="prepend">坐高</template>
+      </el-input>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="sure">确定</el-button>
       </span>
@@ -43,20 +60,22 @@
         dialogVisible: false,
         weight: '',
         temperature: '',
-        child_id: '',
         volume: '',
+        user: '',
+        xl: '',
+        zg: '',
         data: [
-          {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-13'},
-          {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-12'},
-          {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-11'},
-          {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-10'},
+          {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-13', xl:123, zg: 48},
+          {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-12', xl:123, zg: 48},
+          {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-11', xl:123, zg: 48},
+          {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-10', xl:123, zg: 48},
         ],
       };
     },
     created() {
       const par = this.$route.params;
-      if('id' in par) {
-        this.child_id = par.id;
+      if('item' in par) {
+        this.user = par.item;
         this.getData(1);
       }
     },
@@ -64,12 +83,12 @@
       getData(page) {
         this.$ajax({
           method: 'GET',
-          url: selectChildRecord() + '?child_id=' + this.child_id + '&page' + page,
+          url: selectChildRecord() + '?child_id=' + this.user.child_id + '&page' + page,
         }).then((res) => {
           this.docList = res.data.doctors;
           this.docListCop = res.data.doctors;
         }).catch((error) => {
-          this.$message.error(error.message);
+          this.$message.error('网络异常请稍候');
         });
       },
       handleClose(done) {
@@ -96,7 +115,7 @@
               this.data = [data,...this.data];
             }
           }).catch((error) => {
-            this.$message.error(error.message);
+            this.$message.error('网络异常请稍候');
           });
           this.dialogVisible = false;
           this.weight = '' ;
@@ -116,7 +135,7 @@
     background: #EFF2F7;
     padding: 1rem .6rem;
     border-radius: .2rem;
-    margin-bottom: .2rem;
+    margin-bottom: .6rem;
     line-height: 1.3rem;
   }
 </style>

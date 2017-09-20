@@ -4,9 +4,8 @@
       <el-row>
         <el-col :span="6">
           <div class="grid-content">
-            <div>{{userInfo.beans}}</div>
-            <div>余额</div>
-            <button class="czBtn">充值</button>
+            <div>大众会员</div>
+            <button class="czBtn">升级</button>
           </div>
         </el-col>
         <el-col :span="12">
@@ -169,7 +168,7 @@
     border: none;
     color: #fff;
     border-radius: .2rem;
-    padding: .1rem .4rem;
+    padding: .2rem .4rem;
   }
   .text{
     padding: 0 .6rem;
