@@ -2,6 +2,7 @@
   <div class="contentes">
     <div class="new">
       <h3>关联联系人<a href="#/user/newContact" v-if="data.length<5">添加</a></h3>
+      <small style="color: #aaa;">( 侧滑管理联系人 )</small>
     </div>
     <div class="contacts" @click="edit(it)" v-for="(it, index) in data">
       <div>姓名：{{it.real_name}}</div>
@@ -9,7 +10,7 @@
       <div>性别：<span  v-if="it.gender==1">男</span><span  v-if="it.gender==0">女</span></div>
       <div>地址：{{it.address}}</div>
       <div class="option">
-        <div class="input" @click="input"><i class="iconfont icon-input" style="font-size: 1.4rem"></i></div>
+        <div class="input" @click="input(it, index)"><i class="iconfont icon-input" style="font-size: 1.4rem"></i></div>
         <div class="del" @click="del(it, index)"><i class="iconfont icon-el-icon-delete-copy" style="font-size: 1.4rem"></i></div>
       </div>
     </div>
@@ -104,7 +105,6 @@
         window.event.stopPropagation();
         const r = confirm("确认删除关联人？")
         if (r == true) {
-
           this.$ajax({
             method: 'GET',
             url: updateChildStatus() + "?child_id=" + id.id,
@@ -118,9 +118,9 @@
           document.getElementsByClassName('contacts')[i].children[4].style.marginRight = '-' + po;
         }
       },
-      input(event) {
-        event.stopPropagation();
-        this.$router.push({ name: 'physiological' })
+      input(id, i) {
+        window.event.stopPropagation();
+        this.$router.push({ name: 'physiological', params: { id: id.id } })
       },
     },
   };

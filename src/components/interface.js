@@ -159,6 +159,11 @@ export const updateInjectionDate = function () {
   const API = host + URL;
   return API;
 };
+export const selectChildRecord = function () {
+  const URL = 'selectChildRecord';
+  const API = host + URL;
+  return API;
+};
 export const updatePediatricPneumoniaStatus = function () {
   const URL = 'updatePediatricPneumoniaStatus';
   const API = host + URL;

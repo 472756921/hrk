@@ -34,7 +34,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { saveChildRecord } from '../interface';
+  import { saveChildRecord, selectChildRecord } from '../interface';
 
   export default {
     name: 'physiological',
@@ -43,6 +43,7 @@
         dialogVisible: false,
         weight: '',
         temperature: '',
+        child_id: '',
         volume: '',
         data: [
           {age: 12, weight: 22, temperature: 36.3, volume: 124, date: '2012-12-13'},
@@ -52,7 +53,25 @@
         ],
       };
     },
+    created() {
+      const par = this.$route.params;
+      if('id' in par) {
+        this.child_id = par.id;
+        this.getData(1);
+      }
+    },
     methods: {
+      getData(page) {
+        this.$ajax({
+          method: 'GET',
+          url: selectChildRecord() + '?child_id=' + this.child_id + '&page' + page,
+        }).then((res) => {
+          this.docList = res.data.doctors;
+          this.docListCop = res.data.doctors;
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
+      },
       handleClose(done) {
         done();
         this.weight = '' ;

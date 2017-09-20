@@ -1,5 +1,15 @@
 <template>
   <div>
+    <div style="width: 10rem;padding: .5rem">
+      <el-input
+        placeholder="输入名字点击搜索"
+        icon="search"
+        v-model="search"
+        @change="handleIconClick"
+        >
+      </el-input>
+    </div>
+
     <el-row :gutter="10">
       <el-col :xs="24" :sm="6" v-for="(doc, i) in docList" :key="i" style="padding: 12px">
         <el-card :body-style="{ padding: '0px' }">
@@ -25,6 +35,8 @@
     data() {
       return {
         docList: '',
+        docListCop: '',
+        search: '',
         currentDate: new Date()
       };
     },
@@ -32,12 +44,25 @@
       this.getDocList();
     },
     methods: {
+      handleIconClick() {
+        if (this.search == '' || this.search == null) {
+          this.docList = this.docListCop;
+        } else {
+          this.docList = [];
+          this.docListCop.map((k,i) => {
+            if (k.real_name.indexOf(this.search) != -1) {
+              this.docList.push(k);
+            }
+          })
+        }
+      },
       getDocList() {
         this.$ajax({
           method: 'GET',
           url: getDocList(),
         }).then((res) => {
           this.docList = res.data.doctors;
+          this.docListCop = res.data.doctors;
         }).catch((error) => {
           this.$message.error(error.message);
         });
