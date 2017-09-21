@@ -19,7 +19,23 @@
           </el-row>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="预约名医就诊" name="second">敬请期待</el-tab-pane>
+      <el-tab-pane label="预约名医就诊" name="second">
+        <div class="reservation" v-for="(item, index) in 2">
+          <el-row>
+            <el-col :span="18">
+              <div style="font-size: .6rem;color: #aaa"><span>编号：</span><span>{{item.order_on}}</span></div>
+              <div><span class="infoTitle">预约时间：</span><span class="infoText">2012-12-12</span></div>
+              <div><span class="infoTitle">预约名医地区：</span><span class="infoText">重庆</span></div>
+            </el-col>
+            <el-col :span="6">
+              <div class="reservationStatus Blue" v-if="item.status === 1">预约中</div>
+              <div class="reservationStatus Success" v-if="item.status === 2">预约成功</div>
+              <div class="reservationStatus Warning" v-if="item.status === 3">退款中</div>
+              <div class="reservationStatus danger" v-if="item.status === 4">退款完成</div>
+            </el-col>
+          </el-row>
+        </div>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -40,7 +56,6 @@
     },
     methods: {
       handleClick(tab, event) {
-        console.log(tab, event);
       },
       getList() {
         this.$ajax({

@@ -5,7 +5,7 @@
         <el-col :span="6">
           <div class="grid-content">
             <div>大众会员</div>
-            <button class="czBtn">升级</button>
+            <button class="czBtn" @click="updataLive">升级</button>
           </div>
         </el-col>
         <el-col :span="12">
@@ -42,7 +42,7 @@
       <span class="itemText">{{userInfo.address}}</span>
     </div>
     <div class="line2"></div>
-    <div class="text">
+    <div class="text"  @click="yh">
       <span>优惠券</span>
       <span class="itemText">
         <i class="iconfont icon-htbarrowright02"></i>
@@ -83,6 +83,9 @@
       this.getUserInfo();
     },
     methods: {
+      yh() {
+        this.$message.info('暂未开放，敬请期待');
+      },
       head() {
         this.$router.push({ name: 'userHeadUplode', params: { src: 'benson' }})
       },
@@ -137,6 +140,9 @@
         }).catch((error) => {
           this.$message.error(error.message);
         });
+      },
+      updataLive() {
+        this.$router.push({ name: 'updataLive' });
       },
     },
   };

@@ -14,7 +14,7 @@
         </div>
         <br/>
         <br/>
-        <el-button type="primary" style="margin: 0 auto; display: block;">预约服务</el-button>
+        <el-button type="primary" style="margin: 0 auto; display: block;" @click="yuyue">预约服务</el-button>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -30,8 +30,18 @@
     },
     methods: {
       handleClick(tab, event) {
-        console.log(tab, event);
-      }
+      },
+      yuyue() {
+        const h = this.$createElement;
+        this.$message({
+          message: h('p', null, [
+            h('div', null, '您已成功预约服务 '),
+            h('div', null, '后续客服会立即联系您，进行相关事宜')
+          ]),
+          duration: 5000,
+          type: 'success',
+        });
+      },
     }
   };
 </script>
