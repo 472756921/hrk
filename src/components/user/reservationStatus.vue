@@ -13,8 +13,8 @@
             <el-col :span="6">
               <div class="reservationStatus Blue" v-if="item.status === 1">预约中</div>
               <div class="reservationStatus Success" v-if="item.status === 2">预约成功</div>
-              <div class="reservationStatus Warning" v-if="item.status === 3">退款中</div>
-              <div class="reservationStatus danger" v-if="item.status === 4">退款完成</div>
+              <!--<div class="reservationStatus Warning" v-if="item.status === 3">退款中</div>-->
+              <div class="reservationStatus danger" v-if="item.status === 3">已退款</div>
             </el-col>
           </el-row>
         </div>
@@ -30,8 +30,8 @@
             <el-col :span="6">
               <div class="reservationStatus Blue" v-if="item.status === 1">预约中</div>
               <div class="reservationStatus Success" v-if="item.status === 2">预约成功</div>
-              <div class="reservationStatus Warning" v-if="item.status === 3">退款中</div>
-              <div class="reservationStatus danger" v-if="item.status === 4">退款完成</div>
+              <!--<div class="reservationStatus Warning" v-if="item.status === 3">退款中</div>-->
+              <div class="reservationStatus danger" v-if="item.status === 3">已退款</div>
             </el-col>
           </el-row>
         </div>
