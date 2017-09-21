@@ -21,6 +21,10 @@
     </el-radio-group>
     <br/>
     <br/>
+    <el-checkbox v-model="checked" size="large">我已于阅读并同意</el-checkbox>
+    <a href="#/public/fuxie" style="color: #1D8CE0;">《小儿肺炎注射知情同意书》</a>
+    <br/>
+    <br/>
     <br/>
     <br/>
     <el-button type="primary" class="center_block" @click="yy" >预约</el-button>
@@ -44,6 +48,7 @@
         positionList: '',
         hospitalList: '',
         data: '',
+        checked: false,
       };
     },
     created() {

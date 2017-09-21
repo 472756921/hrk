@@ -20,7 +20,7 @@
     <div>
       <br/>
       <el-checkbox v-model="checked" size="large">我已于阅读并同意</el-checkbox>
-      <a href="ag" class="text">《和润康注册协议》</a>
+      <a href="#/public/ag" class="text">《和润康注册协议》</a>
     </div>
     <br/>
     <br/>

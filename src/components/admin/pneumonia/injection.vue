@@ -12,7 +12,7 @@
         <el-table-column label="操作">
           <template scope="scope">
             <el-button @click.native.prevent="sure(scope.$index, tableData)" type="text" size="small">完成注射</el-button>
-            <el-button @click.native.prevent="changeDate(scope.$index, tableData)" type="text" size="small">b</el-button>
+            <el-button @click.native.prevent="changeDate(scope.$index, tableData)" type="text" size="small">设置注射日期</el-button>
             <el-button @click.native.prevent="colse(scope.$index, tableData)" type="text" size="small" style="color: red;">退款</el-button>
           </template>
         </el-table-column>

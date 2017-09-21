@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <h3 class="center">和润康注册协议</h3>
+    <h3 class="center">小儿肺炎注射知情同意书</h3>
     <p>一、帐号注册</p>
     <p>
       1、用户在使用本服务前需要注册一个“陌陌”帐号。“陌陌”帐号应当使用手机号码绑定注册，请用户使用尚未与“陌陌”帐号绑定的手机号码，以及未被陌陌科技根据本协议封禁的手机号码注册“陌陌”帐号。陌陌科技可以根据用户需求或产品需要对帐号注册和绑定的方式进行变更，而无须事先通知用户。
@@ -21,7 +21,7 @@
 
 <script type="text/ecmascript-6">
   export default {
-    name: 'ag',
+    name: 'fuxie',
     methods: {
       back() {
         this.$router.go(-1);

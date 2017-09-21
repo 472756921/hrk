@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Reg from '@/components/public/reg'
 import AG from '@/components/public/ag'
+import fuxie from '@/components/public/fuxie'
 import UserIndex from '@/components/user/userIndex'
 import UpdataLive from '@/components/user/updataLive'
 import Reservation from '@/components/user/reservation'
@@ -60,6 +61,11 @@ export default new Router({
       path: '/public/ag',
       name: 'ag',
       component: AG,
+    },
+    {
+      path: '/public/fuxie',
+      name: 'fuxie',
+      component: fuxie,
     },
     {
       path: '/login',
