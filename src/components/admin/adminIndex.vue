@@ -35,9 +35,9 @@
               </el-submenu>
               <el-menu-item index="6" v-if="type==1"><i class="iconfont icon-dingdan-copy"></i> 订单号查询</el-menu-item>
               <el-submenu index="8" v-if="type==1">
-                <template slot="title"><i class="iconfont icon-yimiao"></i> 肺炎疫苗</template>
-                <el-menu-item index="8-1"><router-link :to="{ name: 'injection' }">第一针</router-link></el-menu-item>
-                <el-menu-item index="8-2"><router-link :to="{ name: 'injectionB' }">第二针</router-link></el-menu-item>
+                <template slot="title"><i class="iconfont icon-yimiao"></i> 名医工作室</template>
+                <el-menu-item index="8-1"><router-link :to="{ name: 'injection' }">重庆</router-link></el-menu-item>
+                <el-menu-item index="8-2"><router-link :to="{ name: 'injectionB' }">港澳</router-link></el-menu-item>
               </el-submenu>
               <el-submenu index="7" v-if="type==1&&adminType==1">
                 <template slot="title"><i class="iconfont icon-guanliyuan"></i> 管理员管理</template>
