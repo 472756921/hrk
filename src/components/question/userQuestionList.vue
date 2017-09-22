@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="Warning">如果医生长时间没有回复您，可以申请退款拨打客服电话投诉</p>
-    <div class="listContent" v-for="(item, i) in data" @click="go(item.status, item.id)">
+    <div class="listContent" v-for="(item, i) in data" @click="go(item.status, item)">
       <div class="redpointer"></div>
       <img :src=item.icon style="float:left;">
       <div class="textContent">
@@ -29,9 +29,10 @@
       };
     },
     methods: {
-      go(status, id) {
+      go(status, item) {
         if(status === 1) {
-          this.$router.push({ name: 'question', params: {id: id} })
+          console.log(item);
+          this.$router.push({ name: 'question', params: {id: item.id, docName:item.real_name } })
         }
       },
       tksq(id, index) {

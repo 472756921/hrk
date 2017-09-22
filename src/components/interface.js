@@ -179,6 +179,11 @@ export const getInjection = function () {
   const API = host + URL;
   return API;
 };
+export const createConsulting = function () {
+  const URL = 'createConsulting';
+  const API = host + URL;
+  return API;
+};
 export const updateConsultingStatus = function () {
   const URL = 'updateConsultingStatus';
   const API = host + URL;

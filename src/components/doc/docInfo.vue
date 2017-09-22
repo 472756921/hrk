@@ -28,7 +28,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { selectGuardianDetail } from '../interface';
+  import { selectGuardianDetail, createConsulting } from '../interface';
 
   export default {
     name: 'docInfo',
@@ -44,7 +44,7 @@
       if ('doc' in par) {
         this.doc = par.doc;
       } else {
-        this.$message.error('网络错误,请稍后再试');
+        this.$router.push({ name: 'ask' });
       }
       this.$ajax({
         method: 'GET',
@@ -61,7 +61,21 @@
           this.$message.warning('请选择病情关联人');
           return;
         }
-        this.$router.push({ name: 'question' })
+        const data = {
+          doctor_id: this.doc.id,
+          child_id: this.patient,
+        };
+        this.$ajax({
+          method: 'POST',
+          data: data,
+          dataType: 'JSON',
+          contentType: 'application/json;charset=UTF-8',
+          url: createConsulting(),
+        }).then((res) => {
+          this.$router.push({ name: 'question', params: { docName: this.doc.real_name }  });
+        }).catch((error) => {
+          this.$message.error(error.message);
+        });
       }
     }
   };

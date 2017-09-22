@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="head center">
-      <div class="titleB">吴刚</div>
-      <div>主治医生</div>
+      <div class="titleB">{{docName}}</div>
     </div>
     <div class="talk">
       <span  v-for="(o, index) in egData">
@@ -30,11 +29,13 @@
       return {
         tid: '',
         sendMessage: '',
+        docName: '',
         egData: '',
       };
     },
     created() {
       const par = this.$route.params;
+      this.docName = par.docName;
       if ('id' in par) {
         this.tid = par.id;
         this.getList();
