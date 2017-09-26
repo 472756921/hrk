@@ -11,7 +11,8 @@
         </el-table-column>
         <el-table-column
           prop="admin_type"
-          label="角色（1：超级管理员，2：管理员，3：客服）">
+          :formatter = 'formatter'
+          label="角色">
         </el-table-column>
         <el-table-column
           prop="create_date"
@@ -34,6 +35,15 @@
   export default {
     name: 'adminUserList',
     methods: {
+      formatter(row, column) {
+        if (row.admin_type === 1) {
+          return '超级管理员';
+        } else if (row.admin_type === 2){
+          return '管理员';
+        } else {
+          return '客服';
+        }
+      },
       del(index) {
         const r = confirm("确认删除？")
         if (r === true) {

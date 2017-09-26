@@ -10,7 +10,7 @@
       <el-table-column prop="principal_id_number" v-if="cg==2" label="接口人身份证"></el-table-column>
       <el-table-column prop="department.department_name" v-if="cg==3" label="科室"></el-table-column>
       <el-table-column prop="price" v-if="cg==3" label="费用标准"></el-table-column>
-      <el-table-column prop="status" label="状态(1启用，0禁用)" ></el-table-column>
+      <el-table-column prop="status" label="状态" :formatter="formatter"></el-table-column>
       <el-table-column label="操作">
         <template scope="scope">
           <el-button @click.native.prevent="changeC(scope.$index, tableData)" v-if="cg!=3" type="text" size="small">详情</el-button>
@@ -134,6 +134,14 @@
       this.getDepartment();
     },
     methods: {
+      formatter(row, column) {
+        if (row.status === 1) {
+          return '启用';
+        } else {
+          return '禁用';
+        }
+
+      },
       del(i ,datas) {
         let data = '';
         if(this.cg == 1) {

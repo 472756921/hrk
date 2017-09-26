@@ -2,7 +2,7 @@
   <div class="contentes">
     <div class="new">
       <h3>关联联系人<a href="#/user/newContact" v-if="data.length<5">添加</a></h3>
-      <small style="color: #aaa;">( 侧滑管理联系人 )</small>
+      <small style="color: #aaa;">( 点击修改联系人，侧滑录入生理数据 )</small>
     </div>
     <div class="contacts" @click="edit(it)" v-for="(it, index) in data">
       <div>姓名：{{it.real_name}}</div>

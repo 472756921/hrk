@@ -41,6 +41,10 @@ import AddAdmin from '@/components/admin/adminUser/addAdmin'
 import List from '@/components/admin/user/list'
 import ItemClass from '@/components/admin/reservation/itemClass'
 import DocClass from '@/components/admin/ask/docClass'
+import UserList from '@/components/admin/user/list'
+import UserListB from '@/components/admin/user/listB'
+import UserListC from '@/components/admin/user/listC'
+import AllData from '@/components/admin/data/allData'
 
 Vue.use(Router)
 
@@ -77,11 +81,6 @@ export default new Router({
       name: 'admin',
       component: AdminIndex,
       children: [
-        {
-          path: 'allData',
-          name: 'allData',
-          component: AdminLogin,
-        },
         {
           path: 'docIndex',
           name: 'docIndex',
@@ -166,6 +165,26 @@ export default new Router({
           path: 'docClass',
           name: 'docClass',
           component: DocClass,
+        },
+        {
+          path: 'userList',
+          name: 'userList',
+          component: UserList,
+        },
+        {
+          path: 'userListb',
+          name: 'userListb',
+          component: UserListB,
+        },
+        {
+          path: 'userListc',
+          name: 'userListc',
+          component: UserListC,
+        },
+        {
+          path: 'allData',
+          name: 'allData',
+          component: AllData,
         },
       ],
     },

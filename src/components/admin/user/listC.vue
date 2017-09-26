@@ -33,6 +33,14 @@
           prop="lastLoginDate"
           label="注册时间">
         </el-table-column>
+        <el-table-column
+          prop="lastLoginDate"
+          label="会员开始时间">
+        </el-table-column>
+        <el-table-column
+          prop="lastLoginDate"
+          label="会员到期时间">
+        </el-table-column>
       </el-table>
     </template>
   </div>
