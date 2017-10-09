@@ -46,6 +46,8 @@ import UserListB from '@/components/admin/user/listB'
 import UserListC from '@/components/admin/user/listC'
 import AllData from '@/components/admin/data/allData'
 
+import m_index from '@/components/mall/m_index'
+
 Vue.use(Router)
 
 export default new Router({
@@ -75,6 +77,11 @@ export default new Router({
       path: '/login',
       name: 'adminLogin',
       component: AdminLogin,
+    },
+    {
+      path: '/m_index',
+      name: 'm_index',
+      component: m_index,
     },
     {
       path: '/admin',
