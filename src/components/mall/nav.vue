@@ -4,7 +4,7 @@
         <div v-show="show3">
           <div class="transition-box">
             <div style="font-weight: bold;margin: 0 0 1rem 0">全部分类</div>
-            <span v-for="i in navItems" class="item">药品</span>
+            <span v-for="i in itemData" class="item">{{i}}</span>
           </div>
         </div>
       </el-collapse-transition>
@@ -17,10 +17,10 @@
 <script type="text/ecmascript-6">
     export default {
       name: 'nav',
+      props: ['itemData'],
       data(){
         return {
           show3: false,
-          navItems: ['药品','药品','药品','药品','药品','药品'],
         }
       },
       methods: {

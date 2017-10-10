@@ -47,6 +47,7 @@ import UserListC from '@/components/admin/user/listC'
 import AllData from '@/components/admin/data/allData'
 
 import m_index from '@/components/mall/m_index'
+import m_hone from '@/components/mall/home/m_home'
 
 Vue.use(Router)
 
@@ -82,6 +83,13 @@ export default new Router({
       path: '/m_index',
       name: 'm_index',
       component: m_index,
+      children: [
+        {
+          path: 'home',
+          name: 'm_hone',
+          component: m_hone,
+        },
+      ],
     },
     {
       path: '/admin',

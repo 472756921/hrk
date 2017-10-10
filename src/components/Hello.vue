@@ -16,7 +16,7 @@
       <li><a>公司介绍</a></li>
       <li><a>健康知识</a></li>
       <li><a>更多功能</a></li>
-      <li><a>网上商城</a></li>
+      <li><a href="#/m_index/home">网上商城</a></li>
     </ul>
     <a href="#/admin/docIndex">后台</a>
   </div>

@@ -2,7 +2,7 @@
   <div class="block">
     <el-carousel height="10rem" arrow="never">
       <el-carousel-item v-for="item in imgdata" :key="item">
-        <img :src=item />
+        <img :src=item width="100%"/>
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -11,9 +11,10 @@
 <script type="text/ecmascript-6">
     export default {
       name: 'carousel',
+      props: ['imgdata'],
       data(){
         return{
-          imgdata: ['static/p1.jpg','static/p2.jpg','static/p3.jpg'],
+//          imgdata: ['static/p1.jpg','static/p2.jpg','static/p3.jpg'],
         }
       }
     };
