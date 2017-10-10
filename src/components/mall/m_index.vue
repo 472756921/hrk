@@ -1,12 +1,22 @@
 <template>
-    <div>
+    <div style="background: #fafafa;height: 100%">
       <div class="head">
         <el-row>
-          <el-col :span="8">
+          <el-col :span="4">
             <i class="iconfont icon-caidan" @click="navClick"></i>
           </el-col>
-          <el-col :span="8"><div class="title">和润康商城</div></el-col>
-          <el-col :span="8">
+          <el-col :span="16">
+            <div class="title">
+              <el-input
+                placeholder="憋说话，搜我"
+                icon="search"
+                size="small"
+                v-model="searchVal"
+                :on-icon-click="handleIconClick">
+              </el-input>
+            </div>
+          </el-col>
+          <el-col :span="4">
             <div style="text-align: right">
               <i class="iconfont icon-user1"></i>
             </div>
@@ -28,12 +38,16 @@
       components:{ u_nav, home},
       data() {
         return {
+          searchVal: '',
           navItems: ['药品','器械','仪器','其他'],
         }
       },
       methods: {
         navClick() {
           this.$refs.u_nav.show();
+        },
+        handleIconClick() {
+          alert('搜索');
         },
       }
     };

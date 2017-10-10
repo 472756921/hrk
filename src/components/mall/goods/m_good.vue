@@ -5,7 +5,7 @@
 
 <script type="text/ecmascript-6">
     export default {
-        name: 'goodsList',
+        name: 'm_good',
     };
 </script>
 

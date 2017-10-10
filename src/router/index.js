@@ -48,6 +48,7 @@ import AllData from '@/components/admin/data/allData'
 
 import m_index from '@/components/mall/m_index'
 import m_hone from '@/components/mall/home/m_home'
+import m_goodsList from '@/components/mall/goods/m_goodsList'
 
 Vue.use(Router)
 
@@ -88,6 +89,11 @@ export default new Router({
           path: 'home',
           name: 'm_hone',
           component: m_hone,
+        },
+        {
+          path: 'goodsList',
+          name: 'm_goodsList',
+          component: m_goodsList,
         },
       ],
     },
