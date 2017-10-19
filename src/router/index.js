@@ -49,6 +49,9 @@ import AllData from '@/components/admin/data/allData'
 import m_index from '@/components/mall/m_index'
 import m_hone from '@/components/mall/home/m_home'
 import m_goodsList from '@/components/mall/goods/m_goodsList'
+import m_good from '@/components/mall/goods/m_good'
+
+import famous from '@/components/admin/famousDoctor/famous'
 
 Vue.use(Router)
 
@@ -94,6 +97,11 @@ export default new Router({
           path: 'goodsList',
           name: 'm_goodsList',
           component: m_goodsList,
+        },
+        {
+          path: 'm_good/:id',
+          name: 'm_good',
+          component: m_good,
         },
       ],
     },
@@ -206,6 +214,11 @@ export default new Router({
           path: 'allData',
           name: 'allData',
           component: AllData,
+        },
+        {
+          path: 'famous',
+          name: 'famous',
+          component: famous,
         },
       ],
     },

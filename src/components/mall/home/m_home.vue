@@ -18,15 +18,15 @@
           goodsItemData: [
             {
               itemTitle: '新品推荐',
-              godds: [{img: 'http://iph.href.lu/100x100',name: '葵花宝典'},{img: 'http://iph.href.lu/100x100',name: '九阳神功'},{img: 'http://iph.href.lu/100x100',name: '九阴真经'},{img: 'http://iph.href.lu/100x100',name: '吸星大法'}],
+              godds: [{img: 'http://iph.href.lu/100x100', id: 1, name: '葵花宝典'},{img: 'http://iph.href.lu/100x100', id: 1, name: '九阳神功'},{img: 'http://iph.href.lu/100x100', id: 1, name: '九阴真经'},{img: 'http://iph.href.lu/100x100', id: 1, name: '吸星大法'}],
             },
             {
               itemTitle: '酬宾优惠',
-              godds: [{img: 'http://iph.href.lu/100x100',name: '倚天剑'},{img: 'http://iph.href.lu/100x100',name: '屠龙刀'},{img: 'http://iph.href.lu/100x100',name: '干将'},{img: 'http://iph.href.lu/100x100',name: '莫邪'}],
+              godds: [{img: 'http://iph.href.lu/100x100', id: 1, name: '倚天剑'},{img: 'http://iph.href.lu/100x100', id: 1, name: '屠龙刀'},{img: 'http://iph.href.lu/100x100', id: 1, name: '干将'},{img: 'http://iph.href.lu/100x100', id: 1, name: '莫邪'}],
             },
             {
               itemTitle: '热销商品',
-              godds: [{img: 'http://iph.href.lu/100x100',name: '红药水'},{img: 'http://iph.href.lu/100x100',name: '蓝药水'},{img: 'http://iph.href.lu/100x100',name: '敌敌畏'},{img: 'http://iph.href.lu/100x100',name: '九转还魂丹'}],
+              godds: [{img: 'http://iph.href.lu/100x100', id: 1, name: '红药水'},{img: 'http://iph.href.lu/100x100', id: 1, name: '蓝药水'},{img: 'http://iph.href.lu/100x100', id: 1, name: '敌敌畏'},{img: 'http://iph.href.lu/100x100', id: 1, name: '九转还魂丹'}],
             },
           ],
         }
