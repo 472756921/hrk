@@ -22,16 +22,23 @@
       <el-tab-pane label="用户评价" name="third">用户评价</el-tab-pane>
     </el-tabs>
 
-
     <div  class="option">
       <el-row>
         <el-col :span="6" style="text-align: center;background: #1D8CE0;">
-          <i class="iconfont icon-customservice" style="font-size: 2rem"></i>
+          <i class="iconfont icon-customservice" style="font-size: 2rem"  @click="kefu"></i>
         </el-col>
-        <el-col :span="9" style="background: #F7BA2A;text-align: center;">加入购物车</el-col>
-        <el-col :span="9" style="background: #FF4949;text-align: center;">立即购买</el-col>
+        <el-col :span="9" style="background: #F7BA2A;text-align: center;"><div>加入购物车</div></el-col>
+        <el-col :span="9" style="background: #FF4949;text-align: center;"><div @click="buyNow">立即购买</div></el-col>
       </el-row>
     </div>
+
+    <div class="pridInfo" v-if="pridInfo">
+      <i class="el-icon-close" style="float: right;" @click="close"></i>
+      <h4>请选择购买数量</h4>
+      <el-input-number size="small" v-model="num6" :min="1" :max="10"></el-input-number>
+      <div class="btn">立即付款</div>
+    </div>
+    <div class="over" v-if="pridInfo"></div>
   </div>
 </template>
 
@@ -42,8 +49,10 @@
     name: 'm_good',
     data() {
       return {
+        pridInfo: false,
         activeName: 'first',
         goodID: '',
+        num6: 1,
         goodDatile: {
           img: ['https://img.alicdn.com/imgextra/i3/3316594860/TB2gBk5bUFWMKJjSZFvXXaenFXa_!!3316594860.jpg_640x640Q50s50.jpg','https://img.alicdn.com/bao/uploaded/TB16QvdNpXXXXaaXpXXXXXXXXXX_!!0-item_pic.jpg_320x320Q50s50.jpg_.webp', 'https://img.alicdn.com/bao/uploaded/TB1vvlzJXXXXXbmapXXXXXXXXXX_!!0-item_pic.jpg_320x320Q50s50.jpg_.webp'],
           price: 399,
@@ -63,6 +72,15 @@
     methods: {
       handleClick(tab, event) {
         console.log(tab, event);
+      },
+      kefu(){
+        this.$message.warning('请在微信聊天框中直接输入您的问题！');
+      },
+      buyNow(){
+        this.pridInfo = true;
+      },
+      close(){
+        this.pridInfo = false;
       },
     },
   };
@@ -89,5 +107,31 @@
     height: 3.4rem;
     border-top: 1px solid #F7BA2A;
     line-height: 3.4rem;
+  }
+  .pridInfo{
+    width: calc(100% - .8rem);
+    background: #fff;
+    position: fixed;
+    padding: .4rem .4rem 1rem .4rem;
+    bottom: 0;
+    z-index: 3;
+  }
+  .btn{
+    width:100%;
+    margin-top: 3rem;
+    background: red;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: .6rem 0;
+  }
+  .over{
+    position: fixed;
+    z-index: 2;
+    background: #666;
+    opacity: .7;
+    width: 100%;
+    height: 100%;
+    top: 0;
   }
 </style>
