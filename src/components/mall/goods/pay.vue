@@ -1,12 +1,12 @@
 <template>
-    <div>
-    </div>
+  <div>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
-    export default {
-        name: 'app',
-    };
+  export default {
+    name: 'pay',
+  };
 </script>
 
 <style scoped>
