@@ -42,13 +42,20 @@
       <span class="itemText">{{userInfo.address}}</span>
     </div>
     <div class="line2"></div>
-    <div class="text"  @click="yh">
-      <span>优惠券</span>
+    <div class="text"  @click="shdz">
+      <span>收货地址</span>
       <span class="itemText">
         <i class="iconfont icon-htbarrowright02"></i>
       </span>
     </div>
-
+    <div class="line2"></div>
+    <div class="text"  @click="jl">
+      <span>购买记录</span>
+      <span class="itemText">
+        <i class="iconfont icon-htbarrowright02"></i>
+      </span>
+    </div>
+    <div class="line2"></div>
 
     <el-dialog title="提示" :visible.sync="dialogVisible" size="large">
       <el-input  v-model="val" size="small">
@@ -83,8 +90,11 @@
       this.getUserInfo();
     },
     methods: {
-      yh() {
-        this.$message.info('暂未开放，敬请期待');
+      shdz() {
+        this.$router.push({ name: 'shdz'})
+      },
+      jl() {
+        this.$router.push({ name: 'gmjl'})
       },
       head() {
         this.$router.push({ name: 'userHeadUplode', params: { src: 'benson' }})

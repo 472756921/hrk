@@ -20,6 +20,8 @@ import Pneumonia from '@/components/user/pneumonia'
 import PneumoniaStatus from '@/components/user/pneumoniaStatus'
 import UserHeadUplode from '@/components/user/userHeadUplode'
 import FamousDoctorStudio from '@/components/user/famousDoctorStudio'
+import shdz from '@/components/user/shdz'
+import gmjl from '@/components/user/gmjl'
 
 import AdminIndex from '@/components/admin/adminIndex'
 import AdminLogin from '@/components/admin/adminLogin'
@@ -307,6 +309,16 @@ export default new Router({
           path: 'famousDoctorStudio',
           name: 'famousDoctorStudio',
           component: FamousDoctorStudio,
+        },
+        {
+          path: 'shdz',
+          name: 'shdz',
+          component: shdz,
+        },
+        {
+          path: 'gmjl',
+          name: 'gmjl',
+          component: gmjl,
         },
       ],
     }

@@ -36,7 +36,7 @@
       <i class="el-icon-close" style="float: right;" @click="close"></i>
       <h4>请选择购买数量</h4>
       <el-input-number size="small" v-model="num6" :min="1" :max="10"></el-input-number>
-      <div class="btn">立即付款</div>
+      <div class="btn" @click="pay">立即付款</div>
     </div>
     <div class="over" v-if="pridInfo"></div>
   </div>
@@ -78,6 +78,9 @@
       },
       buyNow(){
         this.pridInfo = true;
+      },
+      pay(){
+        this.$router.push({ name: 'gmjl'})
       },
       close(){
         this.pridInfo = false;

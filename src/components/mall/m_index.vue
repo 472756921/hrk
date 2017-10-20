@@ -7,18 +7,12 @@
           </el-col>
           <el-col :span="16">
             <div class="title">
-              <el-input
-                placeholder="憋说话，搜我"
-                icon="search"
-                size="small"
-                v-model="searchVal"
-                :on-icon-click="handleIconClick">
-              </el-input>
+              <el-input placeholder="憋说话，搜我" icon="search" size="small" v-model="searchVal" :on-icon-click="handleIconClick"></el-input>
             </div>
           </el-col>
           <el-col :span="4">
             <div style="text-align: right">
-              <i class="iconfont icon-user1"></i>
+              <i class="iconfont icon-user1" @click="user"></i>
             </div>
           </el-col>
         </el-row>
@@ -49,6 +43,9 @@
         handleIconClick() {
           alert('搜索');
         },
+        user() {
+          this.$router.push({ name: 'userInfo'})
+        }
       }
     };
 </script>
