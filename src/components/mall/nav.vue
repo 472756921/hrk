@@ -3,8 +3,9 @@
       <el-collapse-transition>
         <div v-show="show3">
           <div class="transition-box">
+            <div class="car" @click="car">购物车</div>
             <div style="font-weight: bold;margin: 0 0 1rem 0">全部分类</div>
-            <span v-for="i in itemData" class="item">{{i}}</span>
+            <span v-for="i in itemData" class="item" @click="list">{{i}}</span>
           </div>
         </div>
       </el-collapse-transition>
@@ -26,6 +27,14 @@
       methods: {
         show() {
           this.show3 = !this.show3;
+        },
+        car() {
+          this.$router.push({ name: 'm_car' });
+          this.show3 = !this.show3;
+        },
+        list() {
+          this.$router.push({ name: 'm_goodsList' });
+          this.show3 = !this.show3;
         }
       },
     };
@@ -35,7 +44,7 @@
   .transition-box {
     background-color: #eee;
     color: #324057;
-    padding: 1.3rem;
+    padding: 0 1rem 1rem;
     position: relative;
     z-index:120;
   }
@@ -50,5 +59,10 @@
     height: 100%;
     position: absolute;
     z-index:100;
+  }
+  .car{
+    line-height: 3rem;
+    font-weight: 800;
+    color: #20A0FF;
   }
 </style>
