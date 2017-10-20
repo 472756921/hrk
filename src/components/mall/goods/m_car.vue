@@ -2,13 +2,13 @@
   <div style="padding: .4rem">
     <div class="title" v-if="listData==''">购物车还是空的，赶紧去采购吧</div>
     <div class="title" v-if="listData==''"><a href="#/m_index/home" class="a">去首页</a></div>
-    <el-row :gutter="10" v-for="(it, i) in listData" key="i">
+    <el-row :gutter="10" v-for="(it, i) in listData" key="i" style="border-bottom: 1px solid #e0e0e0">
       <el-col :span="6"><img src="http://iph.href.lu/80x80" width="100%"/></el-col>
       <el-col :span="14">
         <div class="name">{{it.name}}</div>
         <div class="danger" style="text-align: left">¥{{it.price}}</div>
       </el-col>
-      <el-col :span="4" style="text-align: center;"><i class="danger el-icon-delete" style="font-size: 1.4rem;line-height: 3.6rem;"></i></el-col>
+      <el-col :span="4" style="text-align: center;"><i class="danger el-icon-delete" style="font-size: 1.4rem;line-height: 3.6rem;" @click="del"></i></el-col>
     </el-row>
 
     <el-row class="con">
@@ -25,8 +25,16 @@
     name: 'm_car',
     data(){
       return {
-        listData: [{name:'公牛抗电涌插座排插防雷保护接线板多功能电脑手机USB电源插排', price: 123.00}],
+        listData: [{name:'公牛抗电涌插座排插防雷保护接线板多功能电脑手机USB电源插排', price: 123.00}, {name:'公牛抗电涌插座排插防雷保护接线板多功能电脑手机USB电源插排', price: 123.00}, ],
       };
+    },
+    methods: {
+      del(){
+        const va = confirm('确认删除该商品？');
+        if (va) {
+
+        }
+      },
     },
   };
 </script>
