@@ -11,7 +11,7 @@
         <el-col :span="12">
           <div class="">
             <div class="round" @click="head">
-              <img src="http://iph.href.lu/98x98">
+              <img src="http://iph.href.lu/98x98" width="100%" height="100%">
             </div>
           </div>
         </el-col>
