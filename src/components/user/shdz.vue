@@ -7,7 +7,7 @@
       <br/>
       <div>{{it.address}}</div>
       <div>{{it.yb}}</div>
-      <el-button v-if="it.active==0" type="primary" size="mini" style="float: right">设为默认</el-button>
+      <el-button v-if="it.active==0" type="primary" size="mini" style="float: right"  @click="setMR(i)">设为默认</el-button>
     </div>
   </div>
 </template>
@@ -24,6 +24,15 @@
         ],
       };
     },
+    methods: {
+      setMR(i) {
+        const va = confirm('确认将该地址作为默认收货地址？');
+        if (va) {
+          this.data.map((item)=>{item.active = 0})
+          this.data[i].active = 1;
+        }
+      },
+    },
   };
 </script>
 
@@ -31,14 +40,15 @@
 .item{
   padding: 1rem;
   overflow: auto;
-  border: 2px solid #eee;
+  border: 8px dashed #eee;
   margin: .6rem 0;
 }
 .activees{
   padding: 1rem;
   overflow: auto;
-  border: 10px dashed #F4A460;
+  border: 8px dashed #F4A460;
   margin: .6rem 0;
+  background: #eee;
 }
 .name{
   font-weight: 600;

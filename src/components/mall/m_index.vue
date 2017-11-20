@@ -33,7 +33,7 @@
       data() {
         return {
           searchVal: '',
-          navItems: ['药品','器械','仪器','其他'],
+          navItems: [{id:0, name:'首页'}, {id:1, name:'设备'}, {id:2, name:'药品'}, {id:3, name:'其他'}],
         }
       },
       methods: {
@@ -41,7 +41,11 @@
           this.$refs.u_nav.show();
         },
         handleIconClick() {
-          alert('搜索');
+          if(this.$route.name=='m_home') {
+            this.$router.push({ path: 'm_goodsList/1213800' });
+          } else {
+            this.$router.push({ path: '/m_index/m_goodsList/1213800' });
+          }
         },
         user() {
           this.$router.push({ name: 'userInfo'})

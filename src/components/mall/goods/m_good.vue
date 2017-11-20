@@ -27,7 +27,7 @@
         <el-col :span="6" style="text-align: center;background: #1D8CE0;">
           <i class="iconfont icon-customservice" style="font-size: 2rem"  @click="kefu"></i>
         </el-col>
-        <el-col :span="9" style="background: #F7BA2A;text-align: center;"><div>加入购物车</div></el-col>
+        <el-col :span="9" style="background: #F7BA2A;text-align: center;"><div @click="joinCar">加入购物车</div></el-col>
         <el-col :span="9" style="background: #FF4949;text-align: center;"><div @click="buyNow">立即购买</div></el-col>
       </el-row>
     </div>
@@ -71,18 +71,23 @@
     },
     methods: {
       handleClick(tab, event) {
-        console.log(tab, event);
       },
-      kefu(){
+      kefu() {
         this.$message.warning('请在微信聊天框中直接输入您的问题！');
       },
-      buyNow(){
+      buyNow() {
         this.pridInfo = true;
       },
-      pay(){
+      pay() {
         this.$router.push({ name: 'gmjl'})
       },
-      close(){
+      joinCar() {
+        const va = confirm('确认将该商品加入购物车？');
+        if (va) {
+
+        }
+      },
+      close() {
         this.pridInfo = false;
       },
     },

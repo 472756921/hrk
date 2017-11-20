@@ -5,7 +5,7 @@
           <div class="transition-box">
             <div class="car" @click="car">购物车</div>
             <div style="font-weight: bold;margin: 0 0 1rem 0">全部分类</div>
-            <span v-for="i in itemData" class="item" @click="list">{{i}}</span>
+            <span v-for="i in itemData" class="item" @click="list(i.id)">{{i.name}}</span>
           </div>
         </div>
       </el-collapse-transition>
@@ -32,8 +32,16 @@
           this.$router.push({ name: 'm_car' });
           this.show3 = !this.show3;
         },
-        list() {
-          this.$router.push({ name: 'm_goodsList' });
+        list(item) {
+          if (item == 0){
+            this.$router.push({ name: 'm_home' });
+          } else {
+            if(this.$route.name=='m_home') {
+              this.$router.push({ path: 'm_goodsList/'+item });
+            } else {
+              this.$router.push({ path: '/m_index/m_goodsList/'+item });
+            }
+          }
           this.show3 = !this.show3;
         }
       },

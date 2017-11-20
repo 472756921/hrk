@@ -1,6 +1,6 @@
 <template>
     <div style="padding: 0 .4rem">
-      <h4 style="margin: .6rem 0">当前分类：设备</h4>
+      <h4 style="margin: .6rem 0">当前分类：{{className}}</h4>
       <m_goodListItem></m_goodListItem>
     </div>
 </template>
@@ -11,6 +11,18 @@
   export default {
     name: 'm_goodsList',
     components: { m_goodListItem },
+    data(){
+      return {
+        goodID: '',
+        className: '',
+      }
+    },
+    created() {
+      this.goodID = this.$route.params.id;
+      if( this.goodID == '1213800' ){
+        this.className = '自定义搜索';
+      }
+    },
   };
 </script>
 

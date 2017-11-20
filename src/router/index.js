@@ -49,7 +49,7 @@ import UserListC from '@/components/admin/user/listC'
 import AllData from '@/components/admin/data/allData'
 
 import m_index from '@/components/mall/m_index'
-import m_hone from '@/components/mall/home/m_home'
+import m_home from '@/components/mall/home/m_home'
 import m_car from '@/components/mall/goods/m_car'
 import m_goodsList from '@/components/mall/goods/m_goodsList'
 import m_pay from '@/components/mall/goods/m_pay'
@@ -94,8 +94,8 @@ export default new Router({
       children: [
         {
           path: 'home',
-          name: 'm_hone',
-          component: m_hone,
+          name: 'm_home',
+          component: m_home,
         },
         {
           path: 'm_car',
@@ -103,7 +103,7 @@ export default new Router({
           component: m_car,
         },
         {
-          path: 'goodsList',
+          path: 'm_goodsList/:id',
           name: 'm_goodsList',
           component: m_goodsList,
         },
