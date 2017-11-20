@@ -1,12 +1,12 @@
 <template>
   <div>
     <div :class="it.active==1?'activees':'item'" v-for="(it, i) in data">
-      <div class="name">刘德华 收</div>
-      <div class="phone">17780024049</div>
+      <div class="name">{{it.name}} 收</div>
+      <div class="phone">{{it.phone}}</div>
       <br/>
       <br/>
-      <div>四川省 成都市 天府三街益州大道332号</div>
-      <div>610000</div>
+      <div>{{it.address}}</div>
+      <div>{{it.yb}}</div>
       <el-button v-if="it.active==0" type="primary" size="mini" style="float: right">设为默认</el-button>
     </div>
   </div>
@@ -18,9 +18,9 @@
     data() {
       return {
         data: [
-          {active: 1, name: '刘德华', phone: 18837746362, address: '四川省 成都市 天府三街益州大道332号'},
-          {active: 0, name: '刘德华', phone: 18837746362, address: '四川省 成都市 天府三街益州大道332号'},
-          {active: 0, name: '刘德华', phone: 18837746362, address: '四川省 成都市 天府三街益州大道332号'}
+          {active: 1, name: '刘德华', phone: 18837746362, address: '四川省 成都市 天府三街益州大道332号', yb: 610000},
+          {active: 0, name: '刘德华', phone: 18837746362, address: '四川省 成都市 天府三街益州大道332号', yb: 610000},
+          {active: 0, name: '刘德华', phone: 18837746362, address: '四川省 成都市 天府三街益州大道332号', yb: 610000}
         ],
       };
     },

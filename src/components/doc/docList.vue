@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="width: 10rem;padding: .5rem">
+    <div style="width:95%;padding: .5rem">
       <el-input
         placeholder="输入名字点击搜索"
         icon="search"
