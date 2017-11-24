@@ -136,7 +136,6 @@
         };
         let url = createDoctor();
         if (this.type === 'edit') {
-
           data = {
             doctor_icon: this.headImg,
             position: this.zw,
@@ -155,6 +154,8 @@
           contentType: 'application/json;charset=UTF-8',
         }).then((res) => {
           this.dialogVisible = false
+          this.$message.success('修改成功');
+          this.getList();
         }).catch((error) => {
           this.$message.error('网络有问题，请稍后再试');
         });

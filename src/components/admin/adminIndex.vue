@@ -38,16 +38,22 @@
                 <el-menu-item index="5-5"><router-link :to="{ name: 'injectionD' }">第四针</router-link></el-menu-item>
                 <el-menu-item index="5-4"><router-link :to="{ name: 'injectionO' }">完成记录</router-link></el-menu-item>
               </el-submenu>
-              <el-menu-item index="6" v-if="type==1"><i class="iconfont icon-dingdan-copy"></i> 订单号查询</el-menu-item>
               <el-submenu index="8" v-if="type==1">
                 <template slot="title"><i class="iconfont icon-yisheng"></i> 名医工作室</template>
                 <el-menu-item index="8-1"><router-link :to="{ name: 'famous' }">预约列表</router-link></el-menu-item>
+              </el-submenu>
+              <el-submenu index="9" v-if="type==1">
+                <template slot="title"><i class="iconfont icon-shangcheng"></i> 商城管理</template>
+                <el-menu-item index="9-1"><router-link :to="{ name: 'addGodds' }">添加商品</router-link></el-menu-item>
+                <el-menu-item index="9-1"><router-link :to="{ name: 'mallIndex' }">商品列表</router-link></el-menu-item>
+                <el-menu-item index="9-1"><router-link :to="{ name: 'headImg' }">商城录播图片设置</router-link></el-menu-item>
               </el-submenu>
               <el-submenu index="7" v-if="type==1&&adminType==1">
                 <template slot="title"><i class="iconfont icon-guanliyuan"></i> 管理员管理</template>
                 <el-menu-item index="7-1"><router-link :to="{ name: 'adminUserList' }">管理员列表</router-link></el-menu-item>
                 <el-menu-item index="7-2"><router-link :to="{ name: 'addAdmin' }">新增管理员</router-link></el-menu-item>
               </el-submenu>
+              <el-menu-item index="6" v-if="type==1"><i class="iconfont icon-dingdan-copy"></i> <router-link :to="{ name: 'oderList' }">订单查询</router-link></el-menu-item>
               <el-menu-item index="10"  v-if="type==2"><i class="iconfont icon-wenzhenzhong"></i> <router-link :to="{ name: 'docIndex' }">问诊列表</router-link></el-menu-item>
             </el-menu>
           </el-col>

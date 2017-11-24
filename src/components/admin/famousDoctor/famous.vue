@@ -11,14 +11,20 @@
           </template>
         </el-table-column>
       </el-table>
+      <Page :page="page" v-if="over" v-on:pageChange="getList"/>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import Page from '../page';
+
     export default {
       name: 'famous',
+      components: { Page },
       data(){
         return {
+          page: '',
+          over: false,
           tableData: [
             {
               name: '王晓宇',
@@ -43,6 +49,7 @@
         filterTag(value, row) {
           return row.classes === value;
         },
+        getList(page) {},
         formatter(row, column) {
           if (row.u_leve === 1) {
             return '普通用户';

@@ -3,8 +3,8 @@
  */
 
 
-const host = 'http://www.9jck.com:8099/';
-//const host = 'http://192.168.1.103:8080/';
+//const host = 'http://www.9jck.com:8099/';
+const host = 'http://192.168.1.105:8080/';
 
 //用户注册
 export const userReg = function () {

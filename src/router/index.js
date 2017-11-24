@@ -25,6 +25,7 @@ import gmjl from '@/components/user/gmjl'
 
 import AdminIndex from '@/components/admin/adminIndex'
 import AdminLogin from '@/components/admin/adminLogin'
+import oderList from '@/components/admin/oderList'
 import DocIndex from '@/components/doc/docIndex'
 import Chart from '@/components/doc/chart'
 
@@ -47,6 +48,9 @@ import UserList from '@/components/admin/user/list'
 import UserListB from '@/components/admin/user/listB'
 import UserListC from '@/components/admin/user/listC'
 import AllData from '@/components/admin/data/allData'
+import mallIndex from '@/components/admin/mall/mallIndex'
+import addGodds from '@/components/admin/mall/addGodds'
+import headImg from '@/components/admin/mall/headImg'
 
 import m_index from '@/components/mall/m_index'
 import m_home from '@/components/mall/home/m_home'
@@ -233,6 +237,26 @@ export default new Router({
           path: 'famous',
           name: 'famous',
           component: famous,
+        },
+        {
+          path: 'mallIndex',
+          name: 'mallIndex',
+          component: mallIndex,
+        },
+        {
+          path: 'addGodds',
+          name: 'addGodds',
+          component: addGodds,
+        },
+        {
+          path: 'headImg',
+          name: 'headImg',
+          component: headImg,
+        },
+        {
+          path: 'oderList',
+          name: 'oderList',
+          component: oderList,
         },
       ],
     },

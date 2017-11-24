@@ -19,17 +19,30 @@
       <li><a href="#/m_index/home">网上商城</a></li>
     </ul>
     <a href="#/admin/docIndex">后台</a>
+    <h3 @click="setop">设置openid</h3>
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
 export default {
   name: 'hello',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  }
+  },
+  methods: {
+    setop() {
+      this.$ajax({
+        method: 'GET',
+        url: getConsultings() + "?status=4&page=" + page,
+      }).then((res) => {
+        this.$message.success('设置ok');
+      }).catch((error) => {
+        this.$message.error('设置失败');
+      });
+    },
+  },
 }
 </script>
 
