@@ -70,16 +70,15 @@
             url: saveConsultingDetail(),
           }).then((res) => {
 
+            const message = { content: this.sendMessage, role: 1, };
+            this.egData = [...this.egData, message];
+            this.sendMessage = '';
+            let anchor = document.getElementById('nn').offsetTop;
+            anchor += 200;
+            document.body.scrollTop = anchor;
           }).catch((error) => {
-            this.$message.error(error.message);
+            this.$message.error('对不起，请稍后重试');
           });
-
-          const message = { content: this.sendMessage, role: 1, };
-          this.egData = [...this.egData, message];
-          this.sendMessage = '';
-          let anchor = document.getElementById('nn').offsetTop;
-          anchor += 200;
-          document.body.scrollTop = anchor;
         }
       },
     },

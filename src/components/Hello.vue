@@ -24,6 +24,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import {saveSession} from './interface';
 export default {
   name: 'hello',
   data () {
@@ -35,7 +36,7 @@ export default {
     setop() {
       this.$ajax({
         method: 'GET',
-        url: getConsultings() + "?status=4&page=" + page,
+        url: saveSession(),
       }).then((res) => {
         this.$message.success('设置ok');
       }).catch((error) => {

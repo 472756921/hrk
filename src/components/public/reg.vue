@@ -77,7 +77,7 @@
           contentType: 'application/json;charset=UTF-8',
           data: userDTO,
         }).then((res) => {
-          console.log(res);
+          console.log('注册成功');
         }).catch((error) => {
           console.log(error);
         });

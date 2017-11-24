@@ -2,10 +2,11 @@
   <div>
     <p class="Warning">如果医生长时间没有回复您，可以申请退款拨打客服电话投诉</p>
     <div class="listContent" v-for="(item, i) in data" @click="go(item.status, item)">
-      <div class="redpointer"></div>
+      <div class="redpointer"  v-if="item.customer_read == 1"></div>
       <img :src=item.icon style="float:left;">
       <div class="textContent">
-        <div>与 {{item.real_name}} 的会话<small>（关联人:{{item.contact}}）</small></div>
+        <div>与 <span class="Blue">{{item.real_name}}</span> 的会话<small>（关联人：<span style="color: red;">{{item.contact}}</span>）</small></div>
+        <div style="font-size: 1rem">最后沟通时间：{{item.last_update_date}}</div>
         <div class="Blue" v-if="item.status == 1">正在进行
           <br/>
           <span class="op" @click="tksq(item.contactID, i)"> 申请退款 </span>
@@ -39,10 +40,10 @@
         window.event.stopPropagation();
         const r = confirm("申请退款后，将关闭会话，是否确认？")
         if (r === true) {
-          this.$message.error('对不起，该会话不满足退款条件');
+//          this.$message.error('对不起，该会话不满足退款条件');
+          this.data[index].status = 3;
           return;
         }
-        this.data[index].status = 3;
       },
       getList(){
         this.$ajax({

@@ -107,6 +107,11 @@
       this.getList();
     },
     methods: {
+      del(index, data) {
+        this.type = 'del';
+        this.cid = data[index].id;
+        this.save();
+      },
       add() {
         this.dialogVisible = true;
         this.type = 'add';
@@ -142,6 +147,13 @@
             detail: this.jianjie,
             beans: this.sf,
             detail_the_front: this.jianjie,
+            id: this.cid,
+          };
+          url = updateDoctor();
+        }
+        if (this.type === 'del') {
+          data = {
+            status:0,
             id: this.cid,
           };
           url = updateDoctor();

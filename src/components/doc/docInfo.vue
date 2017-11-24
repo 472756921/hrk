@@ -72,7 +72,7 @@
           contentType: 'application/json;charset=UTF-8',
           url: createConsulting(),
         }).then((res) => {
-          this.$router.push({ name: 'question', params: { docName: this.doc.real_name }  });
+          this.$router.push({ name: 'question', params: { docName: this.doc.real_name, id: res.data.service_id }  });
         }).catch((error) => {
           this.$message.error(error.message);
         });

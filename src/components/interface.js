@@ -6,6 +6,11 @@
 //const host = 'http://www.9jck.com:8099/';
 const host = 'http://192.168.1.105:8080/';
 
+export const saveSession = function () {
+  const URL = 'saveSession';
+  const API = host + URL;
+  return API;
+};
 //用户注册
 export const userReg = function () {
   const URL = 'registerCustomer';

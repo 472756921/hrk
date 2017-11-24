@@ -9,6 +9,7 @@ import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
 
 Vue.config.productionTip = false
 Vue.prototype.$ajax = axios;
+axios.defaults.withCredentials=true;
 Vue.component(CollapseTransition.name, CollapseTransition)
 Vue.use(ElementUI)
 /* eslint-disable no-new */

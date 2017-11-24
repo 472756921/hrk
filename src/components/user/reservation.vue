@@ -99,7 +99,7 @@
       getHospitals(cityID) {
         this.$ajax({
           method: 'GET',
-          url: getHospitals() +　'/?city_id=' + cityID,
+          url: getHospitals() +　'?city_id=' + cityID,
         }).then((res) => {
           this.hospitalList = res.data.hospitals;
           this.getDepartmentDetails(this.hospitalList[0].id);
@@ -109,7 +109,7 @@
       getDepartmentDetails(hospitall_id) {
         this.$ajax({
           method: 'GET',
-          url: getDepartmentDetails() +　'/?hospitall_id=' + hospitall_id,
+          url: getDepartmentDetails() +　'?hospitall_id=' + hospitall_id,
         }).then((res) => {
           this.departmentList = res.data;
           this.department = '';
