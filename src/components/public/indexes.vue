@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding-bottom: 5rem">
     <el-row>
       <el-col :span="24">
         <div class="shadow"></div>
@@ -21,7 +21,7 @@
       <el-col :span="24">
         <div class="btnU btn_main">
           <div class="btnIcon_content"><i class="btnIcon iconfont icon-shouye6"></i></div>
-          <div class="btn_text">家庭医生</div>
+          <div class="btn_text" style="color: #EB8B71;">家庭医生</div>
         </div>
       </el-col>
       <el-col :span="6">
@@ -66,13 +66,27 @@
           <img src="http://iph.href.lu/200x200?text=商品" width="99.5%"/>
         </div>
       </el-col>
+      <el-col :span="24">
+        <div class="prod"><i class="iconfont icon-shouye3" style="font-size: 1.4rem"></i> 附近</div>
+      </el-col>
+      <el-col :span="24">
+        <div class="positionL">
+          <div>XXX医院</div>
+          <div>XXX医院</div>
+          <div>XXX医院</div>
+        </div>
+      </el-col>
     </el-row>
+    <footeres class="footers"></footeres>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+import footeres from './footer';
+
 export default {
   name: 'indexes',
+  components: {footeres},
   data () {
     return {
     }
@@ -155,5 +169,16 @@ export default {
     color: #F8937E;
   }
   .prList{
+  }
+  .footers{
+    position: fixed;
+    bottom: 0;
+  }
+  .positionL{
+    width:100%;
+    padding: .4rem;
+    box-sizing: border-box;
+    line-height: 2rem;
+    overflow: auto;
   }
 </style>
