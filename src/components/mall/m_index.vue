@@ -1,5 +1,5 @@
 <template>
-    <div style="background: #fafafa;height: 100%">
+    <div style="background: #fafafa;height: 100%;padding-bottom: 5rem">
       <div class="head">
         <el-row>
           <el-col :span="4">
@@ -20,16 +20,18 @@
       <u_nav ref="u_nav" :itemData="navItems"></u_nav>
       <router-view></router-view>
       <div class="footer">------------ 我是有底线的 ------------</div>
+      <footeres class="footers"></footeres>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import footeres from '../public/footer';
   import u_nav from './nav';
   import home from './home/m_home';
 
     export default {
       name: 'm_index',
-      components:{ u_nav, home},
+      components:{ u_nav, home, footeres},
       data() {
         return {
           searchVal: '',
@@ -71,5 +73,9 @@
     text-align: center;
     padding: 2rem 0 .4rem 0;
     color: #e4e4e4;
+  }
+  .footers{
+    position: fixed;
+    bottom: 0;
   }
 </style>

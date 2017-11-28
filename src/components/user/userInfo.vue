@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding-bottom: 5rem">
     <div class="userInfoHead">
       <el-row>
         <el-col :span="6">
@@ -28,34 +28,47 @@
 
     <br/>
     <div class="text">
-      <span>身份证号码</span>
+      <span><i class="iconfont icon-shouye19" style="color: #68c8e8;font-size: 1.6rem"></i> 我的预约</span>
+      <span class="itemText"><i class="iconfont icon-htbarrowright02"></i></span>
+    </div>
+    <div class="line2"></div>
+    <div class="text">
+      <span><i class="iconfont icon-shouye1" style="color: #f92731;font-size: 1.6rem"></i> 身份证号码</span>
       <span class="itemText">{{userInfo.id_number}}</span>
     </div>
     <div class="line2"></div>
     <div class="text" @click="show('phone')">
-      <span>联系电话</span>
+      <span><i class="iconfont icon-shouye11" style="color: #61327a;font-size: 1.6rem"></i> 联系电话</span>
       <span class="itemText">{{userInfo.phone}}</span>
     </div>
     <div class="line2"></div>
     <div class="text"  @click="show('address')">
-      <span>联系地址</span>
+      <span><i class="iconfont icon-shouye3" style="color: #4ed269;font-size: 1.6rem"></i> 联系地址</span>
       <span class="itemText">{{userInfo.address}}</span>
     </div>
     <div class="line2"></div>
     <div class="text"  @click="shdz">
-      <span>收货地址</span>
+      <span><i class="iconfont icon-shouye14" style="color: #b18190;font-size: 1.6rem"></i> 收货地址</span>
       <span class="itemText">
         <i class="iconfont icon-htbarrowright02"></i>
       </span>
     </div>
     <div class="line2"></div>
     <div class="text"  @click="jl">
-      <span>购买记录</span>
+      <span><i class="iconfont icon-shouye12" style="color: #f8cc8b;font-size: 1.6rem"></i> 购买记录</span>
       <span class="itemText">
         <i class="iconfont icon-htbarrowright02"></i>
       </span>
     </div>
     <div class="line2"></div>
+    <div class="text"  @click="jl">
+      <span> <i class="iconfont icon-shouye5" style="color: #0596f1;font-size: 1.6rem"></i> 联系人</span>
+      <span class="itemText">
+        <i class="iconfont icon-htbarrowright02"></i>
+      </span>
+    </div>
+    <div class="line2"></div>
+    <footeres class="footers"></footeres>
 
     <el-dialog title="提示" :visible.sync="dialogVisible" size="large">
       <el-input  v-model="val" size="small">
@@ -66,16 +79,16 @@
         <el-button type="primary" @click="change">确 定</el-button>
       </span>
     </el-dialog>
-
-
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import footeres from '../public/footer';
   import { getUserinfo, updateCustomerMessage } from '../interface';
 
   export default {
     name: 'userInfo',
+    components: {footeres},
     data() {
       return {
         userInfo: '',
@@ -187,13 +200,22 @@
     padding: .2rem .4rem;
   }
   .text{
-    padding: 0 .6rem;
+    padding: .4rem .6rem;
     line-height: 1.6rem;
-    color: #324057;
+    color: #777;
   }
   .itemText{
     float: right;
-    color: #999;
+    color: #DCC6C6;
     font-size: .8rem;
+  }
+  .footers{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+  }
+  .line2{
+    border-top: 1px solid #eee;
   }
 </style>
