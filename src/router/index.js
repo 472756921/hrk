@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import Reg from '@/components/public/reg'
 import AG from '@/components/public/ag'
 import fuxie from '@/components/public/fuxie'
+import indexes from '@/components/public/indexes'
 import UserIndex from '@/components/user/userIndex'
 import UpdataLive from '@/components/user/updataLive'
 import Reservation from '@/components/user/reservation'
@@ -90,6 +91,11 @@ export default new Router({
       path: '/login',
       name: 'adminLogin',
       component: AdminLogin,
+    },
+    {
+      path: '/indexes',
+      name: 'indexes',
+      component: indexes,
     },
     {
       path: '/m_index',
