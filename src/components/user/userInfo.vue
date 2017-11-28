@@ -24,13 +24,35 @@
       </el-row>
     </div>
 
-    <div class="line"></div>
-
-    <br/>
-    <div class="text">
-      <span><i class="iconfont icon-shouye19" style="color: #68c8e8;font-size: 1.6rem"></i> 我的预约</span>
-      <span class="itemText"><i class="iconfont icon-htbarrowright02"></i></span>
+    <div class="optionPlan">
+      <el-row :gutter="10">
+        <el-col :span="6">
+          <div class="btnU" style="background-color: #5d9243;">
+            <div class="btnIcon_content"><i class="iconfont icon-shouye10"></i></div>
+            <div class="btn_text">名医</div>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div class="btnU" style="background-color: #c28913;">
+            <div class="btnIcon_content"><i class="iconfont icon-shouye9"></i></div>
+            <div class="btn_text">咨询</div>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div class="btnU" style="background-color: #fd4a76;">
+            <div class="btnIcon_content"><i class="iconfont icon-shouye20"></i></div>
+            <div class="btn_text">疫苗</div>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div class="btnU" style="background-color: #72486c;">
+            <div class="btnIcon_content"><i class="iconfont icon-shouye8"></i></div>
+            <div class="btn_text">面诊</div>
+          </div>
+        </el-col>
+      </el-row>
     </div>
+
     <div class="line2"></div>
     <div class="text">
       <span><i class="iconfont icon-shouye1" style="color: #f92731;font-size: 1.6rem"></i> 身份证号码</span>
@@ -172,6 +194,10 @@
 </script>
 
 <style scoped>
+  .optionPlan{
+    background: #ffffff;
+    padding: 1rem;
+  }
   .userInfoHead{
     text-align: center;
     padding: 4rem 1rem;
@@ -217,5 +243,18 @@
   }
   .line2{
     border-top: 1px solid #eee;
+  }
+
+  .btnIcon_content i{
+    font-size: 2rem;
+  }
+  .btnU{
+    text-align: center;
+    color: #fff;
+    padding: .3rem 0;
+    border-radius: 4px;
+  }
+  .btn_text{
+    font-size: 1rem;
   }
 </style>

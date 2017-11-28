@@ -18,7 +18,7 @@
             <div class="center">{{doc.real_name}}</div>
             <div>{{doc.detail_the_front}}</div>
             <div class="bottom clearfix">
-              <el-button type="primary" class="center_block" @click="yy(doc)">咨询</el-button>
+              <el-button type="danger" class="center_block" @click="yy(doc)" size="small">咨询</el-button>
             </div>
           </div>
         </el-card>

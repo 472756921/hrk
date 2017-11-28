@@ -25,27 +25,27 @@
         </div>
       </el-col>
       <el-col :span="6">
-        <div class="btnU">
+        <div class="btnU" @click="push('famousDoctorStudio')">
           <div class="btnIcon_content red"><i class="btnIcon iconfont icon-shouye10"></i></div>
           <div class="btn_text" style="color: #F8937E;">儿科名医</div>
         </div>
       </el-col>
       <el-col :span="6">
-        <div class="btnU">
-          <div class="btnIcon_content green"><i class="btnIcon  iconfont icon-shouye7"></i></div>
-          <div class="btn_text" style="color: #32B9B5;">医院服务</div>
+        <div class="btnU" @click="push('pneumonia')">
+          <div class="btnIcon_content green"><i class="btnIcon  iconfont icon-shouye20"></i></div>
+          <div class="btn_text" style="color: #32B9B5;">肺炎疫苗</div>
         </div>
       </el-col>
       <el-col :span="6">
-        <div class="btnU">
+        <div class="btnU" @click="push('ask')">
           <div class="btnIcon_content yellow"><i class="btnIcon iconfont icon-shouye9"></i></div>
           <div class="btn_text" style="color: #F79D2D;">在线咨询</div>
         </div>
       </el-col>
       <el-col :span="6">
-        <div class="btnU">
+        <div class="btnU" @click="push('reservation')">
           <div class="btnIcon_content bule"><i class="btnIcon iconfont icon-shouye8"></i></div>
-          <div class="btn_text" style="color: #0B90AA;">上门服务</div>
+          <div class="btn_text" style="color: #0B90AA;">预约面诊</div>
         </div>
       </el-col>
       <el-col :span="24">
@@ -87,11 +87,22 @@ import footeres from './footer';
 export default {
   name: 'indexes',
   components: {footeres},
+  mounted() {
+    window.addEventListener('scroll', this.menu)
+  },
   data () {
     return {
     }
   },
   methods: {
+    push(name){
+      this.$router.push({name:name})
+    },
+    menu() {
+      console.log('123123')
+      this.scroll = document.documentElement.scrollTop || document.body.scrollTop;
+      console.log(this.scroll)
+    },
   },
 }
 </script>

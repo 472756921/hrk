@@ -1,5 +1,5 @@
 <template>
-    <div style="background: #fafafa;height: 100%;padding-bottom: 5rem">
+    <div style="background: #fafafa;height: 100%;padding-bottom: 4rem">
       <div class="head">
         <el-row>
           <el-col :span="4">
@@ -58,7 +58,7 @@
 
 <style scoped>
   .head{
-    background: #1D8CE0;
+    background: #F37C3D;
     line-height: 2rem;
     color: #ffffff;
     padding: .4rem;

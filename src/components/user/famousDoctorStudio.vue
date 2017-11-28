@@ -4,17 +4,16 @@
       <el-tab-pane label="重庆名医" name="first">敬请期待</el-tab-pane>
       <el-tab-pane label="港澳名医" name="second">
         <img src="../../assets/ycyl.jpg" width="100%"/>
-        <h4>港澳名医远程支持</h4>
-        <div>
+        <div style="line-height: 2rem">
           <span style="font-weight: bold">简介：</span>港澳名医远程支持港澳名医远程支持港澳名医远程支持港澳名医远程支持港澳名医远程支持港澳名医远程支持港澳名医远程支持港澳名医远程支持
         </div>
         <br/>
         <div>
-          <span>单次服务费用：￥5000.00</span>
+          <span>单次服务费用：<span class="danger">￥5000.00</span></span>
         </div>
         <br/>
         <br/>
-        <el-button type="primary" style="margin: 0 auto; display: block;" @click="yuyue">预约服务</el-button>
+        <el-button type="danger" style="margin: 0 auto; display: block;" @click="yuyue">预约服务</el-button>
       </el-tab-pane>
     </el-tabs>
   </div>

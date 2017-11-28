@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <h3 class="center">预约就诊</h3>
+    <img src="../../assets/ycyl.jpg" width="100%"/>
     <br/>
     <div class="block">
       <div class="demonstration">预约时间：</div>
@@ -45,7 +45,7 @@
     <br/>
     <br/>
     <br/>
-    <el-button type="success" class="center_block" @click="yy" >预约</el-button>
+    <el-button type="danger" class="center_block" @click="yy" >预约</el-button>
   </div>
 </template>
 

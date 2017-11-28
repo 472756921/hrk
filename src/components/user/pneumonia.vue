@@ -2,7 +2,6 @@
   <div>
     <img src="http://iph.href.lu/300x140" style="width: 100%">
     <p>这是一些关于小儿肺炎的说明这是一些关于小儿肺炎的说明这是一些关于小儿肺炎的说明这是一些关于小儿肺炎的说明这是一些关于小儿肺炎的说明</p>
-    <br/>
     <div class="demonstration">选择病情关联人</div>
     <el-radio-group v-model="patient" size="small">
       <el-radio-button :label="child.id" key="i" v-for="(child, i) in data">{{child.real_name}}</el-radio-button>
@@ -22,12 +21,10 @@
     <br/>
     <br/>
     <el-checkbox v-model="checked" size="large">我已于阅读并同意</el-checkbox>
-    <a href="#/public/fuxie" style="color: #1D8CE0;">《小儿肺炎注射知情同意书》</a>
+    <a href="#/public/fuxie" style="color: #DCC6C6;">《小儿肺炎注射知情同意书》</a>
     <br/>
     <br/>
-    <br/>
-    <br/>
-    <el-button type="primary" class="center_block" @click="yy" >预约</el-button>
+    <el-button type="danger" class="center_block" @click="yy" >预约</el-button>
     <br/>
     <div class="center">
       <a href="#/user/pneumoniaStatus" class="link">历史记录</a>
@@ -120,11 +117,11 @@
 <style scoped>
 
   .demonstration{
-    color: #1D8CE0;
+    color: #F79D2D;
     margin-bottom: .3rem;
   }
   .link{
-    color: #1D8CE0;
+    color: #DCC6C6;
     text-decoration: none;
   }
 </style>

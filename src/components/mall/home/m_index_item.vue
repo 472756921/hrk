@@ -28,7 +28,7 @@
 .item{
   padding: .6rem 0;
   margin: 0;
-  color: #1D8CE0;
+  color: #a01d09;
   font-size: .9rem;
 }
   .bg-purple{
