@@ -1,9 +1,9 @@
 <template>
-  <div style="padding-bottom: 5rem">
+  <div style="padding-bottom: 5rem" ref="content">
     <el-row>
       <el-col :span="24">
         <div class="shadow"></div>
-        <div class="head">
+        <div :class="type?'head2':'head'">
           <el-row :gutter="20">
             <el-col :span="8">
               <div class="">
@@ -21,7 +21,7 @@
       <el-col :span="24">
         <div class="btnU btn_main">
           <div class="btnIcon_content"><i class="btnIcon iconfont icon-shouye6"></i></div>
-          <div class="btn_text" style="color: #EB8B71;">家庭医生</div>
+          <div class="btn_text" style="color: #EB8B71;">和润康</div>
         </div>
       </el-col>
       <el-col :span="6">
@@ -88,10 +88,11 @@ export default {
   name: 'indexes',
   components: {footeres},
   mounted() {
-    window.addEventListener('scroll', this.menu)
+    window.addEventListener('scroll', ()=>{this.menu()})
   },
   data () {
     return {
+      type: false,
     }
   },
   methods: {
@@ -99,9 +100,13 @@ export default {
       this.$router.push({name:name})
     },
     menu() {
-      console.log('123123')
-      this.scroll = document.documentElement.scrollTop || document.body.scrollTop;
-      console.log(this.scroll)
+      let scroll = document.documentElement.scrollTop || document.body.scrollTop;
+      console.log(scroll)
+      if(scroll < 20) {
+        this.type = false;
+      } else {
+        this.type = true;
+      }
     },
   },
 }
@@ -113,6 +118,16 @@ export default {
     padding: .6rem .4rem;
     width: 100%;
     color: #ffffff;
+    box-sizing: border-box;
+    z-index: 99;
+  }
+  .head2{
+    z-index: 99;
+    position: fixed;
+    padding: .6rem .4rem;
+    width: 100%;
+    color: #000;
+    background-color: #fff;
     box-sizing: border-box;
   }
   .shadow{

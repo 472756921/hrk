@@ -15,11 +15,9 @@ export default {
   font-family: Microsoft YaHei;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #F9FAFC;
   height: 100%;
   font-size: 14px;
   color: #666;
-  overflow: auto;
 }
   html{
     height: 100%;

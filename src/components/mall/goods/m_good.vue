@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 3.4rem">
+  <div style="margin-bottom: 8rem">
     <el-carousel height="20rem" arrow="never">
       <el-carousel-item v-for="item in goodDatile.img" :key="item">
         <img :src=item width="100%"/>
@@ -109,7 +109,7 @@
   }
   .option{
     position: fixed;
-    bottom: 0;
+    bottom: 4.3rem;
     width: 100%;
     color: #ffffff;
     height: 3.4rem;

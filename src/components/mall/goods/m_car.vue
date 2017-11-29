@@ -64,7 +64,7 @@
     width: 100%;
     border-top: 1px solid #ccc;
     left: 0;
-    bottom: 0;
+    bottom: 4.3rem;
   }
   .payBtn{
     background: #FF4949;

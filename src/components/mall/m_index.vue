@@ -19,8 +19,8 @@
       </div>
       <u_nav ref="u_nav" :itemData="navItems"></u_nav>
       <router-view></router-view>
-      <div class="footer">------------ 我是有底线的 ------------</div>
-      <footeres class="footers"></footeres>
+      <div class="footerd">------------ 我是有底线的 ------------</div>
+      <footeres class="footeres"></footeres>
     </div>
 </template>
 
@@ -69,12 +69,12 @@
     text-align: center;
     font-size: 1rem;
   }
-  .footer{
+  .footerd{
     text-align: center;
     padding: 2rem 0 .4rem 0;
     color: #e4e4e4;
   }
-  .footers{
+  .footeres{
     position: fixed;
     bottom: 0;
   }

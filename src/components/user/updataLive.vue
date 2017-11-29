@@ -20,7 +20,7 @@
     </div>
     <div class="grd"></div>
     <p>会费：<span style="color: #FF4949;">￥{{fy}}</span></p>
-    <el-button type="danger" style="display: block;margin: 2rem auto">签约</el-button>
+    <el-button type="danger" style="display: block;margin: 2rem auto">签约并支付</el-button>
   </div>
 </template>
 
