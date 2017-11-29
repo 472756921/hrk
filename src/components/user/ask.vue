@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div style="text-align: right;padding: .2rem"><a href="#/user/userQuestionList" class="linka">历史咨询</a></div>
     <DocList />
   </div>
 </template>

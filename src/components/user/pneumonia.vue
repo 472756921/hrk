@@ -26,9 +26,6 @@
     <br/>
     <el-button type="danger" class="center_block" @click="yy" >预约</el-button>
     <br/>
-    <div class="center">
-      <a href="#/user/pneumoniaStatus" class="link">历史记录</a>
-    </div>
   </div>
 </template>
 

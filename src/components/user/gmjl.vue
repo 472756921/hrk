@@ -12,7 +12,7 @@
           </el-row>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="已购买" name="second">
+      <el-tab-pane label="已收货" name="second">
         <div class="items">
           <el-row :gutter="10" v-for="(it, i) in listData2" key="i">
             <el-col :span="6"><img src="http://iph.href.lu/80x80" width="100%"/></el-col>

@@ -78,11 +78,7 @@
     data() {
       return {
         data: [
-          { name: '加载中', sex: '男', age: 3, address: '成都', id: 1},
-          { name: '加载中', sex: '男', age: 3, address: '成都', id: 1},
-          { name: '加载中', sex: '男', age: 3, address: '成都', id: 1},
-          { name: '加载中', sex: '男', age: 3, address: '成都', id: 1},
-          { name: '加载中', sex: '男', age: 3, address: '成都', id: 1},
+          { name: '加载中', sex: '加载中', age: '加载中', address: '加载中', id: 1},
         ],
       };
     },
@@ -148,13 +144,13 @@
     margin-right: -9rem;
   }
   .del{
-    padding: 2.5rem 1.5rem;
+    padding: 3rem 1.5rem;
     background: #FF4949;
     float: left;
   }
   .input{
     float: left;
-    padding: 2.5rem 1.5rem;
+    padding: 3rem 1.5rem;
     background: #F7BA2A;
   }
   .new{

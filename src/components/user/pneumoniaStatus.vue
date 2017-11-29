@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <h3>肺炎接种记录</h3>
+    <h4>接种记录</h4>
     <div class="card" v-for="(item, i) in data">
       <div class="name">{{item.child_name}}</div>
       <div><span>{{item.child_month}} 月龄</span> - <span>共 {{item.count}} 针</span></div>

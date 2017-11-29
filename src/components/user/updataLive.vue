@@ -1,14 +1,13 @@
 <template>
   <div>
-    <h3>会员升级</h3>
-    <p>请选择升级类型</p>
-    <el-radio-group v-model="hy" @change="change">
-      <el-radio-button label="1">至尊会员</el-radio-button>
+    <p>请选择签约类型</p>
+    <el-radio-group v-model="hy" @change="change" size="small">
+      <el-radio-button label="1" >至尊会员</el-radio-button>
       <el-radio-button label="2">黄金会员</el-radio-button>
     </el-radio-group>
     <p>{{js}}</p>
     <p>会费：<span style="color: #FF4949;">￥{{fy}}</span></p>
-    <el-button type="danger" style="display: block;margin: 2rem auto">升级</el-button>
+    <el-button type="danger" style="display: block;margin: 2rem auto">签约</el-button>
   </div>
 </template>
 

@@ -43,8 +43,6 @@
     </div>
     <br/>
     <br/>
-    <br/>
-    <br/>
     <el-button type="danger" class="center_block" @click="yy" >预约</el-button>
   </div>
 </template>
@@ -152,8 +150,7 @@
 </script>
 <style scoped>
   .demonstration{
-    color: #333;
+    color: #F79D2D;
     margin-bottom: .3rem;
-    font-size: 15px;
   }
 </style>

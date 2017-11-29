@@ -1,18 +1,19 @@
 <template>
   <div class="content">
-    <h3>关联人</h3>
-    <el-input  v-model="name">
+    <h4>添加关联人</h4>
+    <el-input  v-model="name" size="small">
       <template slot="prepend">姓名</template>
     </el-input>
     <br/>
     <br/>
-    <el-input  v-model="address">
+    <el-input  v-model="address" size="small">
       <template slot="prepend">住址</template>
     </el-input>
     <br/>
     <br/>
     <div class="el-input-group__prepend birtitle">生日</div>
     <el-date-picker
+      size="small"
       class="birValue"
       v-model="brith"
       type="date"
@@ -28,7 +29,7 @@
     <el-radio class="radio" v-model="sex" label=0>女</el-radio>
     <br/>
     <br/>
-    <el-button type="success" @click="save">保存</el-button>
+    <el-button type="danger" @click="save">保存</el-button>
   </div>
 </template>
 
@@ -120,7 +121,7 @@
   .birtitle{
     float: left;
     width: 2rem;
-    padding: 7.5px;
+    padding: 4.5px 11px;
     border-right: 1px solid #bfcbd9;
     z-index: 999;
   }

@@ -5,7 +5,7 @@
         <el-col :span="6">
           <div class="grid-content">
             <div>大众会员</div>
-            <button class="czBtn" @click="updataLive">升级</button>
+            <button class="czBtn" @click="updataLive">签约</button>
           </div>
         </el-col>
         <el-col :span="12">
@@ -26,26 +26,20 @@
 
     <div class="optionPlan">
       <el-row :gutter="10">
-        <el-col :span="6">
-          <div class="btnU" style="background-color: #5d9243;">
-            <div class="btnIcon_content"><i class="iconfont icon-shouye10"></i></div>
-            <div class="btn_text">名医</div>
-          </div>
-        </el-col>
-        <el-col :span="6">
-          <div class="btnU" style="background-color: #c28913;">
+        <el-col :span="8">
+          <div class="btnU" style="background-color: #c28913;" @click="push('userQuestionList')">
             <div class="btnIcon_content"><i class="iconfont icon-shouye9"></i></div>
             <div class="btn_text">咨询</div>
           </div>
         </el-col>
-        <el-col :span="6">
-          <div class="btnU" style="background-color: #fd4a76;">
+        <el-col :span="8">
+          <div class="btnU" style="background-color: #fd4a76;" @click="push('pneumoniaStatus')">
             <div class="btnIcon_content"><i class="iconfont icon-shouye20"></i></div>
             <div class="btn_text">疫苗</div>
           </div>
         </el-col>
-        <el-col :span="6">
-          <div class="btnU" style="background-color: #72486c;">
+        <el-col :span="8">
+          <div class="btnU" style="background-color: #72486c;" @click="push('reservationStatus')">
             <div class="btnIcon_content"><i class="iconfont icon-shouye8"></i></div>
             <div class="btn_text">面诊</div>
           </div>
@@ -83,7 +77,7 @@
       </span>
     </div>
     <div class="line2"></div>
-    <div class="text"  @click="jl">
+    <div class="text"  @click="contactes">
       <span> <i class="iconfont icon-shouye5" style="color: #0596f1;font-size: 1.6rem"></i> 联系人</span>
       <span class="itemText">
         <i class="iconfont icon-htbarrowright02"></i>
@@ -125,6 +119,12 @@
       this.getUserInfo();
     },
     methods: {
+      contactes() {
+        this.$router.push({ name: 'contact'})
+      },
+      push(name) {
+        this.$router.push({ name: name})
+      },
       shdz() {
         this.$router.push({ name: 'shdz'})
       },
@@ -220,6 +220,7 @@
   }
   .czBtn{
     background: #FF4949;
+    font-size: 1rem;
     border: none;
     color: #fff;
     border-radius: .2rem;
